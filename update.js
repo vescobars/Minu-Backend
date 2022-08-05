@@ -5,15 +5,24 @@ const execShPromise = require('exec-sh').promise;
 let fs = require('fs');
 
 const projects = [
-  /*{ name: 'ISIS3710_202220_S1_E1_Back' },*/
-  /*{ name: 'ISIS3710_202220_S1_E2_Back' },*/
-  /*{ name: 'ISIS3710_202220_S1_E3_Back' },*/
+  { name: 'ISIS3710_202220_S1_E1_Back' },
+  { name: 'ISIS3710_202220_S1_E2_Back' },
+  { name: 'ISIS3710_202220_S1_E3_Back' },
   { name: 'ISIS3710_202220_S1_E4_Back' },
   { name: 'ISIS3710_202220_S1_E5_Back' },
   { name: 'ISIS3710_202220_S1_E6_Back' },
   { name: 'ISIS3710_202220_S1_E7_Back' },
   { name: 'ISIS3710_202220_S1_E8_Back' },
 ];
+
+/**
+ * Esto aplica para MISW4404 y para ISIS3710
+ */
+const config = {
+  organization: 'isis3710-uniandes',
+  gitKey: 'de5cd571-10da-4034-8ba8-af99beef4b14',
+  sonarServer: 'sonar-isis2603',
+};
 
 const createRepos = async () => {
   let out;
@@ -26,7 +35,7 @@ const createRepos = async () => {
       fs.writeFileSync('sonar-project.properties', sonarFile);
 
       let command1 = `git remote rm origin &&
-        hub create isis3710-uniandes/${project.name}
+        hub create ${config.organization}/${project.name}
         git add . &&
         git commit -m "Update Jenkinsfile" &&
         git push origin master`;
@@ -47,7 +56,7 @@ createRepos();
 //updateRepos();
 
 function getSonarFile(repo) {
-  const content = `sonar.host.url=http://157.253.238.75:8080/sonar-isis2603/
+  const content = `sonar.host.url=http://157.253.238.75:8080/${config.sonarServer}/
   sonar.projectKey=${repo}:sonar
   sonar.projectName=${repo}
   sonar.projectVersion=1.0
@@ -64,8 +73,8 @@ function getJenkinsFile(repo) {
     agent any
     environment {
        GIT_REPO = '${repo}'
-       GIT_CREDENTIAL_ID = 'de5cd571-10da-4034-8ba8-af99beef4b14'
-       SONARQUBE_URL = 'http://172.24.100.52:8082/sonar-isis2603'
+       GIT_CREDENTIAL_ID = '${config.gitKey}'
+       SONARQUBE_URL = 'http://172.24.100.52:8082/${config.sonarServer}'
     }
     stages {
        stage('Checkout') {
@@ -75,7 +84,7 @@ function getJenkinsFile(repo) {
 
              git branch: 'master',
                 credentialsId: env.GIT_CREDENTIAL_ID,
-                url: 'https://github.com/isis3710-uniandes/' + env.GIT_REPO
+                url: 'https://github.com/${config.organization}/' + env.GIT_REPO
           }
        }
        stage('Git Analysis') {
@@ -95,8 +104,8 @@ function getJenkinsFile(repo) {
                 sh('git config --global user.name "ci-isis2603"')
                 sh('git add ./reports/index.html')
                 sh('git commit -m "[ci-skip] GitInspector report added"')
-                sh('git pull https://\${GIT_USERNAME}:\${GIT_PASSWORD}@github.com/isis3710-uniandes/\${GIT_REPO} master')
-                sh('git push https://\${GIT_USERNAME}:\${GIT_PASSWORD}@github.com/isis3710-uniandes/\${GIT_REPO} master')
+                sh('git pull https://\${GIT_USERNAME}:\${GIT_PASSWORD}@github.com/${config.organization}/\${GIT_REPO} master')
+                sh('git push https://\${GIT_USERNAME}:\${GIT_PASSWORD}@github.com/${config.organization}/\${GIT_REPO} master')
              }
           }
        }
