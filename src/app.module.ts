@@ -9,7 +9,7 @@ import { RestaurantOperatorModule } from './restaurant-operator/restaurant-opera
 
 
 @Module({
-  imports: [MenuModule, CoordinateModule, RestaurantOperatorModule, AdressModule,
+  imports: [MenuModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
