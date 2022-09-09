@@ -24,8 +24,4 @@ export class RestaurantOperatorEntity {
     @Column()
     active:boolean
 
-
-
-
-
 }

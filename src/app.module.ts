@@ -9,7 +9,7 @@ import { RestaurantOperatorModule } from './restaurant-operator/restaurant-opera
 
 
 @Module({
-  imports: [MenuModule,
+  imports: [MenuModule, CoordinateModule, RestaurantOperatorModule, AdressModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -17,7 +17,7 @@ import { RestaurantOperatorModule } from './restaurant-operator/restaurant-opera
       username: 'postgres',
       password: 'postgres',
       database: 'db',
-      entities: [MenuModule],
+      entities: [MenuModule, CoordinateModule, RestaurantOperatorModule, AdressModule],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true
