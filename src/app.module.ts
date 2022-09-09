@@ -6,6 +6,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AdressModule } from './adress/adress.module';
 import { CoordinateModule } from './coordinate/coordinate.module';
 import { RestaurantOperatorModule } from './restaurant-operator/restaurant-operator.module';
+import { MenuEntity } from './menu/menu.entity';
+import { CoordinateEntity } from './coordinate/coordinate.entity';
+import { RestaurantOperatorEntity } from './restaurant-operator/restaurant-operator.entity';
+import { AdressEntity } from './adress/adress.entity';
 
 
 @Module({
@@ -17,7 +21,7 @@ import { RestaurantOperatorModule } from './restaurant-operator/restaurant-opera
       username: 'postgres',
       password: 'postgres',
       database: 'db',
-      entities: [MenuModule, CoordinateModule, RestaurantOperatorModule, AdressModule],
+      entities: [MenuEntity, CoordinateEntity, RestaurantOperatorEntity, AdressEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true
