@@ -9,12 +9,6 @@ export class RestaurantSiteEntity {
     @Column()
     description: String;
 
-    @Column()
-    openingTime: Date;
-
-    @Column()
-    closingTime: Date;
-
     @ManyToOne(() => RestaurantChainEntity, restaurantChain => restaurantChain.restaurantSites)
     restaurantChain: RestaurantChainEntity;
 
