@@ -1,4 +1,6 @@
-import {OneToOne,OneToMany,ManyToOne,ManyToMany, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+
+import { OrderDetailEntity } from 'src/order-detail/order-detail.entity';
+import {OneToOne,Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity()
 export class OrderEntity {
@@ -6,11 +8,14 @@ export class OrderEntity {
     id:string;
 
     @Column()
-    state:String;
+    state:string;
 
     @Column()
     date:Date;
 
     @Column()
     totalValue: number;
+
+    @OneToOne(() => OrderDetailEntity, orderDetail => orderDetail.order)
+    orderDetail: OrderDetailEntity[];
 }
