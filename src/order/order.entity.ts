@@ -19,11 +19,11 @@ export class OrderEntity {
     totalValue: number;
 
     @OneToOne(() => OrderDetailEntity, orderDetail => orderDetail.order)
-    orderDetail: OrderDetailEntity[];
+    orderDetail: OrderDetailEntity;
 
     @OneToOne(() => PayModeEntity, payMode => payMode.order)
-    payMode: PayModeEntity[];
+    payMode: PayModeEntity;
 
     @OneToOne(() => TableEntity, table => table.order)
-    table: TableEntity[];
+    table: TableEntity;
 }

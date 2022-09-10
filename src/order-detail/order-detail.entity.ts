@@ -17,7 +17,7 @@ export class OrderDetailEntity {
     notes:string;
 
     @OneToMany(() => OrderEntity, order => order.orderDetail)
-    order: OrderEntity[];
+    order: OrderEntity;
 
     //Awaiting integration in development where the plates class should be created by G.Cagua
     /*

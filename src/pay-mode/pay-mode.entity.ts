@@ -10,5 +10,5 @@ export class PayModeEntity {
     type:string;
 
     @OneToOne(() => OrderEntity, order => order.payMode)
-    order: OrderEntity[];
+    order: OrderEntity;
 }
