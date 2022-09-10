@@ -1,6 +1,5 @@
 import { OrderEntity } from 'src/order/order.entity';
-import {OneToOne,OneToMany,ManyToOne,ManyToMany, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
-import { PlainObjectToNewEntityTransformer } from 'typeorm/query-builder/transformer/PlainObjectToNewEntityTransformer';
+import {OneToMany, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity()
 export class OrderDetailEntity {
