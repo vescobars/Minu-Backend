@@ -11,7 +11,6 @@ import { OrderDetailEntity } from './order-detail/order-detail.entity';
 import { PayModeEntity } from './pay-mode/pay-mode.entity';
 import { TableEntity } from './table/table.entity';
 import { MenuModule } from './menu/menu.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AdressModule } from './adress/adress.module';
 import { CoordinateModule } from './coordinate/coordinate.module';
 import { RestaurantOperatorModule } from './restaurant-operator/restaurant-operator.module';
@@ -29,7 +28,7 @@ import { AdressEntity } from './adress/adress.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'db',
-      entities: [OrderEntity, OrderDetailEntity, PayModeEntity, TableEntity,[MenuEntity, CoordinateEntity, RestaurantOperatorEntity, AdressEntity],
+      entities: [OrderEntity, OrderDetailEntity, PayModeEntity, TableEntity,MenuEntity, CoordinateEntity, RestaurantOperatorEntity, AdressEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true
