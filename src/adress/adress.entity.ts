@@ -16,5 +16,5 @@ export class AdressEntity {
     neighborhood: string
 
     @Column()
-    address: string
+    direction: string
 }
