@@ -1,6 +1,7 @@
 import { ClientEntity } from 'src/client/client.entity';
 import { OrderDetailEntity } from 'src/order-detail/order-detail.entity';
 import { PayModeEntity } from 'src/pay-mode/pay-mode.entity';
+import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
 import { TableEntity } from 'src/table/table.entity';
 import {
   OneToOne,
@@ -39,4 +40,7 @@ export class OrderEntity {
 
   @ManyToOne(() => ClientEntity, (client) => client.orders)
   client: ClientEntity;
+
+  @ManyToOne(() => RestaurantSiteEntity, (restaurantSite) => restaurantSite.orders)
+  restaurantSite: OrderEntity[];
 }
