@@ -17,10 +17,7 @@ export class OrderDetailEntity {
 
     @OneToMany(() => OrderEntity, order => order.orderDetail)
     order: OrderEntity;
-
-    //Awaiting integration in development where the plates class should be created by G.Cagua
-    /*
+  
     @OneToMany(() => PlateEntity , plate -> plate.orderDetail)
     plate: PlateEntity[];
-    */
 }
