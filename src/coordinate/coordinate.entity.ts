@@ -1,5 +1,7 @@
-import { Column, Double, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { AdressEntity } from '../adress/adress.entity';
 
+@Entity()
 export class CoordinateEntity {
 
     @PrimaryGeneratedColumn('uuid')
@@ -7,7 +9,10 @@ export class CoordinateEntity {
 
     @Column()
     length: number  
-    
+        
     @Column()
     latitude: number
+
+    @OneToOne(() => AdressEntity, adress => adress.coordinate)
+    adress: AdressEntity;
 }

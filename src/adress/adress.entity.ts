@@ -1,4 +1,6 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { CoordinateEntity } from '../coordinate/coordinate.entity';
+
 
 @Entity()
 export class AdressEntity {
@@ -17,4 +19,8 @@ export class AdressEntity {
 
     @Column()
     direction: string
+
+   @OneToOne(() => CoordinateEntity, coordinate => coordinate.adress)
+   @JoinColumn()
+   coordinate: CoordinateEntity;
 }
