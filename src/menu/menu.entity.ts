@@ -15,7 +15,6 @@ export class MenuEntity {
     categories: CategoryEntity[];
 
 
-
     @OneToOne(() => MenuVisualPreferenceEntity, menuVisualPreferences => menuVisualPreferences.menu)
     menuVisualPreferences: MenuVisualPreferenceEntity;
 
