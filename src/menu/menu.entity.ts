@@ -1,5 +1,6 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
 import { CategoryEntity } from '../category/category.entity';
+import { MenuVisualPreferenceEntity } from '../menu-visual-preferences/menu-visual-preferences.entity';
 
 @Entity()
 export class MenuEntity {
@@ -14,10 +15,8 @@ export class MenuEntity {
     categories: CategoryEntity[];
 
 
-    /*
-    @OneToOne(() => MenuVisualPreferencesEntity, menuVisualPreferences => menuVisualPreferences.menu)
-    menuVisualPreferences: MenuVisualPreferencesEntity;
-    */
+    @OneToOne(() => MenuVisualPreferenceEntity, menuVisualPreferences => menuVisualPreferences.menu)
+    menuVisualPreferences: MenuVisualPreferenceEntity;
 
     /*
     @OneToOne(() => MenuVisualTemplateEntity, MenuVisualTemplate => MenuVisualTemplate.sponsor)
