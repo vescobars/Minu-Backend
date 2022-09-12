@@ -25,8 +25,6 @@ export class RestaurantSiteEntity {
     @JoinColumn()
     menu: MenuEntity;
 
-    
-
     @OneToMany(() => ReviewEntity, review => review.restaurantSite)
     reviews: ReviewEntity[];
 
