@@ -1,34 +1,49 @@
 import { CategoryEntity } from 'src/category/category.entity';
 import { DescriptionTagEntity } from 'src/description-tag/description-tag.entity';
+import { ImageEntity } from 'src/image/image.entity';
+import { OrderDetailEntity } from 'src/order-detail/order-detail.entity';
 import { PromotionEntity } from 'src/promotion/promotion.entity';
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany, OneToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+} from 'typeorm';
 
 @Entity()
 export class PlateEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 
-    @Column()
-    description: string;
+  @Column()
+  description: string;
 
-    @Column()
-    value: number;
+  @Column()
+  value: number;
 
-    @Column()
-    notes: string;
+  @Column()
+  notes: string;
 
-    @ManyToOne(() => CategoryEntity, category => category.plates)
-    category = CategoryEntity;
+  @ManyToOne(() => CategoryEntity, (category) => category.plates)
+  category = CategoryEntity;
 
-    @OneToMany(() => DescriptionTagEntity, descriptionTag => descriptionTag.plate)
-    descriptionTags: DescriptionTagEntity[];
+  @OneToMany(
+    () => DescriptionTagEntity,
+    (descriptionTag) => descriptionTag.plate,
+  )
+  descriptionTags: DescriptionTagEntity[];
 
-    @OneToOne(() => PromotionEntity, promotion => promotion.plate)
-    promotion: PromotionEntity;
+  @OneToOne(() => PromotionEntity, (promotion) => promotion.plate)
+  promotion: PromotionEntity;
 
-    @OneToMany(() => ImageEntity, image => image.plate)
-    image: ImageEntity;
+  @OneToMany(() => ImageEntity, (image) => image.plate)
+  image: ImageEntity;
+
+  @ManyToOne(() => OrderDetailEntity, (orderDetail) => orderDetail.plate)
+  orderDetail: OrderDetailEntity;
 }

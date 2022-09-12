@@ -1,18 +1,21 @@
+import { AdressEntity } from 'src/adress/adress.entity';
+import { ClientEntity } from 'src/client/client.entity';
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { AdressEntity } from '../adress/adress.entity';
 
 @Entity()
 export class CoordinateEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @PrimaryGeneratedColumn('uuid')
-    id: string
+  @Column()
+  length: number;
 
-    @Column()
-    length: number  
-        
-    @Column()
-    latitude: number
+  @Column()
+  latitude: number;
 
-    @OneToOne(() => AdressEntity, adress => adress.coordinate)
-    adress: AdressEntity;
+  @OneToOne(() => ClientEntity, (client) => client.current_location)
+  client: ClientEntity;
+
+  @OneToOne(() => AdressEntity, (adress) => adress.coordinate)
+  adress: AdressEntity;
 }

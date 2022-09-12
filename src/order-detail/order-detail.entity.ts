@@ -1,23 +1,24 @@
 import { OrderEntity } from 'src/order/order.entity';
-import {OneToMany, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import { PlateEntity } from 'src/plate/plate.entity';
+import { OneToMany, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class OrderDetailEntity {
-    @PrimaryGeneratedColumn()
-    id:string;
+  @PrimaryGeneratedColumn()
+  id: string;
 
-    @Column()
-    state: string;
+  @Column()
+  state: string;
 
-    @Column()
-    date:Date;
+  @Column()
+  date: Date;
 
-    @Column()
-    notes:string;
+  @Column()
+  notes: string;
 
-    @OneToMany(() => OrderEntity, order => order.orderDetail)
-    order: OrderEntity;
-  
-    @OneToMany(() => PlateEntity , plate -> plate.orderDetail)
-    plate: PlateEntity[];
+  @OneToMany(() => OrderEntity, (order) => order.orderDetail)
+  order: OrderEntity;
+
+  @OneToMany(() => PlateEntity, (plate) => plate.orderDetail)
+  plate: PlateEntity[];
 }
