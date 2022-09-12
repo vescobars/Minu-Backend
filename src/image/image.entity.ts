@@ -1,5 +1,12 @@
 import { ClientEntity } from 'src/client/client.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { PlateEntity } from 'src/plate/plate.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  ManyToOne,
+} from 'typeorm';
 
 @Entity()
 export class ImageEntity {
@@ -17,4 +24,7 @@ export class ImageEntity {
     @OneToOne(() => RestaurantOperatorEntity, restaurantOperator => restaurantOperator.operatorImage)
     restaurantOperator: RestaurantOperatorEntity;
     */
+
+  @ManyToOne(() => PlateEntity, (plate) => plate.image)
+  plate: PlateEntity;
 }
