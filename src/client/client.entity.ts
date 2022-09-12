@@ -3,40 +3,40 @@ import { ImageEntity } from 'src/image/image.entity';
 import { OrderEntity } from 'src/order/order.entity';
 import { ReviewEntity } from 'src/review/review.entity';
 import {
-  Column,
-  JoinColumn,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
+    Column,
+    JoinColumn,
+    OneToMany,
+    OneToOne,
+    PrimaryGeneratedColumn,
 } from 'typeorm';
 
 export class ClientEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
-  @Column()
-  first_name: string;
+    @Column()
+    firstName: string;
 
-  @Column()
-  last_name: string;
+    @Column()
+    lastName: string;
 
-  @Column()
-  phone: string;
+    @Column()
+    phone: string;
 
-  @Column()
-  email: string;
+    @Column()
+    email: string;
 
-  @OneToOne(() => ImageEntity, image => image.client)
-  @JoinColumn()
-  profile_image: ImageEntity;
+    @OneToOne(() => ImageEntity, profileImage => profileImage.client)
+    @JoinColumn()
+    profileImage: ImageEntity;
 
-  @OneToMany(() => OrderEntity, (order) => order.client)
-  orders: OrderEntity[];
+    @OneToMany(() => OrderEntity, order => order.client)
+    orders: OrderEntity[];
 
-  @OneToOne(() => CoordinateEntity, (coordinate) => coordinate.client)
-  @JoinColumn()
-  current_location: CoordinateEntity;
+    @OneToOne(() => CoordinateEntity, currentLocation => currentLocation.client)
+    @JoinColumn()
+    currentLocation: CoordinateEntity;
 
-  @OneToMany(() => ReviewEntity, (review) => review.client)
-  reviews: ReviewEntity[];
+    @OneToMany(() => ReviewEntity, review => review.client)
+    reviews: ReviewEntity[];
 }

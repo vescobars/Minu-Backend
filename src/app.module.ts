@@ -45,6 +45,7 @@ import { CoordinateEntity } from './coordinate/coordinate.entity';
 import { RestaurantOperatorEntity } from './restaurant-operator/restaurant-operator.entity';
 import { AddressEntity } from './address/address.entity';
 
+
 @Module({
   imports: [
     AddressModule,
