@@ -24,4 +24,9 @@ export class RestaurantOperatorEntity {
     @Column()
     active:boolean
 
+    /*
+    @OneToOne(() => ImageEntity, image => image.restauranOperator)
+    @JoinColumn()
+    image: ImageEntity;
+*/
 }
