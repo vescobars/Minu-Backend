@@ -1,5 +1,7 @@
+import { OrderEntity } from 'src/order/order.entity';
 import { RestaurantChainEntity } from 'src/restaurant-chain/restaurant-chain.entity';
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { TableEntity } from 'src/table/table.entity';
+import { Column, Entity, JoinColumn, ManyToOne,OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class RestaurantSiteEntity {
@@ -12,16 +14,16 @@ export class RestaurantSiteEntity {
     @ManyToOne(() => RestaurantChainEntity, restaurantChain => restaurantChain.restaurantSites)
     restaurantChain: RestaurantChainEntity;
 
+    @OneToMany(() => OrderEntity, orders => orders.restaurantSite)
+    orders: OrderEntity[];
+
+    @OneToMany(() => TableEntity, tables => tables.restaurantSite)
+    tables: TableEntity[];
+
     /*
     @OneToOne(() => MenuEntity, menu => menu.restaurantChain)
     @JoinColumn()
     menu: MenuEntity;
-
-    @OneToMany(() => TableEntity, table => table.restaurantSite)
-    tables: TableEntity[];
-
-    @OneToMany(() => OrderEntity, order => order.restaurantSite)
-    orders: OrderEntity[];
 
     @OneToMany(() => ReviewEntity, review => review.restaurantSite)
     reviews: ReviewEntity[];
