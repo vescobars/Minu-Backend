@@ -1,5 +1,11 @@
+import { AddressEntity } from 'src/address/address.entity';
+import { MenuEntity } from 'src/menu/menu.entity';
 import { OrderEntity } from 'src/order/order.entity';
+import { PromotionEntity } from 'src/promotion/promotion.entity';
 import { RestaurantChainEntity } from 'src/restaurant-chain/restaurant-chain.entity';
+import { RestaurantOperatorEntity } from 'src/restaurant-operator/restaurant-operator.entity';
+import { ReviewEntity } from 'src/review/review.entity';
+import { ScheduleEntity } from 'src/schedule/schedule.entity';
 import { TableEntity } from 'src/table/table.entity';
 import { Column, Entity, JoinColumn, ManyToOne,OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -20,8 +26,7 @@ export class RestaurantSiteEntity {
     @OneToMany(() => TableEntity, tables => tables.restaurantSite)
     tables: TableEntity[];
 
-    /*
-    @OneToOne(() => MenuEntity, menu => menu.restaurantChain)
+    @OneToOne(() => MenuEntity, menu => menu.restaurantSite)
     @JoinColumn()
     menu: MenuEntity;
 
@@ -38,5 +43,8 @@ export class RestaurantSiteEntity {
     @OneToOne(() => ScheduleEntity, schedule => schedule.restaurantSite)
     @JoinColumn()
     schedule: ScheduleEntity;
-    */
+
+    @OneToMany(() => PromotionEntity, promotion => promotion.restaurantSite)
+    promotions: PromotionEntity[];
+   
 }

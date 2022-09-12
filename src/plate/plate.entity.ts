@@ -10,6 +10,7 @@ import {
   ManyToOne,
   OneToMany,
   OneToOne,
+  JoinColumn,
 } from 'typeorm';
 
 @Entity()
@@ -32,18 +33,16 @@ export class PlateEntity {
   @ManyToOne(() => CategoryEntity, (category) => category.plates)
   category = CategoryEntity;
 
-  @OneToMany(
-    () => DescriptionTagEntity,
-    (descriptionTag) => descriptionTag.plate,
-  )
+  @OneToMany(() => DescriptionTagEntity, (descriptionTag) => descriptionTag.plate)
   descriptionTags: DescriptionTagEntity[];
 
   @OneToOne(() => PromotionEntity, (promotion) => promotion.plate)
+  @JoinColumn()
   promotion: PromotionEntity;
 
   @OneToMany(() => ImageEntity, (image) => image.plate)
-  image: ImageEntity;
+  images: ImageEntity;
 
-  @ManyToOne(() => OrderDetailEntity, (orderDetail) => orderDetail.plate)
+  @ManyToOne(() => OrderDetailEntity, (orderDetail) => orderDetail.plates)
   orderDetail: OrderDetailEntity;
 }

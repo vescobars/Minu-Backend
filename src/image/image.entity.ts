@@ -1,5 +1,6 @@
 import { ClientEntity } from 'src/client/client.entity';
 import { PlateEntity } from 'src/plate/plate.entity';
+import { RestaurantOperatorEntity } from 'src/restaurant-operator/restaurant-operator.entity';
 import {
   Entity,
   Column,
@@ -16,15 +17,12 @@ export class ImageEntity {
   @Column()
   url: string;
 
+  @OneToOne(() => RestaurantOperatorEntity, (restaurantOperator) => restaurantOperator.profile_image)
+  restaurantOperator: RestaurantOperatorEntity;
+
+  @ManyToOne(() => PlateEntity, (plate) => plate.images)
+  plate: PlateEntity;
+
   @OneToOne(() => ClientEntity, (client) => client.profile_image)
   client: ClientEntity;
-
-  /* 
-    //operatorImage? profileImage?
-    @OneToOne(() => RestaurantOperatorEntity, restaurantOperator => restaurantOperator.operatorImage)
-    restaurantOperator: RestaurantOperatorEntity;
-    */
-
-  @ManyToOne(() => PlateEntity, (plate) => plate.image)
-  plate: PlateEntity;
 }

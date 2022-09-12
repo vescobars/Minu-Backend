@@ -1,4 +1,5 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { MenuEntity } from 'src/menu/menu.entity';
+import { Column, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 export class MenuVisualTemplateEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -9,4 +10,7 @@ export class MenuVisualTemplateEntity {
 
   @Column()
   file: string;
+
+  @OneToOne(() => MenuEntity, menu => menu.menuVisualTemplate)
+  menu: MenuEntity;
 }

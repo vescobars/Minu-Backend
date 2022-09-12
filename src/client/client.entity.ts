@@ -1,6 +1,7 @@
 import { CoordinateEntity } from 'src/coordinate/coordinate.entity';
 import { ImageEntity } from 'src/image/image.entity';
 import { OrderEntity } from 'src/order/order.entity';
+import { ReviewEntity } from 'src/review/review.entity';
 import {
   Column,
   JoinColumn,
@@ -25,7 +26,7 @@ export class ClientEntity {
   @Column()
   email: string;
 
-  @OneToOne(() => ImageEntity, (image) => image.client)
+  @OneToOne(() => ImageEntity, image => image.client)
   @JoinColumn()
   profile_image: ImageEntity;
 
@@ -35,4 +36,7 @@ export class ClientEntity {
   @OneToOne(() => CoordinateEntity, (coordinate) => coordinate.client)
   @JoinColumn()
   current_location: CoordinateEntity;
+
+  @OneToMany(() => ReviewEntity, (review) => review.client)
+  reviews: ReviewEntity[];
 }

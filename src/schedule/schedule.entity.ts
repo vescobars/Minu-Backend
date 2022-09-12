@@ -1,4 +1,5 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 export class ScheduleEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -12,4 +13,8 @@ export class ScheduleEntity {
 
   @Column()
   closing_hour: string;
+
+  @ManyToOne(() => RestaurantSiteEntity, restaurantSite => restaurantSite.schedule)
+  restaurantSite: RestaurantSiteEntity;
+
 }

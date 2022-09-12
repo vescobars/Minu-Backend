@@ -12,12 +12,7 @@ export class MenuVisualPreferenceEntity {
 
     @Column()
     file: String;
-
-    /*
-    @OneToOne(() => MenuEntity, menu => menu.menuTemplateAdjustment)
-    menu: MenuEntity;
-    */
-
+    
     @OneToOne(() => MenuEntity, menu => menu.menuVisualPreferences)
     menu: MenuEntity;
     

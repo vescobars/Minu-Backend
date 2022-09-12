@@ -1,3 +1,4 @@
+import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
 import {
   Column,
   Entity,
@@ -8,7 +9,7 @@ import {
 import { CoordinateEntity } from '../coordinate/coordinate.entity';
 
 @Entity()
-export class AdressEntity {
+export class AddressEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -24,7 +25,10 @@ export class AdressEntity {
   @Column()
   direction: string;
 
-  @OneToOne(() => CoordinateEntity, (coordinate) => coordinate.adress)
+  @OneToOne(() => CoordinateEntity, (coordinate) => coordinate.address)
   @JoinColumn()
   coordinate: CoordinateEntity;
+
+  @OneToOne(() => RestaurantSiteEntity, (restaurantSite) => restaurantSite.address)
+  restaurantSite: RestaurantSiteEntity;
 }

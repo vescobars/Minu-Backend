@@ -1,4 +1,4 @@
-import { AdressEntity } from 'src/adress/adress.entity';
+import { AddressEntity } from 'src/address/address.entity';
 import { ClientEntity } from 'src/client/client.entity';
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -16,6 +16,6 @@ export class CoordinateEntity {
   @OneToOne(() => ClientEntity, (client) => client.current_location)
   client: ClientEntity;
 
-  @OneToOne(() => AdressEntity, (adress) => adress.coordinate)
-  adress: AdressEntity;
+  @OneToOne(() => AddressEntity, (address) => address.coordinate)
+  address: AddressEntity;
 }
