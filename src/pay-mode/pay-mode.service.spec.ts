@@ -73,7 +73,7 @@ describe('PayModeService', () => {
     const paymode: PayModeEntity = payModeList[0];
     paymode.type = payTypesList[Math.random() * payTypesList.length];
     
-    const updatedPayMode: PayModeEntity = await service.update(paymode.id,paymode.type);
+    const updatedPayMode: PayModeEntity = await service.update(paymode.id,paymode);
     expect(updatedPayMode).not.toBeNull();
   
     const storedPayMode: PayModeEntity = await repository.findOne({where: {id: paymode.id}})
