@@ -17,12 +17,15 @@ export class ImageEntity {
   @Column()
   url: string;
 
-  @OneToOne(() => RestaurantOperatorEntity, (restaurantOperator) => restaurantOperator.profile_image)
+  @OneToOne(() => ClientEntity, client => client.profileImage)
+  client: ClientEntity;
+
+  @OneToOne(() => RestaurantOperatorEntity, restaurantOperator => restaurantOperator.profileImage)
   restaurantOperator: RestaurantOperatorEntity;
 
-  @ManyToOne(() => PlateEntity, (plate) => plate.images)
+  @ManyToOne(() => PlateEntity, plate => plate.images)
   plate: PlateEntity;
 
-  @OneToOne(() => ClientEntity, (client) => client.profile_image)
-  client: ClientEntity;
+  
 }
+

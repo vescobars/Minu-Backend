@@ -26,25 +26,24 @@ export class RestaurantSiteEntity {
     @OneToMany(() => TableEntity, tables => tables.restaurantSite)
     tables: TableEntity[];
 
-    @OneToOne(() => MenuEntity, menu => menu.restaurantSite)
-    @JoinColumn()
-    menu: MenuEntity;
-
     @OneToMany(() => ReviewEntity, review => review.restaurantSite)
     reviews: ReviewEntity[];
 
     @OneToMany(() => RestaurantOperatorEntity, restaurantOperator => restaurantOperator.restaurantSite)
     restaurantOperators: RestaurantOperatorEntity[];
 
-    @OneToOne(() => AddressEntity, address => address.restaurantSite)
-    @JoinColumn()
-    address: AddressEntity;
-
-    @OneToOne(() => ScheduleEntity, schedule => schedule.restaurantSite)
-    @JoinColumn()
-    schedule: ScheduleEntity;
+    @OneToMany(() => ScheduleEntity, schedule => schedule.restaurantSite)
+    schedules: ScheduleEntity[];
 
     @OneToMany(() => PromotionEntity, promotion => promotion.restaurantSite)
     promotions: PromotionEntity[];
+
+    @OneToOne(() => MenuEntity, menu => menu.restaurantSite)
+    @JoinColumn()
+    menu: MenuEntity;
+
+    @OneToOne(() => AddressEntity, address => address.restaurantSite)
+    @JoinColumn()
+    address: AddressEntity;
    
 }

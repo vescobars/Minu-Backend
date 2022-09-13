@@ -13,7 +13,7 @@ export class CoordinateEntity {
   @Column()
   latitude: number;
 
-  @OneToOne(() => ClientEntity, (client) => client.current_location)
+  @OneToOne(() => ClientEntity, (client) => client.currentLocation)
   client: ClientEntity;
 
   @OneToOne(() => AddressEntity, (address) => address.coordinate)
