@@ -4,12 +4,14 @@ import { OrderEntity } from 'src/order/order.entity';
 import { ReviewEntity } from 'src/review/review.entity';
 import {
   Column,
+  Entity,
   JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+@Entity()
 export class ClientEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;

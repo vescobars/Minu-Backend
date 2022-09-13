@@ -1,6 +1,7 @@
 import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
-import { Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity()
 export class ScheduleEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;

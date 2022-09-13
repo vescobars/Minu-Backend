@@ -1,6 +1,7 @@
 import { MenuEntity } from 'src/menu/menu.entity';
-import { Column, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity()
 export class MenuVisualTemplateEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
