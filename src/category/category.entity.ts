@@ -1,5 +1,7 @@
 import { PlateEntity } from 'src/plate/plate.entity';
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
+import { MenuEntity } from '../menu/menu.entity';
+
 
 @Entity()
 export class CategoryEntity 
@@ -12,4 +14,7 @@ export class CategoryEntity
 
     @OneToMany(() =>PlateEntity, plate => plate.category)
     plates: PlateEntity[];
+
+    @ManyToOne(() => MenuEntity, menu => menu.categories)
+    menu: MenuEntity;
 }

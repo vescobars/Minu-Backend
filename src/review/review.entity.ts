@@ -1,4 +1,6 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { ClientEntity } from 'src/client/client.entity';
+import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class ReviewEntity {
@@ -11,6 +13,10 @@ export class ReviewEntity {
     @Column()
     description: string;
 
-    @OneToOne(() => OrderEntity, order => order.review)
-    order: OrderEntity;
+    @ManyToOne(() => ClientEntity, client => client.reviews)
+    client: ClientEntity;
+
+    @ManyToOne(() => RestaurantSiteEntity, restaurantSite => restaurantSite.reviews)
+    restaurantSite: RestaurantSiteEntity[];
+
 }
