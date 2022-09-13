@@ -105,6 +105,7 @@ describe('TableService', () => {
       ...table, seats: faker.datatype.number(), occupied: faker.datatype.boolean()
     }
     await expect(() => service.update("0", table)).rejects.toHaveProperty("message", "The table with the given id was not found")
+    
   });
 
   it('delete should remove a table', async () => {
