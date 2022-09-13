@@ -68,4 +68,19 @@ describe('PayModeService', () => {
     expect(storedPayMode.type).toEqual(newPayMode.type)
     expect(storedPayMode.order).toEqual(newPayMode.order)
   });
+
+  it('update should modify a museum', async () => {
+    const paymode: PayModeEntity = payModeList[0];
+    paymode.type = payTypesList[Math.random() * payTypesList.length];
+    
+    const updatedPayMode: PayModeEntity = await service.update(paymode.id,paymode.type);
+    expect(updatedPayMode).not.toBeNull();
+  
+    const storedPayMode: PayModeEntity = await repository.findOne({where: {id: paymode.id}})
+    expect(storedPayMode).not.toBeNull();
+    expect(storedPayMode.type).toEqual(paymode.type)
+    expect(storedPayMode.order).toEqual(paymode.order)
+  });
+
+  
 });
