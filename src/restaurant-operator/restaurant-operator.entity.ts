@@ -1,4 +1,6 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ImageEntity } from 'src/image/image.entity';
+import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class RestaurantOperatorEntity {
@@ -23,5 +25,12 @@ export class RestaurantOperatorEntity {
 
     @Column()
     active:boolean
+
+    @OneToOne(() => ImageEntity, profileImage => profileImage.restaurantOperator)
+    @JoinColumn()
+    profileImage: ImageEntity;
+
+    @ManyToOne(() => RestaurantSiteEntity, restaurantSite => restaurantSite.restaurantOperators)
+    restaurantSite: RestaurantSiteEntity;
 
 }
