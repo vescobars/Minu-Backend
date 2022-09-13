@@ -69,7 +69,7 @@ describe('PayModeService', () => {
     expect(storedPayMode.order).toEqual(newPayMode.order)
   });
 
-  it('update should modify a museum', async () => {
+  it('update should modify a paymode', async () => {
     const paymode: PayModeEntity = payModeList[0];
     paymode.type = payTypesList[Math.random() * payTypesList.length];
     
@@ -82,5 +82,26 @@ describe('PayModeService', () => {
     expect(storedPayMode.order).toEqual(paymode.order)
   });
 
+  it('update should throw an exception for an invalid paymode', async () => {
+    let paymode: PayModeEntity = payModeList[0];
+    paymode = {
+      ...paymode, type: payTypesList[Math.random() * payTypesList.length]
+    }
+    await expect(() => service.update("0", paymode)).rejects.toHaveProperty("message", "The paymode with the given id was not found")
+  });
+
+  it('delete should remove a paymode', async () => {
+    const paymode: PayModeEntity = payModeList[0];
+    await service.delete(paymode.id);
   
+    const deletedPayMode: PayModeEntity = await repository.findOne({ where: { id: paymode.id } })
+    expect(deletedPayMode).toBeNull();
+  });
+
+  it('delete should throw an exception for an invalid paymode', async () => {
+    const paymode: PayModeEntity = payModeList[0];
+    await service.delete(paymode.id);
+    await expect(() => service.delete("0")).rejects.toHaveProperty("message", "The paymode with the given id was not found")
+  });
+
 });
