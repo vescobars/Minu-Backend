@@ -12,6 +12,6 @@ export class OrderDetailService {
     ){}
 
     async findAll(): Promise<OrderDetailEntity[]> {
-        return await this.orderDetailRepository.find({ relations: ["artworks", "exhibitions"] });
+        return await this.orderDetailRepository.find({ relations: ["plates", "exhibitions"] });
     }
 }

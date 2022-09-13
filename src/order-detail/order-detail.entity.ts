@@ -20,5 +20,5 @@ export class OrderDetailEntity {
   order: OrderEntity;
 
   @OneToMany(() => PlateEntity, (plate) => plate.orderDetail)
-  plate: PlateEntity[];
+  plates: PlateEntity[];
 }
