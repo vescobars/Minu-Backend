@@ -42,5 +42,5 @@ export class OrderEntity {
   client: ClientEntity;
 
   @ManyToOne(() => RestaurantSiteEntity, (restaurantSite) => restaurantSite.orders)
-  restaurantSite: RestaurantSiteEntity[];
+  restaurantSite: RestaurantSiteEntity;
 }
