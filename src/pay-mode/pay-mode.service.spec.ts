@@ -35,4 +35,37 @@ describe('PayModeService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('findOne should return a Pay Mode by id', async () => {
+    const storedPayMode: PayModeEntity = payModeList[0];
+    const paymode: PayModeEntity = await service.findOne(storedPayMode.id);
+    expect(paymode).not.toBeNull();
+    expect(paymode.type).toEqual(storedPayMode.type)
+  });
+
+  it('findAll should return all museums', async () => {
+    const paymode: PayModeEntity[] = await service.findAll();
+    expect(paymode).not.toBeNull();
+    expect(paymode).toHaveLength(payModeList.length);
+  });
+
+  it('findOne should throw an exception for an invalid paymode', async () => {
+    await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "The paymode with the given id was not found")
+  });
+
+  it('create should return a new paymode', async () => {
+    const paymode: PayModeEntity = {
+      id: "",
+      type: payTypesList[Math.random() * payTypesList.length], 
+      order: null //TODO:Create order object here when the service is ready and tested
+    }
+
+    const newPayMode: PayModeEntity = await service.create(paymode);
+    expect(newPayMode).not.toBeNull();
+
+    const storedPayMode: PayModeEntity = await repository.findOne({where: {id: newPayMode.id}})
+    expect(storedPayMode).not.toBeNull();
+    expect(storedPayMode.type).toEqual(newPayMode.type)
+    expect(storedPayMode.order).toEqual(newPayMode.order)
+  });
 });
