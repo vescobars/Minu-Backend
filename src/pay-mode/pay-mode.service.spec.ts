@@ -5,6 +5,7 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { PayModeService } from './pay-mode.service';
 import { PayModeEntity} from './pay-mode.entity';
 
+
 describe('PayModeService', () => {
   let service: PayModeService;
   let repository: Repository<PayModeEntity>;
