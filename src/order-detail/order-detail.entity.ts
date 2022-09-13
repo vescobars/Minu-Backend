@@ -1,6 +1,6 @@
 import { OrderEntity } from 'src/order/order.entity';
 import { PlateEntity } from 'src/plate/plate.entity';
-import { OneToMany, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { OneToMany, Column, Entity, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
 
 @Entity()
 export class OrderDetailEntity {
@@ -16,7 +16,7 @@ export class OrderDetailEntity {
   @Column()
   notes: string;
 
-  @OneToMany(() => OrderEntity, (order) => order.orderDetail)
+  @OneToOne(() => OrderEntity, (order) => order.orderDetail)
   order: OrderEntity;
 
   @OneToMany(() => PlateEntity, (plate) => plate.orderDetail)

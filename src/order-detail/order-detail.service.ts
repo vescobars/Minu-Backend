@@ -10,4 +10,8 @@ export class OrderDetailService {
         @InjectRepository(OrderDetailEntity)
         private readonly orderDetailRepository: Repository<OrderDetailEntity>
     ){}
+
+    async findAll(): Promise<OrderDetailEntity[]> {
+        return await this.orderDetailRepository.find({ relations: ["artworks", "exhibitions"] });
+    }
 }
