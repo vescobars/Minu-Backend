@@ -111,6 +111,7 @@ it('delete should remove a orderDetail', async () => {
   expect(deletedOrderDetail).toBeNull();
 });
 
+
 it('delete should throw an exception for an invalid orderDetail', async () => {
   const orderDetail: OrderDetailEntity = orderDetailList[0];
   await service.delete(orderDetail.id);
