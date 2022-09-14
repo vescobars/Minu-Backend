@@ -9,11 +9,10 @@ export const TypeOrmTestingConfig = () => [
    type: 'sqlite',
    database: ':memory:',
    dropSchema: true,
-   //entities: [PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity],
-   entities: [PayModeEntity],
-   synchronize: false,
+   entities: [PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity],
+   synchronize: true,
+   logging: false,
    keepConnectionAlive: true
  }),
- //TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity]),
- TypeOrmModule.forFeature([PayModeEntity]),
+ TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity]),
 ];
