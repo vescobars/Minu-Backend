@@ -45,7 +45,6 @@ import { CoordinateEntity } from './coordinate/coordinate.entity';
 import { RestaurantOperatorEntity } from './restaurant-operator/restaurant-operator.entity';
 import { AddressEntity } from './address/address.entity';
 
-
 @Module({
   imports: [
     AddressModule,
@@ -58,9 +57,9 @@ import { AddressEntity } from './address/address.entity';
     MenuVisualPreferencesModule,
     MenuVisualTemplateModule,
     OrderModule,
-    OrderDetailModule, 
-    PayModeModule, 
-    PlateModule, 
+    OrderDetailModule,
+    PayModeModule,
+    PlateModule,
     PromotionModule,
     RestaurantChainModule,
     RestaurantOperatorModule,
@@ -74,7 +73,7 @@ import { AddressEntity } from './address/address.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
+      password: 'postgres123',
       database: 'db',
       entities: [
         AddressEntity,
@@ -96,14 +95,12 @@ import { AddressEntity } from './address/address.entity';
         RestaurantSiteEntity,
         ReviewEntity,
         ScheduleEntity,
-        TableEntity
-
+        TableEntity,
       ],
       dropSchema: true,
       synchronize: true,
-      keepConnectionAlive: true
+      keepConnectionAlive: true,
     }),
-    
   ],
   controllers: [AppController],
   providers: [AppService],
