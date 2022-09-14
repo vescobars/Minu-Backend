@@ -6,13 +6,17 @@ import { PayModeEntity } from '../../pay-mode/pay-mode.entity';
 
 export const TypeOrmTestingConfig = () => [
  TypeOrmModule.forRoot({
-   type: 'sqlite',
-   database: ':memory:',
-   dropSchema: true,
-   entities: [PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity],
-   synchronize: true,
-   logging: false,
-   keepConnectionAlive: true
+  type: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  username: 'postgres',
+  password: '1234',
+  database: 'minu',
+  dropSchema: true,
+  entities: [PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity],
+  synchronize: true,
+  logging: false,
+  keepConnectionAlive: true
  }),
  TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity]),
 ];
