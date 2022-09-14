@@ -30,9 +30,8 @@ describe('OrderDetailService', () => {
       const orderDetail: OrderDetailEntity = await repository.save({
       state: faker.random.word(),
       date: faker.date.past(3),
-      notes: faker.random.words(),
-      order: null,
-      plates:null,})
+      notes: faker.random.words()
+    })
       orderDetailList.push(orderDetail);
   }
 }
@@ -54,8 +53,6 @@ it('findOne should return a orderDetail by id', async () => {
   expect(orderDetail.state).toEqual(storedOrderDetail.state)
   expect(orderDetail.date).toEqual(storedOrderDetail.date)
   expect(orderDetail.notes).toEqual(storedOrderDetail.notes)
-  expect(orderDetail.order).toEqual(storedOrderDetail.order)
-  expect(orderDetail.plates).toEqual(storedOrderDetail.plates)
 });
 
 it('findOne should throw an exception for an invalid orderDetail', async () => {
@@ -80,8 +77,6 @@ it('create should return a new orderDetail', async () => {
   expect(storedOrderDetail.state).toEqual(newOrderDetail.state)
   expect(storedOrderDetail.date).toEqual(newOrderDetail.date)
   expect(storedOrderDetail.notes).toEqual(newOrderDetail.notes)
-  expect(storedOrderDetail.order).toEqual(newOrderDetail.order)
-  expect(storedOrderDetail.plates).toEqual(newOrderDetail.plates)
 });
 
 it('update should modify a orderDetail', async () => {

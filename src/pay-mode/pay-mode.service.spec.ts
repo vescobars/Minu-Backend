@@ -29,7 +29,8 @@ describe('PayModeService', () => {
     payTypesList = ['Daviplata','PSE','Tarjeta de Credito','Tarjeta de Debito','Efectivo','Nequi','RappiPay','Coink','GooglePay','SamsungPay','ApplePay','Cheque']
     for(let i = 0; i < 5; i++){
         const paymode: PayModeEntity = await repository.save({
-        type: payTypesList[Math.random() * payTypesList.length]})
+        type: payTypesList[Math.random() * payTypesList.length]
+      })
         payModeList.push(paymode);
     }
   }
@@ -67,7 +68,6 @@ describe('PayModeService', () => {
     const storedPayMode: PayModeEntity = await repository.findOne({where: {id: newPayMode.id}})
     expect(storedPayMode).not.toBeNull();
     expect(storedPayMode.type).toEqual(newPayMode.type)
-    expect(storedPayMode.order).toEqual(newPayMode.order)
   });
 
   it('update should modify a paymode', async () => {
@@ -80,7 +80,6 @@ describe('PayModeService', () => {
     const storedPayMode: PayModeEntity = await repository.findOne({where: {id: paymode.id}})
     expect(storedPayMode).not.toBeNull();
     expect(storedPayMode.type).toEqual(paymode.type)
-    expect(storedPayMode.order).toEqual(paymode.order)
   });
 
   it('update should throw an exception for an invalid paymode', async () => {

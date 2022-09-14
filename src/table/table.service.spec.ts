@@ -32,9 +32,7 @@ describe('TableService', () => {
         const table: TableEntity = await repository.save({
         seats: tableSeatList[Math.random() * tableSeatList.length],
         number: i,
-        occupied: faker.datatype.boolean(),
-        order: null,
-        restaurantSite: null 
+        occupied: faker.datatype.boolean()
       })
         tableList.push(table);
     }

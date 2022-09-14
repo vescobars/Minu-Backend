@@ -31,12 +31,8 @@ describe('OrderService', () => {
       const order: OrderEntity = await repository.save({
       state: faker.random.word(),
       date: faker.date.past(3),
-      totalValue: faker.datatype.number({ max: 100000 }),
-      orderDetail: null,
-      payMode: null,
-      table: null,
-      client: null,
-      restaurantSite:null})
+      totalValue: faker.datatype.number({ max: 100000 })
+    })
       orderList.push(order);
   }
 }
