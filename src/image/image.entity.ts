@@ -1,5 +1,5 @@
-import { ClientEntity } from 'src/client/client.entity';
-import { PlateEntity } from 'src/plate/plate.entity';
+import { ClientEntity } from '../client/client.entity';
+import { PlateEntity } from '../plate/plate.entity';
 import {
   Entity,
   Column,

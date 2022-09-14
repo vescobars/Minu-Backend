@@ -10,7 +10,4 @@ export class ReviewEntity {
 
     @Column()
     description: string;
-
-    @OneToOne(() => OrderEntity, order => order.review)
-    order: OrderEntity;
 }

@@ -1,8 +1,8 @@
-import { CategoryEntity } from 'src/category/category.entity';
-import { DescriptionTagEntity } from 'src/description-tag/description-tag.entity';
-import { ImageEntity } from 'src/image/image.entity';
-import { OrderDetailEntity } from 'src/order-detail/order-detail.entity';
-import { PromotionEntity } from 'src/promotion/promotion.entity';
+import { CategoryEntity } from '../category/category.entity';
+import { DescriptionTagEntity } from '../description-tag/description-tag.entity';
+import { ImageEntity } from '../image/image.entity';
+import { OrderDetailEntity } from '../order-detail/order-detail.entity';
+import { PromotionEntity } from '../promotion/promotion.entity';
 import {
   Column,
   Entity,
@@ -44,6 +44,6 @@ export class PlateEntity {
   @OneToMany(() => ImageEntity, (image) => image.plate)
   image: ImageEntity;
 
-  @ManyToOne(() => OrderDetailEntity, (orderDetail) => orderDetail.plate)
+  @ManyToOne(() => OrderDetailEntity, (orderDetail) => orderDetail.plates)
   orderDetail: OrderDetailEntity;
 }

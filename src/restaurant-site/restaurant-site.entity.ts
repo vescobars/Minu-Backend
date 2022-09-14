@@ -1,6 +1,6 @@
-import { OrderEntity } from 'src/order/order.entity';
-import { RestaurantChainEntity } from 'src/restaurant-chain/restaurant-chain.entity';
-import { TableEntity } from 'src/table/table.entity';
+import { OrderEntity } from '../order/order.entity';
+import { RestaurantChainEntity } from '../restaurant-chain/restaurant-chain.entity';
+import { TableEntity } from '../table/table.entity';
 import { Column, Entity, JoinColumn, ManyToOne,OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

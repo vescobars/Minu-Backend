@@ -1,5 +1,5 @@
-import { AdressEntity } from 'src/adress/adress.entity';
-import { ClientEntity } from 'src/client/client.entity';
+import { AdressEntity } from '../adress/adress.entity';
+import { ClientEntity } from '../client/client.entity';
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

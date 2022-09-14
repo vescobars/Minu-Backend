@@ -1,6 +1,6 @@
-import { CoordinateEntity } from 'src/coordinate/coordinate.entity';
-import { ImageEntity } from 'src/image/image.entity';
-import { OrderEntity } from 'src/order/order.entity';
+import { CoordinateEntity } from '../coordinate/coordinate.entity';
+import { ImageEntity } from '../image/image.entity';
+import { OrderEntity } from '../order/order.entity';
 import {
   Column,
   JoinColumn,
