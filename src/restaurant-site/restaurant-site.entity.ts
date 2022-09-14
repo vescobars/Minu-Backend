@@ -17,10 +17,8 @@ export class RestaurantSiteEntity {
     @OneToMany(() => OrderEntity, orders => orders.restaurantSite)
     orders: OrderEntity[];
 
-    /*
     @OneToMany(() => TableEntity, tables => tables.restaurantSite)
     tables: TableEntity[];
-    */
    
     /*
     @OneToOne(() => MenuEntity, menu => menu.restaurantChain)
