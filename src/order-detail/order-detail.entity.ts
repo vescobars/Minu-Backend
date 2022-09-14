@@ -7,9 +7,11 @@ export class OrderDetailEntity {
   @PrimaryGeneratedColumn()
   id: string;
 
+  //TODO: REMOVE THIS ATRIBUTE (NO CORRESPONDE CON EL DIAGRAMA)
   @Column()
   state: string;
 
+  //TODO: REMOVE THIS ATRIBUTE (NO CORRESPONDE CON EL DIAGRAMA)
   @Column()
   date: Date;
 
