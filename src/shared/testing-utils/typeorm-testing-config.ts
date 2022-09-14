@@ -11,7 +11,7 @@ export const TypeOrmTestingConfig = () => [
    dropSchema: true,
    //entities: [PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity],
    entities: [PayModeEntity],
-   synchronize: true,
+   synchronize: false,
    keepConnectionAlive: true
  }),
  //TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity]),
