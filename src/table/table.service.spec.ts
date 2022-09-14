@@ -34,7 +34,8 @@ describe('TableService', () => {
         number: i,
         occupied: faker.datatype.boolean(),
         order: null,
-        restaurantSite: null })
+        //restaurantSite: null 
+      })
         tableList.push(table);
     }
   }
@@ -57,7 +58,7 @@ describe('TableService', () => {
     expect(table.number).toEqual(storedTable.number)
     expect(table.occupied).toEqual(storedTable.occupied)
     expect(table.order).toEqual(storedTable.order)
-    expect(table.restaurantSite).toEqual(storedTable.restaurantSite)
+    //expect(table.restaurantSite).toEqual(storedTable.restaurantSite)
   });
 
   it('findOne should throw an exception for an invalid table', async () => {
@@ -72,7 +73,7 @@ describe('TableService', () => {
       number: faker.datatype.number(),
       occupied: faker.datatype.boolean(),
       order: null,
-      restaurantSite: null
+      //restaurantSite: null
     }
  
     const newTable: TableEntity = await service.create(table);
@@ -84,7 +85,7 @@ describe('TableService', () => {
     expect(storedTable.number).toEqual(newTable.number)
     expect(storedTable.occupied).toEqual(newTable.occupied)
     expect(storedTable.order).toEqual(newTable.order)
-    expect(storedTable.restaurantSite).toEqual(newTable.restaurantSite)
+    //expect(storedTable.restaurantSite).toEqual(newTable.restaurantSite)
   });
 
   it('update should modify a table', async () => {

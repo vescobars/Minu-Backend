@@ -57,8 +57,8 @@ import { MenuVisualPreferenceEntity } from './menu-visual-preferences/menu-visua
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
-      database: 'db',
+      password: '1234',
+      database: 'minu',
       entities: [
         OrderEntity, 
         OrderDetailEntity, 
