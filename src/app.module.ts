@@ -44,6 +44,10 @@ import { MenuEntity } from './menu/menu.entity';
 import { CoordinateEntity } from './coordinate/coordinate.entity';
 import { RestaurantOperatorEntity } from './restaurant-operator/restaurant-operator.entity';
 import { AddressEntity } from './address/address.entity';
+import { ClientImageModule } from './client-image/client-image.module';
+import { ClientOrderModule } from './client-order/client-order.module';
+import { RestaurantScheduleModule } from './restaurant-schedule/restaurant-schedule.module';
+import { ClientCoordinateModule } from './client-coordinate/client-coordinate.module';
 
 @Module({
   imports: [
@@ -101,6 +105,14 @@ import { AddressEntity } from './address/address.entity';
       synchronize: true,
       keepConnectionAlive: true,
     }),
+
+    ClientImageModule,
+
+    ClientOrderModule,
+
+    RestaurantScheduleModule,
+
+    ClientCoordinateModule,
   ],
   controllers: [AppController],
   providers: [AppService],
