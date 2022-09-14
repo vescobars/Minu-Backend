@@ -27,7 +27,6 @@ export const TypeOrmTestingConfig = () => [
     dropSchema: true,
     entities: [PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity,AdressEntity,CategoryEntity,ClientEntity,CoordinateEntity,DescriptionTagEntity,ImageEntity,MenuEntity,MenuVisualPreferenceEntity,MenuVisualTemplateEntity,PlateEntity,PromotionEntity,RestaurantChainEntity,RestaurantOperatorEntity,RestaurantSiteEntity,ReviewEntity,ScheduleEntity],
     synchronize: true,
-    logging: false,
     keepConnectionAlive: true
  }),
  TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity,AdressEntity,CategoryEntity,ClientEntity,CoordinateEntity,DescriptionTagEntity,ImageEntity,MenuEntity,MenuVisualPreferenceEntity,MenuVisualTemplateEntity,PlateEntity,PromotionEntity,RestaurantChainEntity,RestaurantOperatorEntity,RestaurantSiteEntity,ReviewEntity,ScheduleEntity]),

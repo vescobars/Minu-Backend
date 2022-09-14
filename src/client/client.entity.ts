@@ -3,12 +3,14 @@ import { ImageEntity } from '../image/image.entity';
 import { OrderEntity } from '../order/order.entity';
 import {
   Column,
+  Entity,
   JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+@Entity()
 export class ClientEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
