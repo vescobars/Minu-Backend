@@ -19,6 +19,8 @@ export class TableEntity {
     @OneToOne(() => OrderEntity, order => order.table)
     order: OrderEntity;
 
+    /*
     @ManyToOne(() => RestaurantSiteEntity, restaurantSite => restaurantSite.tables)
     restaurantSite: RestaurantSiteEntity;
+    */
 }
