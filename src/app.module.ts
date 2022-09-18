@@ -44,6 +44,8 @@ import { MenuEntity } from './menu/menu.entity';
 import { CoordinateEntity } from './coordinate/coordinate.entity';
 import { RestaurantOperatorEntity } from './restaurant-operator/restaurant-operator.entity';
 import { AddressEntity } from './address/address.entity';
+import { MuseumService } from './museum/museum.service';
+import { SharedModule } from './shared/shared.module';
 
 
 @Module({
@@ -103,9 +105,11 @@ import { AddressEntity } from './address/address.entity';
       synchronize: true,
       keepConnectionAlive: true
     }),
+
+    SharedModule,
     
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, MuseumService],
 })
 export class AppModule {}
