@@ -48,6 +48,14 @@ import { ClientImageModule } from './client-image/client-image.module';
 import { ClientOrderModule } from './client-order/client-order.module';
 import { RestaurantScheduleModule } from './restaurant-schedule/restaurant-schedule.module';
 import { ClientCoordinateModule } from './client-coordinate/client-coordinate.module';
+import { ChainSiteModule } from './chain-site/chain-site.module';
+import { SiteTableModule } from './site-table/site-table.module';
+import { SiteOrderModule } from './site-order/site-order.module';
+import { SiteReviewModule } from './site-review/site-review.module';
+import { SiteOperatorModule } from './site-operator/site-operator.module';
+import { SiteScheduleModule } from './site-schedule/site-schedule.module';
+import { SiteMenuModule } from './site-menu/site-menu.module';
+import { SiteAddressModule } from './site-address/site-address.module';
 
 @Module({
   imports: [
@@ -113,6 +121,22 @@ import { ClientCoordinateModule } from './client-coordinate/client-coordinate.mo
     RestaurantScheduleModule,
 
     ClientCoordinateModule,
+
+    ChainSiteModule,
+
+    SiteTableModule,
+
+    SiteOrderModule,
+
+    SiteReviewModule,
+
+    SiteOperatorModule,
+
+    SiteScheduleModule,
+
+    SiteMenuModule,
+
+    SiteAddressModule,
   ],
   controllers: [AppController],
   providers: [AppService],

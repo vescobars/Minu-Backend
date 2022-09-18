@@ -13,14 +13,14 @@ export class RestaurantSiteService {
 
     async findAll(): Promise<RestaurantSiteEntity[]> {
         return await this.restaurantSiteRepository.find({
-            relations: ["orders", "tables", "reviews", "restaurantOperators","schedules", "promotions", "menu", "address"] 
+            relations: ["orders", "tables", "reviews", "operators","schedules", "promotions", "menu", "address"] 
         });
     }
 
     async findOne(id: string): Promise<RestaurantSiteEntity> {
         const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({
             where: {id}, 
-            relations: ["orders", "tables", "reviews", "restaurantOperators","schedules", "promotions", "menu", "address"] 
+            relations: ["orders", "tables", "reviews", "operators","schedules", "promotions", "menu", "address"] 
         });
         if (!site)
           throw new BusinessLogicException(
