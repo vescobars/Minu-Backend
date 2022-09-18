@@ -44,7 +44,7 @@ export class RestaurantSiteEntity {
     () => RestaurantOperatorEntity,
     (restaurantOperator) => restaurantOperator.restaurantSite,
   )
-  restaurantOperators: RestaurantOperatorEntity[];
+  operators: RestaurantOperatorEntity[];
 
   @OneToMany(() => ScheduleEntity, (schedule) => schedule.restaurantSite)
   schedules: ScheduleEntity[];
