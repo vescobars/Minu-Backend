@@ -46,7 +46,6 @@ import { RestaurantOperatorEntity } from './restaurant-operator/restaurant-opera
 import { AddressEntity } from './address/address.entity';
 import { ClientImageModule } from './client-image/client-image.module';
 import { ClientOrderModule } from './client-order/client-order.module';
-import { RestaurantScheduleModule } from './restaurant-schedule/restaurant-schedule.module';
 import { ClientCoordinateModule } from './client-coordinate/client-coordinate.module';
 import { ChainSiteModule } from './chain-site/chain-site.module';
 import { SiteTableModule } from './site-table/site-table.module';
@@ -118,7 +117,7 @@ import { SiteAddressModule } from './site-address/site-address.module';
 
     ClientOrderModule,
 
-    RestaurantScheduleModule,
+    SiteScheduleModule,
 
     ClientCoordinateModule,
 
