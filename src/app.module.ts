@@ -48,6 +48,7 @@ import { MuseumService } from './museum/museum.service';
 import { SharedModule } from './shared/shared.module';
 import { CategoryPlateModule } from './category-plate/category-plate.module';
 import { PlateDescriptionTagModule } from './plate-description-tag/plate-description-tag.module';
+import { PlateImageModule } from './plate-image/plate-image.module';
 
 
 @Module({
@@ -113,6 +114,8 @@ import { PlateDescriptionTagModule } from './plate-description-tag/plate-descrip
     CategoryPlateModule,
 
     PlateDescriptionTagModule,
+
+    PlateImageModule,
     
   ],
   controllers: [AppController],

@@ -41,7 +41,7 @@ export class PlateEntity {
   promotion: PromotionEntity;
 
   @OneToMany(() => ImageEntity, (image) => image.plate)
-  images: ImageEntity;
+  images: ImageEntity[];
 
   @ManyToOne(() => OrderDetailEntity, (orderDetail) => orderDetail.plates)
   orderDetail: OrderDetailEntity;
