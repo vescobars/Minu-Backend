@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BusinessError, BusinessLogicException } from 'src/shared/business-errors';
+import { BusinessError, BusinessLogicException } from '../shared/business-errors';
 import { Repository } from 'typeorm';
 import { PromotionEntity } from './promotion.entity';
 

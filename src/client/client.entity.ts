@@ -1,7 +1,7 @@
-import { CoordinateEntity } from 'src/coordinate/coordinate.entity';
-import { ImageEntity } from 'src/image/image.entity';
-import { OrderEntity } from 'src/order/order.entity';
-import { ReviewEntity } from 'src/review/review.entity';
+import { CoordinateEntity } from '../coordinate/coordinate.entity';
+import { ImageEntity } from '../image/image.entity';
+import { OrderEntity } from '../order/order.entity';
+import { ReviewEntity } from '../review/review.entity';
 import {
   Column,
   Entity,

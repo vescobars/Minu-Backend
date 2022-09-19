@@ -49,6 +49,7 @@ import { SharedModule } from './shared/shared.module';
 import { CategoryPlateModule } from './category-plate/category-plate.module';
 import { PlateDescriptionTagModule } from './plate-description-tag/plate-description-tag.module';
 import { PlateImageModule } from './plate-image/plate-image.module';
+import { PlatePromotionModule } from './plate-promotion/plate-promotion.module';
 
 
 @Module({
@@ -116,6 +117,8 @@ import { PlateImageModule } from './plate-image/plate-image.module';
     PlateDescriptionTagModule,
 
     PlateImageModule,
+
+    PlatePromotionModule,
     
   ],
   controllers: [AppController],

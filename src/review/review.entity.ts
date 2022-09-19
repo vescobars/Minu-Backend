@@ -1,5 +1,5 @@
-import { ClientEntity } from 'src/client/client.entity';
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { ClientEntity } from '../client/client.entity';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

@@ -5,8 +5,8 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { CategoryEntity } from './category.entity';
 import { CategoryService } from './category.service';
 import { faker } from '@faker-js/faker';
-import { PlateEntity } from 'src/plate/plate.entity';
-import { MenuEntity } from 'src/menu/menu.entity';
+import { PlateEntity } from '../plate/plate.entity';
+import { MenuEntity } from '../menu/menu.entity';
 
 describe('CategoryService', () => {
   let service: CategoryService;

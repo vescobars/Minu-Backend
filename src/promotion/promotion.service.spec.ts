@@ -5,8 +5,8 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { PromotionEntity } from './promotion.entity';
 import { PromotionService } from './promotion.service';
 import { faker } from '@faker-js/faker';
-import { PlateEntity } from 'src/plate/plate.entity';
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { PlateEntity } from '../plate/plate.entity';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 
 describe('PromotionService', () => {
   let service: PromotionService;

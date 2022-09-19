@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DescriptionTagEntity } from 'src/description-tag/description-tag.entity';
-import { PlateEntity } from 'src/plate/plate.entity';
-import { BusinessError, BusinessLogicException } from 'src/shared/business-errors';
+import { DescriptionTagEntity } from '../description-tag/description-tag.entity';
+import { PlateEntity } from '../plate/plate.entity';
+import { BusinessError, BusinessLogicException } from '../shared/business-errors';
 import { Repository } from 'typeorm';
 
 @Injectable()
