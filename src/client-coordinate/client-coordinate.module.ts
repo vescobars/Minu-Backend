@@ -8,4 +8,4 @@ import { ClientCoordinateService } from './client-coordinate.service';
   providers: [ClientCoordinateService],
   imports: [TypeOrmModule.forFeature([ClientEntity, CoordinateEntity])],
 })
-export class ClientCoordinateModule {}
+export class ClientCoordinateModule {} 
