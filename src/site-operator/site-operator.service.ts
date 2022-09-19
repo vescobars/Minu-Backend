@@ -20,11 +20,11 @@ export class SiteOperatorService {
         if (!operator)
           throw new BusinessLogicException("The operator with the given id was not found", BusinessError.NOT_FOUND);
        
-        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["orders","tables","reviews","operators","schedules","promotions","menu","address"]}) 
+        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["orders","tables","reviews","restaurantOperators","schedules","promotions","menu","address"]}) 
         if (!site)
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND);
      
-        site.operators = [...site.operators, operator];
+        site.restaurantOperators = [...site.restaurantOperators, operator];
         return await this.restaurantSiteRepository.save(site);
       }
      
@@ -33,11 +33,11 @@ export class SiteOperatorService {
         if (!operator)
           throw new BusinessLogicException("The operator with the given id was not found", BusinessError.NOT_FOUND)
         
-        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["operators"]}); 
+        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["restaurantOperators"]}); 
         if (!site)
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
     
-        const siteOperator: RestaurantOperatorEntity = site.operators.find(e => e.id === operator.id);
+        const siteOperator: RestaurantOperatorEntity = site.restaurantOperators.find(e => e.id === operator.id);
     
         if (!siteOperator)
           throw new BusinessLogicException("The operator with the given id is not associated to the site", BusinessError.PRECONDITION_FAILED)
@@ -46,26 +46,26 @@ export class SiteOperatorService {
     }
      
     async findOperatorsBySiteId(siteId: string): Promise<RestaurantOperatorEntity[]> {
-        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["operators"]});
+        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["restaurantOperators"]});
         if (!site)
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
         
-        return site.operators;
+        return site.restaurantOperators;
     }
      
-    async associateOperatorsSite(siteId: string, operators: RestaurantOperatorEntity[]): Promise<RestaurantSiteEntity> {
-        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["operators"]});
+    async associateOperatorsSite(siteId: string, restaurantOperators: RestaurantOperatorEntity[]): Promise<RestaurantSiteEntity> {
+        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["restaurantOperators"]});
      
         if (!site)
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
      
-        for (let i = 0; i < operators.length; i++) {
-          const operator: RestaurantOperatorEntity = await this.operatorEntity.findOne({where: {id: operators[i].id}});
+        for (let i = 0; i < restaurantOperators.length; i++) {
+          const operator: RestaurantOperatorEntity = await this.operatorEntity.findOne({where: {id: restaurantOperators[i].id}});
           if (!operator)
             throw new BusinessLogicException("The operator with the given id was not found", BusinessError.NOT_FOUND)
         }
      
-        site.operators = operators;
+        site.restaurantOperators = restaurantOperators;
         return await this.restaurantSiteRepository.save(site);
       }
     
@@ -74,16 +74,16 @@ export class SiteOperatorService {
         if (!operator)
           throw new BusinessLogicException("The operator with the given id was not found", BusinessError.NOT_FOUND)
      
-        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["operators"]});
+        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["restaurantOperators"]});
         if (!site)
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
      
-        const siteOperator: RestaurantOperatorEntity = site.operators.find(e => e.id === operator.id);
+        const siteOperator: RestaurantOperatorEntity = site.restaurantOperators.find(e => e.id === operator.id);
      
         if (!siteOperator)
             throw new BusinessLogicException("The operator with the given id is not associated to the site", BusinessError.PRECONDITION_FAILED)
 
-        site.operators = site.operators.filter(e => e.id !== operatorId);
+        site.restaurantOperators = site.restaurantOperators.filter(e => e.id !== operatorId);
         await this.restaurantSiteRepository.save(site);
     }
 }

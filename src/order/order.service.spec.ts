@@ -22,4 +22,8 @@ describe('OrderService', () => {
    //await seedDatabase();
  });
 
+ it('should be defined', () => {
+  expect(service).toBeDefined();
+});
+
 });

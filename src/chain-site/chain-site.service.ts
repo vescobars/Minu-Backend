@@ -12,11 +12,11 @@ export class ChainSiteService {
         private readonly restaurantChainRepository: Repository<RestaurantChainEntity>,
     
         @InjectRepository(RestaurantSiteEntity)
-        private readonly restaurantSiteEntity: Repository<RestaurantSiteEntity>
+        private readonly restaurantSiteRepository: Repository<RestaurantSiteEntity>
     ) {}
 
     async addSiteChain(chainId: string, siteId: string): Promise<RestaurantChainEntity> {
-        const site: RestaurantSiteEntity = await this.restaurantSiteEntity.findOne({where: {id: siteId}});
+        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}});
         if (!site)
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND);
       
@@ -29,7 +29,7 @@ export class ChainSiteService {
       }
     
     async findSiteByChainIdSiteId(chainId: string, siteId: string): Promise<RestaurantSiteEntity> {
-        const site: RestaurantSiteEntity = await this.restaurantSiteEntity.findOne({where: {id: siteId}});
+        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}});
         if (!site)
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
        
@@ -60,7 +60,7 @@ export class ChainSiteService {
           throw new BusinessLogicException("The chain with the given id was not found", BusinessError.NOT_FOUND)
     
         for (let i = 0; i < restaurantSites.length; i++) {
-          const site: RestaurantSiteEntity = await this.restaurantSiteEntity.findOne({where: {id: restaurantSites[i].id}});
+          const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: restaurantSites[i].id}});
           if (!site)
             throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
         }
@@ -70,7 +70,7 @@ export class ChainSiteService {
       }
     
     async deleteSiteChain(chainId: string, siteId: string){
-        const site: RestaurantSiteEntity = await this.restaurantSiteEntity.findOne({where: {id: siteId}});
+        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}});
         if (!site)
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
     
