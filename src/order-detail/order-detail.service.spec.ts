@@ -32,15 +32,6 @@ it('findAll should return all orderDetail', async () => {
   expect(orderDetail).not.toBeNull();
 });
 
-it('findOne should return a orderDetail by id', async () => {
-  const storedOrderDetail: OrderDetailEntity = orderDetailList[0];
-  const orderDetail: OrderDetailEntity = await service.findOne(storedOrderDetail.id);
-  expect(orderDetail).not.toBeNull();
-  expect(orderDetail.state).toEqual(storedOrderDetail.state)
-  expect(orderDetail.date).toEqual(storedOrderDetail.date)
-  expect(orderDetail.notes).toEqual(storedOrderDetail.notes)
-});
-
 
 });
 
