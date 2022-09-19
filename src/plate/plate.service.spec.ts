@@ -5,10 +5,10 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { PlateEntity } from './plate.entity';
 import { PlateService } from './plate.service';
 import { faker } from '@faker-js/faker';
-import { CategoryEntity } from 'src/category/category.entity';
-import { PromotionEntity } from 'src/promotion/promotion.entity';
-import { ImageEntity } from 'src/image/image.entity';
-import { OrderDetailEntity } from 'src/order-detail/order-detail.entity';
+import { CategoryEntity } from '../category/category.entity';
+import { PromotionEntity } from '../promotion/promotion.entity';
+import { ImageEntity } from '../image/image.entity';
+import { OrderDetailEntity } from '../order-detail/order-detail.entity';
 
 describe('PlateService', () => {
   let service: PlateService;
@@ -70,7 +70,7 @@ describe('PlateService', () => {
       notes: "",
       descriptionTags: [],
       promotion: new PromotionEntity,
-      images: new ImageEntity,
+      images: [],
       orderDetail: new OrderDetailEntity,
       category: new CategoryEntity 
     }

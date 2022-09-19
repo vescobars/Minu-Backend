@@ -5,7 +5,7 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { DescriptionTagEntity } from './description-tag.entity';
 import { DescriptionTagService } from './description-tag.service';
 import { faker } from '@faker-js/faker';
-import { PlateEntity } from 'src/plate/plate.entity';
+import { PlateEntity } from '../plate/plate.entity';
 
 describe('DescriptionTagService', () => {
   let service: DescriptionTagService;

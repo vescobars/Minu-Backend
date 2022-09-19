@@ -5,7 +5,7 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { ReviewEntity } from './review.entity';
 import { ReviewService } from './review.service';
 import { faker } from '@faker-js/faker';
-import { ClientEntity } from 'src/client/client.entity';
+import { ClientEntity } from '../client/client.entity';
 
 describe('ReviewService', () => {
   let service: ReviewService;

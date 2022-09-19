@@ -20,11 +20,11 @@ import { RestaurantSiteEntity } from '../../restaurant-site/restaurant-site.enti
 import { ReviewEntity } from '../../review/review.entity';
 import { ScheduleEntity } from '../../schedule/schedule.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CategoryEntity } from 'src/category/category.entity';
-import { DescriptionTagEntity } from 'src/description-Tag/description-tag.entity';
-import { PromotionEntity } from 'src/promotion/promotion.entity';
-import { PlateEntity } from 'src/plate/plate.entity';
-import { ReviewEntity } from 'src/review/review.entity';
+import { CategoryEntity } from '../../category/category.entity';
+import { DescriptionTagEntity } from '../../description-Tag/description-tag.entity';
+import { PromotionEntity } from '../../promotion/promotion.entity';
+import { PlateEntity } from '../../plate/plate.entity';
+import { ReviewEntity } from '../../review/review.entity';
 
 export const TypeOrmTestingConfig = () => [
  TypeOrmModule.forRoot({
