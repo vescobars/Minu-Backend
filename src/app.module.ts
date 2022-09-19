@@ -46,6 +46,7 @@ import { RestaurantOperatorEntity } from './restaurant-operator/restaurant-opera
 import { AddressEntity } from './address/address.entity';
 import { MuseumService } from './museum/museum.service';
 import { SharedModule } from './shared/shared.module';
+import { CategoryPlateModule } from './category-plate/category-plate.module';
 
 
 @Module({
@@ -107,6 +108,8 @@ import { SharedModule } from './shared/shared.module';
     }),
 
     SharedModule,
+
+    CategoryPlateModule,
     
   ],
   controllers: [AppController],
