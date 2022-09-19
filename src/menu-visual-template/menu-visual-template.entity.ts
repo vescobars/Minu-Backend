@@ -12,6 +12,6 @@ export class MenuVisualTemplateEntity {
   @Column()
   file: string;
 
-  @OneToOne(() => MenuEntity, menu => menu.menuVisualTemplate)
+  @OneToOne(() => MenuEntity, (menu) => menu.menuVisualTemplate)
   menu: MenuEntity;
 }

@@ -1,4 +1,4 @@
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 import {
   Column,
   Entity,
@@ -29,6 +29,9 @@ export class AddressEntity {
   @JoinColumn()
   coordinate: CoordinateEntity;
 
-  @OneToOne(() => RestaurantSiteEntity, (restaurantSite) => restaurantSite.address)
+  @OneToOne(
+    () => RestaurantSiteEntity,
+    (restaurantSite) => restaurantSite.address,
+  )
   restaurantSite: RestaurantSiteEntity;
 }
