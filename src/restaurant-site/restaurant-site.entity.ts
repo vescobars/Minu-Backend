@@ -1,12 +1,12 @@
-import { AddressEntity } from 'src/address/address.entity';
-import { MenuEntity } from 'src/menu/menu.entity';
-import { OrderEntity } from 'src/order/order.entity';
-import { PromotionEntity } from 'src/promotion/promotion.entity';
-import { RestaurantChainEntity } from 'src/restaurant-chain/restaurant-chain.entity';
-import { RestaurantOperatorEntity } from 'src/restaurant-operator/restaurant-operator.entity';
-import { ReviewEntity } from 'src/review/review.entity';
-import { ScheduleEntity } from 'src/schedule/schedule.entity';
-import { TableEntity } from 'src/table/table.entity';
+import { AddressEntity } from '../address/address.entity';
+import { MenuEntity } from '../menu/menu.entity';
+import { OrderEntity } from '../order/order.entity';
+import { PromotionEntity } from '../promotion/promotion.entity';
+import { RestaurantChainEntity } from '../restaurant-chain/restaurant-chain.entity';
+import { RestaurantOperatorEntity } from '../restaurant-operator/restaurant-operator.entity';
+import { ReviewEntity } from '../review/review.entity';
+import { ScheduleEntity } from '../schedule/schedule.entity';
+import { TableEntity } from '../table/table.entity';
 import {
   Column,
   Entity,
@@ -40,11 +40,8 @@ export class RestaurantSiteEntity {
   @OneToMany(() => ReviewEntity, (review) => review.restaurantSite)
   reviews: ReviewEntity[];
 
-  @OneToMany(
-    () => RestaurantOperatorEntity,
-    (restaurantOperator) => restaurantOperator.restaurantSite,
-  )
-  operators: RestaurantOperatorEntity[];
+  @OneToMany(() => RestaurantOperatorEntity,(restaurantOperators) => restaurantOperators.restaurantSite)
+  restaurantOperators: RestaurantOperatorEntity[];
 
   @OneToMany(() => ScheduleEntity, (schedule) => schedule.restaurantSite)
   schedules: ScheduleEntity[];

@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 import { ChainSiteService } from './chain-site.service';
 
 describe('ChainSiteService', () => {
@@ -6,6 +7,7 @@ describe('ChainSiteService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [...TypeOrmTestingConfig()],
       providers: [ChainSiteService],
     }).compile();
 

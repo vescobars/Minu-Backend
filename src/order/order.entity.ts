@@ -1,15 +1,9 @@
-import { ClientEntity } from 'src/client/client.entity';
-import { OrderDetailEntity } from 'src/order-detail/order-detail.entity';
-import { PayModeEntity } from 'src/pay-mode/pay-mode.entity';
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
-import { TableEntity } from 'src/table/table.entity';
-import {
-  OneToOne,
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-} from 'typeorm';
+import { ClientEntity } from '../client/client.entity';
+import { OrderDetailEntity } from '../order-detail/order-detail.entity';
+import { PayModeEntity } from '../pay-mode/pay-mode.entity';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
+import { TableEntity } from '../table/table.entity';
+import {OneToOne,Column,Entity,PrimaryGeneratedColumn,ManyToOne,} from 'typeorm';
 import { JoinColumn } from 'typeorm/decorator/relations/JoinColumn';
 
 @Entity()
@@ -42,5 +36,5 @@ export class OrderEntity {
   client: ClientEntity;
 
   @ManyToOne(() => RestaurantSiteEntity, (restaurantSite) => restaurantSite.orders)
-  restaurantSite: OrderEntity[];
+  restaurantSite: RestaurantSiteEntity;
 }

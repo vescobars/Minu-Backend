@@ -1,5 +1,5 @@
-import { PlateEntity } from 'src/plate/plate.entity';
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { PlateEntity } from '../plate/plate.entity';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 import { Column, Entity, PrimaryGeneratedColumn, OneToOne, ManyToOne } from 'typeorm';
 
 @Entity()

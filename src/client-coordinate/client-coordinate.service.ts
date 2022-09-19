@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ClientEntity } from 'src/client/client.entity';
-import { CoordinateEntity } from 'src/coordinate/coordinate.entity';
+import { ClientEntity } from '../client/client.entity';
+import { CoordinateEntity } from '../coordinate/coordinate.entity';
 import {
   BusinessError,
   BusinessLogicException,
-} from 'src/shared/errors/business-errors';
+} from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
 
 @Injectable()

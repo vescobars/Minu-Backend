@@ -1,36 +1,53 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ClientEntity } from 'src/client/client.entity';
-import { ScheduleEntity } from 'src/schedule/schedule.entity';
-import { MenuVisualTemplateEntity } from 'src/menu-visual-template/menu-visual-template.entity';
-import { RestaurantChainEntity } from 'src/restaurant-chain/restaurant-chain.entity';
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
-import { ImageEntity } from 'src/image/image.entity';
-import { MenuVisualPreferenceEntity } from 'src/menu-visual-preferences/menu-visual-preferences.entity';
+import { OrderDetailEntity } from '../../order-detail/order-detail.entity';
+import { OrderEntity } from '../../order/order.entity';
+import { TableEntity } from '../../table/table.entity';
+import { PayModeEntity } from '../../pay-mode/pay-mode.entity';
+import { AddressEntity } from '../../address/address.entity';
+import { CategoryEntity } from '../../category/category.entity';
+import { ClientEntity } from '../../client/client.entity';
+import { CoordinateEntity } from '../../coordinate/coordinate.entity';
+import { DescriptionTagEntity } from '../../description-tag/description-tag.entity';
+import { ImageEntity } from '../../image/image.entity';
+import { MenuEntity } from '../../menu/menu.entity';
+import { MenuVisualPreferenceEntity } from '../../menu-visual-preferences/menu-visual-preferences.entity';
+import { MenuVisualTemplateEntity } from '../../menu-visual-template/menu-visual-template.entity';
+import { PlateEntity } from '../../plate/plate.entity';
+import { PromotionEntity } from '../../promotion/promotion.entity';
+import { RestaurantChainEntity } from '../../restaurant-chain/restaurant-chain.entity';
+import { RestaurantOperatorEntity } from '../../restaurant-operator/restaurant-operator.entity';
+import { RestaurantSiteEntity } from '../../restaurant-site/restaurant-site.entity';
+import { ReviewEntity } from '../../review/review.entity';
+import { ScheduleEntity } from '../../schedule/schedule.entity';
 
 export const TypeOrmTestingConfig = () => [
-  TypeOrmModule.forRoot({
+ TypeOrmModule.forRoot({
     type: 'sqlite',
     database: ':memory:',
     dropSchema: true,
     entities: [
+      PayModeEntity,
+      TableEntity,
+      OrderEntity,
+      OrderDetailEntity,
+      AddressEntity,
+      CategoryEntity,
       ClientEntity,
-      ScheduleEntity,
-      MenuVisualTemplateEntity,
-      RestaurantChainEntity,
-      RestaurantSiteEntity,
+      CoordinateEntity,
+      DescriptionTagEntity,
       ImageEntity,
+      MenuEntity,
       MenuVisualPreferenceEntity,
-    ],
+      MenuVisualTemplateEntity,
+      PlateEntity,
+      PromotionEntity,
+      RestaurantChainEntity,
+      RestaurantOperatorEntity,
+      RestaurantSiteEntity,
+      ReviewEntity,
+      ScheduleEntity],
     synchronize: true,
-    keepConnectionAlive: true,
-  }),
-  TypeOrmModule.forFeature([
-    ClientEntity,
-    ScheduleEntity,
-    MenuVisualTemplateEntity,
-    RestaurantChainEntity,
-    RestaurantSiteEntity,
-    ImageEntity,
-    MenuVisualPreferenceEntity,
-  ]),
+    keepConnectionAlive: true
+ }),
+ TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity,AddressEntity,CategoryEntity,ClientEntity,CoordinateEntity,DescriptionTagEntity,ImageEntity,MenuEntity,MenuVisualPreferenceEntity,MenuVisualTemplateEntity,PlateEntity,PromotionEntity,RestaurantChainEntity,RestaurantOperatorEntity,RestaurantSiteEntity,ReviewEntity,ScheduleEntity]),
 ];
