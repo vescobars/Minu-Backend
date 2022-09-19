@@ -23,7 +23,6 @@ import { ImageModule } from './image/image.module';
 import { MenuVisualPreferencesModule } from './menu-visual-preferences/menu-visual-preferences.module';
 import { MenuVisualTemplateModule } from './menu-visual-template/menu-visual-template.module';
 import { ScheduleModule } from './schedule/schedule.module';
-
 import { OrderEntity } from './order/order.entity';
 import { OrderDetailEntity } from './order-detail/order-detail.entity';
 import { PayModeEntity } from './pay-mode/pay-mode.entity';
