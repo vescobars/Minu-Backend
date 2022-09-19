@@ -26,5 +26,12 @@ describe('OrderDetailService', () => {
     expect(service).toBeDefined();
   });
 
+  
+it('findAll should return all orderDetail', async () => {
+  const orderDetail: OrderDetailEntity[] = await service.findAll();
+  expect(orderDetail).not.toBeNull();
+});
+
+
 });
 
