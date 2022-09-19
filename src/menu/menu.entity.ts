@@ -1,5 +1,6 @@
 import { MenuVisualTemplateEntity } from '../menu-visual-template/menu-visual-template.entity';
 import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
+
 import {
   Column,
   Entity,
@@ -8,6 +9,7 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
+
 import { CategoryEntity } from '../category/category.entity';
 import { MenuVisualPreferenceEntity } from '../menu-visual-preferences/menu-visual-preferences.entity';
 

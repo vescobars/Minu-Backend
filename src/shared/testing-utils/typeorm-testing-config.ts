@@ -19,6 +19,12 @@ import { RestaurantOperatorEntity } from '../../restaurant-operator/restaurant-o
 import { RestaurantSiteEntity } from '../../restaurant-site/restaurant-site.entity';
 import { ReviewEntity } from '../../review/review.entity';
 import { ScheduleEntity } from '../../schedule/schedule.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { CategoryEntity } from 'src/category/category.entity';
+import { DescriptionTagEntity } from 'src/description-Tag/description-tag.entity';
+import { PromotionEntity } from 'src/promotion/promotion.entity';
+import { PlateEntity } from 'src/plate/plate.entity';
+import { ReviewEntity } from 'src/review/review.entity';
 
 export const TypeOrmTestingConfig = () => [
  TypeOrmModule.forRoot({
@@ -45,7 +51,9 @@ export const TypeOrmTestingConfig = () => [
       RestaurantOperatorEntity,
       RestaurantSiteEntity,
       ReviewEntity,
-      ScheduleEntity],
+      ScheduleEntity,
+      CategoryEntity,
+      DescriptionTagEntity],
     synchronize: true,
     keepConnectionAlive: true
  }),
