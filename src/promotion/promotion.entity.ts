@@ -1,5 +1,6 @@
 import { PlateEntity } from '../plate/plate.entity';
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, ManyToOne } from 'typeorm';
 
 @Entity()
 export class PromotionEntity {
@@ -20,4 +21,7 @@ export class PromotionEntity {
 
     @OneToOne(() => PlateEntity, plate => plate.promotion)
     plate: PlateEntity;
+
+    @ManyToOne(() => RestaurantSiteEntity, restaurantSite => restaurantSite.promotions)
+    restaurantSite: RestaurantSiteEntity;
 }

@@ -3,7 +3,7 @@ import { OrderDetailEntity } from '../../order-detail/order-detail.entity';
 import { OrderEntity } from '../../order/order.entity';
 import { TableEntity } from '../../table/table.entity';
 import { PayModeEntity } from '../../pay-mode/pay-mode.entity';
-import { AdressEntity } from '../../adress/adress.entity';
+import { AddressEntity } from '../../address/address.entity';
 import { CategoryEntity } from '../../category/category.entity';
 import { ClientEntity } from '../../client/client.entity';
 import { CoordinateEntity } from '../../coordinate/coordinate.entity';
@@ -25,9 +25,29 @@ export const TypeOrmTestingConfig = () => [
     type: 'sqlite',
     database: ':memory:',
     dropSchema: true,
-    entities: [PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity,AdressEntity,CategoryEntity,ClientEntity,CoordinateEntity,DescriptionTagEntity,ImageEntity,MenuEntity,MenuVisualPreferenceEntity,MenuVisualTemplateEntity,PlateEntity,PromotionEntity,RestaurantChainEntity,RestaurantOperatorEntity,RestaurantSiteEntity,ReviewEntity,ScheduleEntity],
+    entities: [
+      PayModeEntity,
+      TableEntity,
+      OrderEntity,
+      OrderDetailEntity,
+      AddressEntity,
+      CategoryEntity,
+      ClientEntity,
+      CoordinateEntity,
+      DescriptionTagEntity,
+      ImageEntity,
+      MenuEntity,
+      MenuVisualPreferenceEntity,
+      MenuVisualTemplateEntity,
+      PlateEntity,
+      PromotionEntity,
+      RestaurantChainEntity,
+      RestaurantOperatorEntity,
+      RestaurantSiteEntity,
+      ReviewEntity,
+      ScheduleEntity],
     synchronize: true,
     keepConnectionAlive: true
  }),
- TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity,AdressEntity,CategoryEntity,ClientEntity,CoordinateEntity,DescriptionTagEntity,ImageEntity,MenuEntity,MenuVisualPreferenceEntity,MenuVisualTemplateEntity,PlateEntity,PromotionEntity,RestaurantChainEntity,RestaurantOperatorEntity,RestaurantSiteEntity,ReviewEntity,ScheduleEntity]),
+ TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity,AddressEntity,CategoryEntity,ClientEntity,CoordinateEntity,DescriptionTagEntity,ImageEntity,MenuEntity,MenuVisualPreferenceEntity,MenuVisualTemplateEntity,PlateEntity,PromotionEntity,RestaurantChainEntity,RestaurantOperatorEntity,RestaurantSiteEntity,ReviewEntity,ScheduleEntity]),
 ];

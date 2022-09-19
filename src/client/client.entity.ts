@@ -1,6 +1,7 @@
-import { CoordinateEntity } from '../coordinate/coordinate.entity';
-import { ImageEntity } from '../image/image.entity';
-import { OrderEntity } from '../order/order.entity';
+import { CoordinateEntity } from 'src/coordinate/coordinate.entity';
+import { ImageEntity } from 'src/image/image.entity';
+import { OrderEntity } from 'src/order/order.entity';
+import { ReviewEntity } from 'src/review/review.entity';
 import {
   Column,
   Entity,
@@ -16,10 +17,10 @@ export class ClientEntity {
   id: string;
 
   @Column()
-  first_name: string;
+  firstName: string;
 
   @Column()
-  last_name: string;
+  lastName: string;
 
   @Column()
   phone: string;
@@ -27,14 +28,17 @@ export class ClientEntity {
   @Column()
   email: string;
 
-  @OneToOne(() => ImageEntity, (image) => image.client)
+  @OneToOne(() => ImageEntity, (profileImage) => profileImage.client)
   @JoinColumn()
-  profile_image: ImageEntity;
+  profileImage: ImageEntity;
 
   @OneToMany(() => OrderEntity, (order) => order.client)
   orders: OrderEntity[];
 
-  @OneToOne(() => CoordinateEntity, (coordinate) => coordinate.client)
+  @OneToOne(() => CoordinateEntity, (currentLocation) => currentLocation.client)
   @JoinColumn()
-  current_location: CoordinateEntity;
+  currentLocation: CoordinateEntity;
+
+  @OneToMany(() => ReviewEntity, (review) => review.client)
+  reviews: ReviewEntity[];
 }

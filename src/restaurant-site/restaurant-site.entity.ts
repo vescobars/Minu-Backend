@@ -1,42 +1,59 @@
+import { AddressEntity } from '../address/address.entity';
+import { MenuEntity } from '../menu/menu.entity';
 import { OrderEntity } from '../order/order.entity';
+import { PromotionEntity } from '../promotion/promotion.entity';
 import { RestaurantChainEntity } from '../restaurant-chain/restaurant-chain.entity';
+import { RestaurantOperatorEntity } from '../restaurant-operator/restaurant-operator.entity';
+import { ReviewEntity } from '../review/review.entity';
+import { ScheduleEntity } from '../schedule/schedule.entity';
 import { TableEntity } from '../table/table.entity';
-import { Column, Entity, JoinColumn, ManyToOne,OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class RestaurantSiteEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: String;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column()
-    description: String;
+  @Column()
+  description: string;
 
-    @ManyToOne(() => RestaurantChainEntity, restaurantChain => restaurantChain.restaurantSites)
-    restaurantChain: RestaurantChainEntity;
+  @ManyToOne(
+    () => RestaurantChainEntity,
+    (restaurantChain) => restaurantChain.restaurantSites,
+  )
+  restaurantChain: RestaurantChainEntity;
 
-    @OneToMany(() => OrderEntity, orders => orders.restaurantSite)
-    orders: OrderEntity[];
+  @OneToMany(() => OrderEntity, (orders) => orders.restaurantSite)
+  orders: OrderEntity[];
 
-    @OneToMany(() => TableEntity, tables => tables.restaurantSite)
-    tables: TableEntity[];
-   
-    /*
-    @OneToOne(() => MenuEntity, menu => menu.restaurantChain)
-    @JoinColumn()
-    menu: MenuEntity;
+  @OneToMany(() => TableEntity, (tables) => tables.restaurantSite)
+  tables: TableEntity[];
 
-    @OneToMany(() => ReviewEntity, review => review.restaurantSite)
-    reviews: ReviewEntity[];
+  @OneToMany(() => ReviewEntity, (review) => review.restaurantSite)
+  reviews: ReviewEntity[];
 
-    @OneToMany(() => RestaurantOperatorEntity, restaurantOperator => restaurantOperator.restaurantSite)
-    restaurantOperators: RestaurantOperatorEntity[];
+  @OneToMany(() => RestaurantOperatorEntity,(restaurantOperator) => restaurantOperator.restaurantSite)
+  restaurantOperator: RestaurantOperatorEntity[];
 
-    @OneToOne(() => AddressEntity, address => address.restaurantSite)
-    @JoinColumn()
-    address: AddressEntity;
+  @OneToMany(() => ScheduleEntity, (schedule) => schedule.restaurantSite)
+  schedules: ScheduleEntity[];
 
-    @OneToOne(() => ScheduleEntity, schedule => schedule.restaurantSite)
-    @JoinColumn()
-    schedule: ScheduleEntity;
-    */
+  @OneToMany(() => PromotionEntity, (promotion) => promotion.restaurantSite)
+  promotions: PromotionEntity[];
+
+  @OneToOne(() => MenuEntity, (menu) => menu.restaurantSite)
+  @JoinColumn()
+  menu: MenuEntity;
+
+  @OneToOne(() => AddressEntity, (address) => address.restaurantSite)
+  @JoinColumn()
+  address: AddressEntity;
 }
