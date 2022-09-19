@@ -31,7 +31,7 @@ export class PlateEntity {
   notes: string;
 
   @ManyToOne(() => CategoryEntity, (category) => category.plates)
-  category = CategoryEntity;
+  category : CategoryEntity;
 
   @OneToMany(() => DescriptionTagEntity, (descriptionTag) => descriptionTag.plate)
   descriptionTags: DescriptionTagEntity[];
