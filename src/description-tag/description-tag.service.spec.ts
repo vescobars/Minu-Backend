@@ -29,7 +29,6 @@ describe('DescriptionTagService', () => {
         const descriptionTag: DescriptionTagEntity = await repository.save({
           id: faker.datatype.uuid(),
           name: faker.datatype.string(),
-          plate: new PlateEntity()
         })
         descriptionTagsList.push(descriptionTag);
     }
@@ -55,7 +54,7 @@ describe('DescriptionTagService', () => {
   it('create should return a new descriptionTag', async () => {
     const descriptionTag: DescriptionTagEntity = {
       id: "",
-      name: faker.company.companyName(),
+      name: faker.datatype.string(),
       plate: new PlateEntity(),
     }
  
