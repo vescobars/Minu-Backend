@@ -26,5 +26,26 @@ describe('OrderDetailService', () => {
     expect(service).toBeDefined();
   });
 
+  
+it('findAll should return all orderDetail', async () => {
+  const orderDetail: OrderDetailEntity[] = await service.findAll();
+  expect(orderDetail).not.toBeNull();
+  expect(orderDetail).toHaveLength(orderDetailList.length);
+});
+
+it('findOne should return a orderDetail by id', async () => {
+  const storedOrderDetail: OrderDetailEntity = orderDetailList[0];
+  const orderDetail: OrderDetailEntity = await service.findOne(storedOrderDetail.id);
+  expect(orderDetail).not.toBeNull();
+  expect(orderDetail.state).toEqual(storedOrderDetail.state)
+  expect(orderDetail.date).toEqual(storedOrderDetail.date)
+  expect(orderDetail.notes).toEqual(storedOrderDetail.notes)
+});
+
+it('findOne should throw an exception for an invalid orderDetail', async () => {
+  await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "The orderDetail with the given id was not found")
+});
+
+
 });
 
