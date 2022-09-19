@@ -1,5 +1,5 @@
-import { MenuVisualTemplateEntity } from 'src/menu-visual-template/menu-visual-template.entity';
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { MenuVisualTemplateEntity } from '../menu-visual-template/menu-visual-template.entity';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 import {
   Column,
   Entity,

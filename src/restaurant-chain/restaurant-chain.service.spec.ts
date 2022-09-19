@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { TypeOrmTestingConfig } from 'src/shared/testing-utils/typeorm-testing-config';
+import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 import { Repository } from 'typeorm';
 import { RestaurantChainEntity } from './restaurant-chain.entity';
 import { RestaurantChainService } from './restaurant-chain.service';

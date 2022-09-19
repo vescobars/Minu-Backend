@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ClientEntity } from 'src/client/client.entity';
-import { ImageEntity } from 'src/image/image.entity';
+import { ClientEntity } from '../client/client.entity';
+import { ImageEntity } from '../image/image.entity';
 import { ClientImageService } from './client-image.service';
 
 @Module({

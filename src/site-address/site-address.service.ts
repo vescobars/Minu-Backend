@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AddressEntity } from 'src/address/address.entity';
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
-import { BusinessError, BusinessLogicException } from 'src/shared/errors/business-errors';
+import { AddressEntity } from '../address/address.entity';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
+import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
 
 @Injectable()

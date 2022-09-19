@@ -1,4 +1,4 @@
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

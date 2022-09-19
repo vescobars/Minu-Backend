@@ -30,7 +30,7 @@ export class RestaurantOperatorEntity {
     @JoinColumn()
     profileImage: ImageEntity;
 
-    @ManyToOne(() => RestaurantSiteEntity, restaurantSite => restaurantSite.restaurantOperator)
+    @ManyToOne(() => RestaurantSiteEntity, restaurantSite => restaurantSite.restaurantOperators)
     restaurantSite: RestaurantSiteEntity;
 
 }
