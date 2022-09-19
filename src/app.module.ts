@@ -23,7 +23,6 @@ import { ImageModule } from './image/image.module';
 import { MenuVisualPreferencesModule } from './menu-visual-preferences/menu-visual-preferences.module';
 import { MenuVisualTemplateModule } from './menu-visual-template/menu-visual-template.module';
 import { ScheduleModule } from './schedule/schedule.module';
-
 import { OrderEntity } from './order/order.entity';
 import { OrderDetailEntity } from './order-detail/order-detail.entity';
 import { PayModeEntity } from './pay-mode/pay-mode.entity';
@@ -44,7 +43,17 @@ import { MenuEntity } from './menu/menu.entity';
 import { CoordinateEntity } from './coordinate/coordinate.entity';
 import { RestaurantOperatorEntity } from './restaurant-operator/restaurant-operator.entity';
 import { AddressEntity } from './address/address.entity';
-
+import { ClientImageModule } from './client-image/client-image.module';
+import { ClientOrderModule } from './client-order/client-order.module';
+import { ClientCoordinateModule } from './client-coordinate/client-coordinate.module';
+import { ChainSiteModule } from './chain-site/chain-site.module';
+import { SiteTableModule } from './site-table/site-table.module';
+import { SiteOrderModule } from './site-order/site-order.module';
+import { SiteReviewModule } from './site-review/site-review.module';
+import { SiteOperatorModule } from './site-operator/site-operator.module';
+import { SiteScheduleModule } from './site-schedule/site-schedule.module';
+import { SiteMenuModule } from './site-menu/site-menu.module';
+import { SiteAddressModule } from './site-address/site-address.module';
 
 @Module({
   imports: [
@@ -58,9 +67,9 @@ import { AddressEntity } from './address/address.entity';
     MenuVisualPreferencesModule,
     MenuVisualTemplateModule,
     OrderModule,
-    OrderDetailModule, 
-    PayModeModule, 
-    PlateModule, 
+    OrderDetailModule,
+    PayModeModule,
+    PlateModule,
     PromotionModule,
     RestaurantChainModule,
     RestaurantOperatorModule,
@@ -74,7 +83,7 @@ import { AddressEntity } from './address/address.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
+      password: 'postgres123',
       database: 'db',
       entities: [
         AddressEntity,
@@ -96,14 +105,36 @@ import { AddressEntity } from './address/address.entity';
         RestaurantSiteEntity,
         ReviewEntity,
         ScheduleEntity,
-        TableEntity
-
+        TableEntity,
       ],
       dropSchema: true,
       synchronize: true,
-      keepConnectionAlive: true
+      keepConnectionAlive: true,
     }),
-    
+
+    ClientImageModule,
+
+    ClientOrderModule,
+
+    SiteScheduleModule,
+
+    ClientCoordinateModule,
+
+    ChainSiteModule,
+
+    SiteTableModule,
+
+    SiteOrderModule,
+
+    SiteReviewModule,
+
+    SiteOperatorModule,
+
+    SiteScheduleModule,
+
+    SiteMenuModule,
+
+    SiteAddressModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,5 +1,5 @@
-import { ImageEntity } from 'src/image/image.entity';
-import { RestaurantSiteEntity } from 'src/restaurant-site/restaurant-site.entity';
+import { ImageEntity } from '../image/image.entity';
+import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

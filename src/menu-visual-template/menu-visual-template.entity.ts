@@ -1,4 +1,4 @@
-import { MenuEntity } from 'src/menu/menu.entity';
+import { MenuEntity } from '../menu/menu.entity';
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -12,6 +12,6 @@ export class MenuVisualTemplateEntity {
   @Column()
   file: string;
 
-  @OneToOne(() => MenuEntity, menu => menu.menuVisualTemplate)
+  @OneToOne(() => MenuEntity, (menu) => menu.menuVisualTemplate)
   menu: MenuEntity;
 }
