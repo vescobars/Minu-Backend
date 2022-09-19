@@ -1,5 +1,5 @@
-import { OrderEntity } from 'src/order/order.entity';
-import { PlateEntity } from 'src/plate/plate.entity';
+import { OrderEntity } from '../order/order.entity';
+import { PlateEntity } from '../plate/plate.entity';
 import { OneToMany, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
