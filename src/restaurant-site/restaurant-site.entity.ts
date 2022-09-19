@@ -11,39 +11,41 @@ import { Column, Entity, JoinColumn, ManyToOne,OneToMany, OneToOne, PrimaryGener
 
 @Entity()
 export class RestaurantSiteEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: String;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column()
-    description: String;
+  @Column()
+  description: string;
 
-    @ManyToOne(() => RestaurantChainEntity, restaurantChain => restaurantChain.restaurantSites)
-    restaurantChain: RestaurantChainEntity;
+  @ManyToOne(
+    () => RestaurantChainEntity,
+    (restaurantChain) => restaurantChain.restaurantSites,
+  )
+  restaurantChain: RestaurantChainEntity;
 
-    @OneToMany(() => OrderEntity, orders => orders.restaurantSite)
-    orders: OrderEntity[];
+  @OneToMany(() => OrderEntity, (orders) => orders.restaurantSite)
+  orders: OrderEntity[];
 
-    @OneToMany(() => TableEntity, tables => tables.restaurantSite)
-    tables: TableEntity[];
+  @OneToMany(() => TableEntity, (tables) => tables.restaurantSite)
+  tables: TableEntity[];
 
-    @OneToMany(() => ReviewEntity, review => review.restaurantSite)
-    reviews: ReviewEntity[];
+  @OneToMany(() => ReviewEntity, (review) => review.restaurantSite)
+  reviews: ReviewEntity[];
 
-    @OneToMany(() => RestaurantOperatorEntity, restaurantOperator => restaurantOperator.restaurantSite)
-    restaurantOperators: RestaurantOperatorEntity[];
+  @OneToMany(() => RestaurantOperatorEntity,(restaurantOperators) => restaurantOperators.restaurantSite)
+  restaurantOperators: RestaurantOperatorEntity[];
 
-    @OneToMany(() => ScheduleEntity, schedule => schedule.restaurantSite)
-    schedules: ScheduleEntity[];
+  @OneToMany(() => ScheduleEntity, (schedule) => schedule.restaurantSite)
+  schedules: ScheduleEntity[];
 
-    @OneToMany(() => PromotionEntity, promotion => promotion.restaurantSite)
-    promotions: PromotionEntity[];
+  @OneToMany(() => PromotionEntity, (promotion) => promotion.restaurantSite)
+  promotions: PromotionEntity[];
 
-    @OneToOne(() => MenuEntity, menu => menu.restaurantSite)
-    @JoinColumn()
-    menu: MenuEntity;
+  @OneToOne(() => MenuEntity, (menu) => menu.restaurantSite)
+  @JoinColumn()
+  menu: MenuEntity;
 
-    @OneToOne(() => AddressEntity, address => address.restaurantSite)
-    @JoinColumn()
-    address: AddressEntity;
-   
+  @OneToOne(() => AddressEntity, (address) => address.restaurantSite)
+  @JoinColumn()
+  address: AddressEntity;
 }

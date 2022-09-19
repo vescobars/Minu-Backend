@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RestaurantSiteEntity } from './restaurant-site.entity';
-import { RestaurantSiteService } from './restaurant-site';
+import { RestaurantSiteService } from './restaurant-site.service';
 
-@Module({})
+@Module({
+  imports: [TypeOrmModule.forFeature([RestaurantSiteEntity])],
+  providers: [RestaurantSiteService]
+})
 export class RestaurantSiteModule {}

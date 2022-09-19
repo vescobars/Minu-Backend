@@ -5,13 +5,13 @@ import { MenuEntity } from '../menu/menu.entity';
 @Entity()
 export class MenuVisualPreferenceEntity {
     @PrimaryGeneratedColumn('uuid')
-    id: String;
+    id: string;
 
     @Column()
-    name: String;
+    name: string;
 
     @Column()
-    file: String;
+    file: string;
     
     @OneToOne(() => MenuEntity, menu => menu.menuVisualPreferences)
     menu: MenuEntity;
