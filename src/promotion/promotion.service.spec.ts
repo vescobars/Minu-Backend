@@ -21,6 +21,7 @@ describe('PromotionService', () => {
 
     service = module.get<PromotionService>(PromotionService);
     repository = module.get<Repository<PromotionEntity>>(getRepositoryToken(PromotionEntity));
+    promotionsList.length = 0;
     await seedDatabase();
   });
 

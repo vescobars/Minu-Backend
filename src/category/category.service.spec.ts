@@ -21,6 +21,7 @@ describe('CategoryService', () => {
 
     service = module.get<CategoryService>(CategoryService);
     repository = module.get<Repository<CategoryEntity>>(getRepositoryToken(CategoryEntity));
+    categoriesList.length = 0;
     await seedDatabase();
   });
 
