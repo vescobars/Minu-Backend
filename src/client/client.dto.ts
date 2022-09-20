@@ -1,18 +1,18 @@
-import {IsNotEmpty, IsString, IsUrl} from 'class-validator';
+import {IsEmail, IsNotEmpty, IsPhoneNumber, IsString, IsUrl} from 'class-validator';
 export class ClientDto {
     @IsString()
     @IsNotEmpty()
-    firstName: string;
+    readonly firstName: string;
 
     @IsString()
     @IsNotEmpty()
-    lastName: string;
+    readonly lastName: string;
 
-    @IsString()
+    @IsPhoneNumber()
     @IsNotEmpty()
-    phone: string;
+    readonly phone: string;
 
-    @IsString()
+    @IsEmail()
     @IsNotEmpty()
-    email: string;
+    readonly email: string;
 }
