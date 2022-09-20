@@ -54,8 +54,6 @@ import { SiteOperatorModule } from './site-operator/site-operator.module';
 import { SiteScheduleModule } from './site-schedule/site-schedule.module';
 import { SiteMenuModule } from './site-menu/site-menu.module';
 import { SiteAddressModule } from './site-address/site-address.module';
-import { MuseumService } from './museum/museum.service';
-import { SharedModule } from './shared/shared.module';
 import { CategoryPlateModule } from './category-plate/category-plate.module';
 import { PlateDescriptionTagModule } from './plate-description-tag/plate-description-tag.module';
 import { PlateImageModule } from './plate-image/plate-image.module';
@@ -154,6 +152,6 @@ import { PlatePromotionModule } from './plate-promotion/plate-promotion.module';
     
   ],
   controllers: [AppController],
-  providers: [AppService, MuseumService],
+  providers: [AppService],
 })
 export class AppModule {}
