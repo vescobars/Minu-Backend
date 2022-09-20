@@ -62,4 +62,42 @@ it('findOne should return a order by id', async () => {
   expect(order.payMode).toEqual(storedOrder.payMode);
 });
 
+
+it('findOne should throw an exception for an invalid order', async () => {
+  await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "The order with the given id was not found")
+});
+
+it('update should modify a order', async () => {
+  const order: OrderEntity = orderList[0];
+  order.state = "New state";
+  order.totalValue = faker.datatype.number({ max: 100000 });
+   const updatedOrder: OrderEntity = await service.update(order.id, order);
+  expect(updatedOrder).not.toBeNull();
+   const storedOrder: OrderEntity = await repository.findOne({ where: { id: order.id } })
+  expect(storedOrder).not.toBeNull();
+  expect(storedOrder.state).toEqual(order.state)
+  expect(storedOrder.totalValue).toEqual(order.totalValue)
+});
+
+it('update should throw an exception for an invalid order', async () => {
+  let order: OrderEntity = orderList[0];
+  order = {
+    ...order, state: "New state", totalValue: faker.datatype.number({ max: 100000 })
+  }
+  await expect(() => service.update("0", order)).rejects.toHaveProperty("message", "The order with the given id was not found")
+});
+
+it('delete should remove a order', async () => {
+  const order: OrderEntity = orderList[0];
+  await service.delete(order.id);
+   const deletedOrder: OrderEntity = await repository.findOne({ where: { id: order.id } })
+  expect(deletedOrder).toBeNull();
+});
+
+it('delete should throw an exception for an invalid order', async () => {
+  const order: OrderEntity = orderList[0];
+  await service.delete(order.id);
+  await expect(() => service.delete("0")).rejects.toHaveProperty("message", "The order with the given id was not found")
+});
+
 });
