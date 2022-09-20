@@ -42,14 +42,14 @@ describe('TableService', () => {
   
   it('findAll should return all tables', async () => {
     const tables: TableEntity[] = await service.findAll();
-    //expect(tables).not.toBeNull();
+    expect(tables).not.toBeNull();
     expect(tables).toHaveLength(tableList.length);
   });
 
   it('findOne should return a table by id', async () => {
     const storedTable: TableEntity = tableList[0];
     const table: TableEntity = await service.findOne(storedTable.id);
-    //expect(table).not.toBeNull();
+    expect(table).not.toBeNull();
   });
 
   it('findOne should throw an exception for an invalid table', async () => {
