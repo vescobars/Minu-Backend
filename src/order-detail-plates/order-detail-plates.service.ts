@@ -61,9 +61,9 @@ export class OrderDetailPlatesService {
           throw new BusinessLogicException("The orderDetail with the given id was not found", BusinessError.NOT_FOUND)
     
         for (let i = 0; i < plates.length; i++) {
-          const artwork: PlateEntity = await this.plateRepository.findOne({where: {id: plates[i].id}});
-          if (!artwork)
-            throw new BusinessLogicException("The artwork with the given id was not found", BusinessError.NOT_FOUND)
+          const plate: PlateEntity = await this.plateRepository.findOne({where: {id: plates[i].id}});
+          if (!plate)
+            throw new BusinessLogicException("The plate with the given id was not found", BusinessError.NOT_FOUND)
         }
     
         orderDetail.plates = plates;
@@ -71,20 +71,20 @@ export class OrderDetailPlatesService {
     }
 
     async deletePlateOrderDetail(orderDetailId: string, plateId: string){
-        const artwork: PlateEntity = await this.plateRepository.findOne({where: {id: plateId}});
-        if (!artwork)
-          throw new BusinessLogicException("The artwork with the given id was not found", BusinessError.NOT_FOUND)
+        const plate: PlateEntity = await this.plateRepository.findOne({where: {id: plateId}});
+        if (!plate)
+          throw new BusinessLogicException("The plate with the given id was not found", BusinessError.NOT_FOUND)
     
-        const museum: OrderDetailEntity = await this.orderDetailRepository.findOne({where: {id: orderDetailId}, relations: ["plates"]});
-        if (!museum)
-          throw new BusinessLogicException("The museum with the given id was not found", BusinessError.NOT_FOUND)
+        const orderDetail: OrderDetailEntity = await this.orderDetailRepository.findOne({where: {id: orderDetailId}, relations: ["plates"]});
+        if (!orderDetail)
+          throw new BusinessLogicException("The orderDetail with the given id was not found", BusinessError.NOT_FOUND)
     
-        const orderDetailPlate: PlateEntity = museum.plates.find(e => e.id === artwork.id);
+        const orderDetailPlate: PlateEntity = orderDetail.plates.find(e => e.id === plate.id);
     
         if (!orderDetailPlate)
-            throw new BusinessLogicException("The artwork with the given id is not associated to the museum", BusinessError.PRECONDITION_FAILED)
+            throw new BusinessLogicException("The plate with the given id is not associated to the orderDetail", BusinessError.PRECONDITION_FAILED)
  
-        museum.plates = museum.plates.filter(e => e.id !== plateId);
-        await this.orderDetailRepository.save(museum);
+        orderDetail.plates = orderDetail.plates.filter(e => e.id !== plateId);
+        await this.orderDetailRepository.save(orderDetail);
     }  
 }
