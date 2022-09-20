@@ -19,8 +19,21 @@ describe('OrderDetailService', () => {
 
    service = module.get<OrderDetailService>(OrderDetailService);
    repository = module.get<Repository<OrderDetailEntity>>(getRepositoryToken(OrderDetailEntity));
-   //await seedDatabase();
+   await seedDatabase();
   });
+  
+  const seedDatabase = async () => {
+    repository.clear();
+    orderDetailList = [];
+    for(let i = 0; i < 5; i++){
+        const orderDetail: OrderDetailEntity = await repository.save({
+        state: faker.random.word(),
+        date: faker.date.past(3),
+        notes: faker.random.words()
+      })
+        orderDetailList.push(orderDetail);
+    }
+  }
   
   it('should be defined', () => {
     expect(service).toBeDefined();
