@@ -1,6 +1,6 @@
 import {IsNotEmpty, IsString, IsUrl} from 'class-validator';
 
-export class RestaurantChainDtoTs {
+export class RestaurantChainDto{
     @IsString()
     @IsNotEmpty()
     readonly chainName: string;
