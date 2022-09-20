@@ -5,7 +5,7 @@ import { ClientDto } from './client.dto';
 import { ClientEntity } from './client.entity';
 import { ClientService } from './client.service';
 
-@Controller('client')
+@Controller('clients')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class ClientController {
     constructor(private readonly clientService:ClientService){}
