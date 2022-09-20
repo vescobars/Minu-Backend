@@ -59,6 +59,7 @@ import { PlateDescriptionTagModule } from './plate-description-tag/plate-descrip
 import { PlateImageModule } from './plate-image/plate-image.module';
 import { PlatePromotionModule } from './plate-promotion/plate-promotion.module';
 import { OrderDetailPlatesModule } from './order-detail-plates/order-detail-plates.module';
+import { OrderOrderDetailModule } from './order-order-detail/order-order-detail.module';
 
 @Module({
   imports: [
@@ -150,6 +151,8 @@ import { OrderDetailPlatesModule } from './order-detail-plates/order-detail-plat
     PlatePromotionModule,
 
     OrderDetailPlatesModule,
+
+    OrderOrderDetailModule,
     
   ],
   controllers: [AppController],
