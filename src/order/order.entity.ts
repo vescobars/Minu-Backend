@@ -3,7 +3,13 @@ import { OrderDetailEntity } from '../order-detail/order-detail.entity';
 import { PayModeEntity } from '../pay-mode/pay-mode.entity';
 import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 import { TableEntity } from '../table/table.entity';
-import {OneToOne,Column,Entity,PrimaryGeneratedColumn,ManyToOne,} from 'typeorm';
+import {
+  OneToOne,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne
+} from 'typeorm';
 import { JoinColumn } from 'typeorm/decorator/relations/JoinColumn';
 
 @Entity()

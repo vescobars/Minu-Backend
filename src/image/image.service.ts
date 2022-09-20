@@ -13,14 +13,14 @@ export class ImageService {
 
     async findAll(): Promise<ImageEntity[]> {
         return await this.imageRepository.find({
-            relations: ["client, restaurantOperator, plate"] 
+            relations: ["client", "restaurantOperator", "plate"] 
         });
     }
 
     async findOne(id: string): Promise<ImageEntity> {
         const image: ImageEntity = await this.imageRepository.findOne({
             where: {id}, 
-            relations: ["client, restaurantOperator, plate"] 
+            relations: ["client", "restaurantOperator", "plate"] 
         });
         if (!image)
           throw new BusinessLogicException(

@@ -29,9 +29,6 @@ export class AddressEntity {
   @JoinColumn()
   coordinate: CoordinateEntity;
 
-  @OneToOne(
-    () => RestaurantSiteEntity,
-    (restaurantSite) => restaurantSite.address,
-  )
+  @OneToOne(() => RestaurantSiteEntity,(restaurantSite) => restaurantSite.address)
   restaurantSite: RestaurantSiteEntity;
 }

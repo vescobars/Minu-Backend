@@ -54,6 +54,10 @@ import { SiteOperatorModule } from './site-operator/site-operator.module';
 import { SiteScheduleModule } from './site-schedule/site-schedule.module';
 import { SiteMenuModule } from './site-menu/site-menu.module';
 import { SiteAddressModule } from './site-address/site-address.module';
+import { CategoryPlateModule } from './category-plate/category-plate.module';
+import { PlateDescriptionTagModule } from './plate-description-tag/plate-description-tag.module';
+import { PlateImageModule } from './plate-image/plate-image.module';
+import { PlatePromotionModule } from './plate-promotion/plate-promotion.module';
 
 @Module({
   imports: [
@@ -135,6 +139,15 @@ import { SiteAddressModule } from './site-address/site-address.module';
     SiteMenuModule,
 
     SiteAddressModule,
+
+    CategoryPlateModule,
+
+    PlateDescriptionTagModule,
+
+    PlateImageModule,
+
+    PlatePromotionModule,
+    
   ],
   controllers: [AppController],
   providers: [AppService],

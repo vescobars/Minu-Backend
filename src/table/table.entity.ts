@@ -1,6 +1,6 @@
 import { OrderEntity } from '../order/order.entity';
 import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
-import {OneToOne,ManyToOne, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {OneToOne,OneToMany,ManyToOne,ManyToMany, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity()
 export class TableEntity {

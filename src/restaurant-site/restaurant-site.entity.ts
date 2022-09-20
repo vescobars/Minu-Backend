@@ -7,15 +7,7 @@ import { RestaurantOperatorEntity } from '../restaurant-operator/restaurant-oper
 import { ReviewEntity } from '../review/review.entity';
 import { ScheduleEntity } from '../schedule/schedule.entity';
 import { TableEntity } from '../table/table.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne,OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class RestaurantSiteEntity {
