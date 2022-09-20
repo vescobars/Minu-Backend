@@ -20,8 +20,20 @@ describe('PayModeService', () => {
 
     service = module.get<PayModeService>(PayModeService);
     repository = module.get<Repository<PayModeEntity>>(getRepositoryToken(PayModeEntity));
-    //await seedDatabase();
+    await seedDatabase();
   });
+
+  const seedDatabase = async () => {
+    repository.clear();
+    payModeList = [];
+    payTypesList = ['Daviplata','PSE','Tarjeta de Credito','Tarjeta de Debito','Efectivo','Nequi','RappiPay','Coink','GooglePay','SamsungPay','ApplePay','Cheque']
+    for(let i = 0; i < 5; i++){
+        const paymode: PayModeEntity = await repository.save({
+        type: payTypesList[Math.random() * payTypesList.length],
+      })
+        payModeList.push(paymode);
+    }
+  }
 
   it('should be defined', () => {
     expect(service).toBeDefined();
