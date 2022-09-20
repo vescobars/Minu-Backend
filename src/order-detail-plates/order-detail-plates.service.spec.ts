@@ -164,5 +164,43 @@ describe('OrderDetailPlatesService', () => {
     await expect(()=> service.associatePlatesOrderDetail("0", [newPlate])).rejects.toHaveProperty("message", "The orderDetail with the given id was not found");
   });
 
-  
+  it('associatePlatesOrderDetail should throw an exception for an invalid plate', async () => {
+    const newPlate: PlateEntity = plateList[0];
+    newPlate.id = "0";
+ 
+    await expect(()=> service.associatePlatesOrderDetail(orderDetail.id, [newPlate])).rejects.toHaveProperty("message", "The plate with the given id was not found");
+  });
+
+  it('deletePlateOrderDetail should remove an plate from a orderDetail', async () => {
+    const plate: PlateEntity = plateList[0];
+   
+    await service.deletePlateOrderDetail(orderDetail.id, plate.id);
+ 
+    const storedOrderDetail: OrderDetailEntity = await orderDetailRepository.findOne({where: {id: orderDetail.id}, relations: ["plates"]});
+    const deletedPlate: PlateEntity = storedOrderDetail.plates.find(a => a.id === plate.id);
+ 
+    expect(deletedPlate).toBeUndefined();
+  });
+
+  it('deletePlateOrderDetail should thrown an exception for an invalid plate', async () => {
+    await expect(()=> service.deletePlateOrderDetail(orderDetail.id, "0")).rejects.toHaveProperty("message", "The plate with the given id was not found");
+  });
+
+  it('deletePlateOrderDetail should thrown an exception for an invalid orderDetail', async () => {
+    const plate: PlateEntity = plateList[0];
+    await expect(()=> service.deletePlateOrderDetail("0", plate.id)).rejects.toHaveProperty("message", "The orderDetail with the given id was not found");
+  });
+
+
+  it('deletePlateOrderDetail should thrown an exception for an non asocciated plate', async () => {
+    const newPlate: PlateEntity = await plateRepository.save({
+      name: faker.name.fullName(),
+      description: faker.lorem.sentence(),
+      value: faker.datatype.number(),
+      notes: faker.lorem.sentence()
+    });
+ 
+    await expect(()=> service.deletePlateOrderDetail(orderDetail.id, newPlate.id)).rejects.toHaveProperty("message", "The plate with the given id is not associated to the orderDetail");
+  });
+
 });
