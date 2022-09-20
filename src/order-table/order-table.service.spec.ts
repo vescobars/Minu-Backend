@@ -173,6 +173,5 @@ describe('OrderTableService', () => {
     const deletedTable: TableEntity = storedOrder.table;
  
     expect(deletedTable).toBeNull();
- 
   });
 });
