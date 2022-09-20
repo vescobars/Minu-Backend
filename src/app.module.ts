@@ -139,8 +139,6 @@ import { PlatePromotionModule } from './plate-promotion/plate-promotion.module';
     SiteMenuModule,
 
     SiteAddressModule,
-    
-    SharedModule,
 
     CategoryPlateModule,
 
