@@ -23,6 +23,7 @@ describe('PlateService', () => {
 
     service = module.get<PlateService>(PlateService);
     repository = module.get<Repository<PlateEntity>>(getRepositoryToken(PlateEntity));
+    platesList.length = 0;
     await seedDatabase();
   });
 

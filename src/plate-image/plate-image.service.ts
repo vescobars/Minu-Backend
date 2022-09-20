@@ -20,7 +20,7 @@ export class PlateImageService {
         if (!image)
           throw new BusinessLogicException("The image with the given id was not found", BusinessError.NOT_FOUND);
       
-        const plate: PlateEntity = await this.plateRepository.findOne({where: {id: plateId}, relations: ["images", "exhibitions"]})
+        const plate: PlateEntity = await this.plateRepository.findOne({where: {id: plateId}, relations: ["images"]})
         if (!plate)
           throw new BusinessLogicException("The plate with the given id was not found", BusinessError.NOT_FOUND);
     

@@ -20,6 +20,7 @@ describe('ReviewService', () => {
 
     service = module.get<ReviewService>(ReviewService);
     repository = module.get<Repository<ReviewEntity>>(getRepositoryToken(ReviewEntity));
+    reviewsList.length = 0;
     await seedDatabase();
   });
 

@@ -20,6 +20,7 @@ describe('DescriptionTagService', () => {
 
     service = module.get<DescriptionTagService>(DescriptionTagService);
     repository = module.get<Repository<DescriptionTagEntity>>(getRepositoryToken(DescriptionTagEntity));
+    descriptionTagsList.length = 0;
     await seedDatabase();
   });
 
