@@ -67,6 +67,29 @@ it('findOne should throw an exception for an invalid order', async () => {
   await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "The order with the given id was not found")
 });
 
+it('create should return a new order', async () => {
+  const order: OrderEntity = {
+    id: "",
+    state: faker.random.word(),
+    date: faker.date.past(3),
+    totalValue: faker.datatype.number({ max: 100000 }),
+    orderDetail: null,
+    payMode: null,
+    table: null,
+    client: null,
+    restaurantSite: null
+  }
+
+  const newOrder: OrderEntity = await service.create(order);
+  expect(newOrder).not.toBeNull();
+
+  const storedOrder: OrderEntity = await repository.findOne({where: {id: newOrder.id}})
+  expect(storedOrder).not.toBeNull();
+  expect(storedOrder.state).toEqual(newOrder.state)
+  expect(storedOrder.date).toEqual(newOrder.date)
+  expect(storedOrder.totalValue).toEqual(newOrder.totalValue)
+});
+
 it('update should modify a order', async () => {
   const order: OrderEntity = orderList[0];
   order.state = "New state";
