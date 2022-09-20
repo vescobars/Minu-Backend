@@ -58,6 +58,7 @@ import { CategoryPlateModule } from './category-plate/category-plate.module';
 import { PlateDescriptionTagModule } from './plate-description-tag/plate-description-tag.module';
 import { PlateImageModule } from './plate-image/plate-image.module';
 import { PlatePromotionModule } from './plate-promotion/plate-promotion.module';
+import { OrderDetailPlatesModule } from './order-detail-plates/order-detail-plates.module';
 
 @Module({
   imports: [
@@ -147,6 +148,8 @@ import { PlatePromotionModule } from './plate-promotion/plate-promotion.module';
     PlateImageModule,
 
     PlatePromotionModule,
+
+    OrderDetailPlatesModule,
     
   ],
   controllers: [AppController],
