@@ -8,7 +8,7 @@ import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
-  ManyToOne
+  ManyToOne,
 } from 'typeorm';
 import { JoinColumn } from 'typeorm/decorator/relations/JoinColumn';
 
@@ -41,6 +41,9 @@ export class OrderEntity {
   @ManyToOne(() => ClientEntity, (client) => client.orders)
   client: ClientEntity;
 
-  @ManyToOne(() => RestaurantSiteEntity, (restaurantSite) => restaurantSite.orders)
+  @ManyToOne(
+    () => RestaurantSiteEntity,
+    (restaurantSite) => restaurantSite.orders,
+  )
   restaurantSite: RestaurantSiteEntity;
 }
