@@ -9,8 +9,6 @@ import {
   ManyToOne,
 } from 'typeorm';
 
-
-
 @Entity()
 export class ImageEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -19,15 +17,15 @@ export class ImageEntity {
   @Column()
   url: string;
 
-  @OneToOne(() => ClientEntity, client => client.profileImage)
+  @OneToOne(() => ClientEntity, (client) => client.profileImage)
   client: ClientEntity;
 
-  @OneToOne(() => RestaurantOperatorEntity, restaurantOperator => restaurantOperator.profileImage)
+  @OneToOne(
+    () => RestaurantOperatorEntity,
+    (restaurantOperator) => restaurantOperator.profileImage,
+  )
   restaurantOperator: RestaurantOperatorEntity;
 
-  @ManyToOne(() => PlateEntity, plate => plate.images)
+  @ManyToOne(() => PlateEntity, (plate) => plate.images)
   plate: PlateEntity;
-
-  
 }
-

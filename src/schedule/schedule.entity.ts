@@ -15,6 +15,9 @@ export class ScheduleEntity {
   @Column()
   closing_hour: string;
 
-  @ManyToOne(() => RestaurantSiteEntity,(restaurantSite) => restaurantSite.schedules)
+  @ManyToOne(
+    () => RestaurantSiteEntity,
+    (restaurantSite) => restaurantSite.schedules,
+  )
   restaurantSite: RestaurantSiteEntity;
 }

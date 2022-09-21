@@ -65,27 +65,6 @@ import { OrderTableModule } from './order-table/order-table.module';
 
 @Module({
   imports: [
-    AddressModule,
-    CategoryModule,
-    ClientModule,
-    CoordinateModule,
-    DescriptionTagModule,
-    ImageModule,
-    MenuModule,
-    MenuVisualPreferencesModule,
-    MenuVisualTemplateModule,
-    OrderModule,
-    OrderDetailModule,
-    PayModeModule,
-    PlateModule,
-    PromotionModule,
-    RestaurantChainModule,
-    RestaurantOperatorModule,
-    RestaurantSiteModule,
-    ReviewModule,
-    ScheduleModule,
-    TableModule,
-
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -119,47 +98,46 @@ import { OrderTableModule } from './order-table/order-table.module';
       synchronize: true,
       keepConnectionAlive: true,
     }),
-
+    AddressModule,
+    CategoryModule,
+    ClientModule,
+    CoordinateModule,
+    DescriptionTagModule,
+    ImageModule,
+    MenuModule,
+    MenuVisualPreferencesModule,
+    MenuVisualTemplateModule,
+    OrderModule,
+    OrderDetailModule,
+    PayModeModule,
+    PlateModule,
+    PromotionModule,
+    RestaurantChainModule,
+    RestaurantOperatorModule,
+    RestaurantSiteModule,
+    ReviewModule,
+    ScheduleModule,
+    TableModule,
     ClientImageModule,
-
     ClientOrderModule,
-
     SiteScheduleModule,
-
     ClientCoordinateModule,
-
     ChainSiteModule,
-
     SiteTableModule,
-
     SiteOrderModule,
-
     SiteReviewModule,
-
     SiteOperatorModule,
-
     SiteScheduleModule,
-
     SiteMenuModule,
-
     SiteAddressModule,
-
     CategoryPlateModule,
-
     PlateDescriptionTagModule,
-
     PlateImageModule,
-
     PlatePromotionModule,
-
     OrderDetailPlatesModule,
-
     OrderOrderDetailModule,
-
     OrderPayModeModule,
-
     OrderTableModule,
-    
   ],
   controllers: [AppController],
   providers: [AppService],
