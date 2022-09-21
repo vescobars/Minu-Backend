@@ -1,7 +1,7 @@
-import {IsNotEmpty, IsString, IsUrl} from 'class-validator';
+import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
-export class RestaurantChainDto{
-    @IsString()
-    @IsNotEmpty()
-    readonly chainName: string;
+export class RestaurantChainDto {
+  @IsString()
+  @IsNotEmpty()
+  readonly chainName: string;
 }
