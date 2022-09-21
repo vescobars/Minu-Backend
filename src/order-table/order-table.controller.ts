@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { TableDto } from 'src/table/table.dto';
-import { TableEntity } from 'src/table/table.entity';
+import { TableDto } from '../table/table.dto';
+import { TableEntity } from '../table/table.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { OrderTableService } from './order-table.service';
 
