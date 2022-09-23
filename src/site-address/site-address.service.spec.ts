@@ -87,25 +87,6 @@ describe('SiteAddressService', () => {
     await expect(() => service.addAddressSite("0", newSite.id)).rejects.toHaveProperty("message", "The address with the given id was not found");
   });
 
-  it('findAddressBySiteIdAddressId should return address by site', async () => {
-    const addressE: AddressEntity = address;
-    const storedAddress: AddressEntity = await service.findAddressBySiteIdAddressId(site.id, addressE.id, )
-    expect(storedAddress).not.toBeNull();
-    expect(storedAddress.location).toEqual(addressE.location);
-    expect(storedAddress.city).toEqual(addressE.city);
-    expect(storedAddress.neighborhood).toEqual(addressE.neighborhood);
-    expect(storedAddress.direction).toEqual(addressE.direction);
-  });
-
-  it('findAddressBySiteIdAddressId should throw an exception for an invalid address', async () => {
-    await expect(()=> service.findAddressBySiteIdAddressId(site.id, "0")).rejects.toHaveProperty("message", "The address with the given id was not found");
-  });
-
-  it('findAddressBySiteIdAddressId should throw an exception for an invalid site', async () => {
-    const addressE: AddressEntity = address;
-    await expect(()=> service.findAddressBySiteIdAddressId("0", addressE.id)).rejects.toHaveProperty("message", "The site with the given id was not found");
-  });
-
   it('findAddressBySiteId should return address by site', async ()=>{
     const address: AddressEntity = await service.findAddressBySiteId(site.id);
     expect(address.location).toEqual(address.location);

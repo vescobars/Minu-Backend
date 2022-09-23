@@ -75,22 +75,6 @@ describe('SiteMenuService', () => {
     await expect(() => service.addMenuSite("0", newSite.id)).rejects.toHaveProperty("message", "The menu with the given id was not found");
   });
 
-  it('findMenuBySiteIdMenuId should return menu by site', async () => {
-    const menuE: MenuEntity = menu;
-    const storedMenu: MenuEntity = await service.findMenuBySiteIdMenuId(site.id, menuE.id, )
-    expect(storedMenu).not.toBeNull();
-    expect(storedMenu.date).toEqual(menuE.date);
-  });
-
-  it('findMenuBySiteIdMenuId should throw an exception for an invalid menu', async () => {
-    await expect(()=> service.findMenuBySiteIdMenuId(site.id, "0")).rejects.toHaveProperty("message", "The menu with the given id was not found");
-  });
-
-  it('findMenuBySiteIdMenuId should throw an exception for an invalid site', async () => {
-    const menuE: MenuEntity = menu;
-    await expect(()=> service.findMenuBySiteIdMenuId("0", menuE.id)).rejects.toHaveProperty("message", "The site with the given id was not found");
-  });
-
   it('findMenuBySiteId should return menu by site', async ()=>{
     const menu: MenuEntity = await service.findMenuBySiteId(site.id);
     expect(menu.date).toEqual(menu.date);

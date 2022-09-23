@@ -27,23 +27,6 @@ export class SiteAddressService {
         site.address = address;
         return await this.siteRepository.save(site);
       }
-
-      async findAddressBySiteIdAddressId(siteId: string, addressId: string): Promise<AddressEntity> {
-        const address: AddressEntity = await this.addressRepository.findOne({where: {id: addressId}});
-        if (!address)
-          throw new BusinessLogicException("The address with the given id was not found", BusinessError.NOT_FOUND)
-       
-        const site: RestaurantSiteEntity = await this.siteRepository.findOne({where: {id: siteId}, relations: ["address"]});
-        if (!site)
-          throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
-   
-        const siteAddress: AddressEntity = site.address;
-   
-        if (!siteAddress)
-          throw new BusinessLogicException("The address with the given id is not associated to the site", BusinessError.PRECONDITION_FAILED)
-   
-        return siteAddress;
-      }
     
       async findAddressBySiteId(siteId: string): Promise<AddressEntity> {
         const site: RestaurantSiteEntity = await this.siteRepository.findOne({where: { id: siteId }, relations: ['address']});
