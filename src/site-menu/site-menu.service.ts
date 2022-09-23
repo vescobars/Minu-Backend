@@ -20,12 +20,29 @@ export class SiteMenuService {
     if (!menu)
       throw new BusinessLogicException('The menu with the given id was not found', BusinessError.NOT_FOUND);
 
-    const site: RestaurantSiteEntity = await this.siteRepository.findOne({where: { id: siteId },relations: ["orders","tables","reviews","operators","schedules","promotions","menu","address"]});
+    const site: RestaurantSiteEntity = await this.siteRepository.findOne({where: { id: siteId },relations: ["orders","tables","reviews","restaurantOperators","schedules","promotions","menu","menu"]});
     if (!site)
       throw new BusinessLogicException('The site with the given id was not found',BusinessError.NOT_FOUND);
 
     site.menu = menu;
     return await this.siteRepository.save(site);
+  }
+
+  async findMenuBySiteIdMenuId(siteId: string, menuId: string): Promise<MenuEntity> {
+    const menu: MenuEntity = await this.menuRepository.findOne({where: {id: menuId}});
+    if (!menu)
+      throw new BusinessLogicException("The menu with the given id was not found", BusinessError.NOT_FOUND)
+   
+    const site: RestaurantSiteEntity = await this.siteRepository.findOne({where: {id: siteId}, relations: ["menu"]});
+    if (!site)
+      throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
+
+    const siteMenu: MenuEntity = site.menu;
+
+    if (!siteMenu)
+      throw new BusinessLogicException("The menu with the given id is not associated to the site", BusinessError.PRECONDITION_FAILED)
+
+    return siteMenu;
   }
 
   async findMenuBySiteId(siteId: string): Promise<MenuEntity> {
