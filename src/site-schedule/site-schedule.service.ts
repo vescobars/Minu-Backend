@@ -38,7 +38,7 @@ export class SiteScheduleService {
           'orders',
           'tables',
           'reviews',
-          'operators',
+          'restaurantOperators',
           'schedules',
           'promotions',
           'menu',
