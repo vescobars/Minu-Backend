@@ -20,7 +20,7 @@ export class SiteAddressService {
         if (!address)
           throw new BusinessLogicException('The address with the given id was not found', BusinessError.NOT_FOUND);
     
-        const site: RestaurantSiteEntity = await this.siteRepository.findOne({where: { id: siteId },relations: ["orders","tables","reviews","operators","schedules","promotions","menu","address"]});
+        const site: RestaurantSiteEntity = await this.siteRepository.findOne({where: { id: siteId },relations: ["orders","tables","reviews","restaurantOperators","schedules","promotions","menu","address"]});
         if (!site)
           throw new BusinessLogicException('The site with the given id was not found',BusinessError.NOT_FOUND);
     

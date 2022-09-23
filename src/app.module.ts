@@ -62,6 +62,7 @@ import { OrderDetailPlatesModule } from './order-detail-plates/order-detail-plat
 import { OrderOrderDetailModule } from './order-order-detail/order-order-detail.module';
 import { OrderPayModeModule } from './order-pay-mode/order-pay-mode.module';
 import { OrderTableModule } from './order-table/order-table.module';
+import { SitePromotionModule } from './site-promotion/site-promotion.module';
 
 @Module({
   imports: [
@@ -138,6 +139,7 @@ import { OrderTableModule } from './order-table/order-table.module';
     OrderOrderDetailModule,
     OrderPayModeModule,
     OrderTableModule,
+    SitePromotionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
