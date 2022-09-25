@@ -16,7 +16,7 @@ export class OrderController {
     }
 
     @Get(':chainId/sites/:siteId/orders/:orderId')
-    async findOne(@Param(':orderId') orderId:string){
+    async findOne(@Param('orderId') orderId:string){
         return await this.orderService.findOne(orderId);
     }
 
