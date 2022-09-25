@@ -35,7 +35,8 @@ describe('PlateService', () => {
         name: faker.name.fullName(),
         description: faker.lorem.sentence(),
         value: faker.datatype.number(),
-        notes: faker.lorem.sentence()})
+        notes: faker.lorem.sentence()
+      })
 
         platesList.push(plate);
       }

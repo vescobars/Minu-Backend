@@ -4,16 +4,8 @@ import { OneToMany, Column, Entity, PrimaryGeneratedColumn, OneToOne } from 'typ
 
 @Entity()
 export class OrderDetailEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  //TODO: REMOVE THIS ATRIBUTE (NO CORRESPONDE CON EL DIAGRAMA)
-  @Column()
-  state: string;
-
-  //TODO: REMOVE THIS ATRIBUTE (NO CORRESPONDE CON EL DIAGRAMA)
-  @Column()
-  date: Date;
 
   @Column()
   notes: string;

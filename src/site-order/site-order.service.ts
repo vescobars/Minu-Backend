@@ -20,7 +20,7 @@ export class SiteOrderService {
         if (!order)
           throw new BusinessLogicException("The order with the given id was not found", BusinessError.NOT_FOUND);
        
-        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["orders","plates","reviews","operators","schedules","promotions","menu","address"]}) 
+        const site: RestaurantSiteEntity = await this.restaurantSiteRepository.findOne({where: {id: siteId}, relations: ["orders","reviews","restaurantOperators","schedules","promotions","menu","address"]}) 
         if (!site)
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND);
      

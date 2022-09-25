@@ -58,30 +58,14 @@ import { CategoryPlateModule } from './category-plate/category-plate.module';
 import { PlateDescriptionTagModule } from './plate-description-tag/plate-description-tag.module';
 import { PlateImageModule } from './plate-image/plate-image.module';
 import { PlatePromotionModule } from './plate-promotion/plate-promotion.module';
+import { OrderDetailPlatesModule } from './order-detail-plates/order-detail-plates.module';
+import { OrderOrderDetailModule } from './order-order-detail/order-order-detail.module';
+import { OrderPayModeModule } from './order-pay-mode/order-pay-mode.module';
+import { OrderTableModule } from './order-table/order-table.module';
+import { SitePromotionModule } from './site-promotion/site-promotion.module';
 
 @Module({
   imports: [
-    AddressModule,
-    CategoryModule,
-    ClientModule,
-    CoordinateModule,
-    DescriptionTagModule,
-    ImageModule,
-    MenuModule,
-    MenuVisualPreferencesModule,
-    MenuVisualTemplateModule,
-    OrderModule,
-    OrderDetailModule,
-    PayModeModule,
-    PlateModule,
-    PromotionModule,
-    RestaurantChainModule,
-    RestaurantOperatorModule,
-    RestaurantSiteModule,
-    ReviewModule,
-    ScheduleModule,
-    TableModule,
-
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -115,39 +99,47 @@ import { PlatePromotionModule } from './plate-promotion/plate-promotion.module';
       synchronize: true,
       keepConnectionAlive: true,
     }),
-
+    AddressModule,
+    CategoryModule,
+    ClientModule,
+    CoordinateModule,
+    DescriptionTagModule,
+    ImageModule,
+    MenuModule,
+    MenuVisualPreferencesModule,
+    MenuVisualTemplateModule,
+    OrderModule,
+    OrderDetailModule,
+    PayModeModule,
+    PlateModule,
+    PromotionModule,
+    RestaurantChainModule,
+    RestaurantOperatorModule,
+    RestaurantSiteModule,
+    ReviewModule,
+    ScheduleModule,
+    TableModule,
     ClientImageModule,
-
     ClientOrderModule,
-
     SiteScheduleModule,
-
     ClientCoordinateModule,
-
     ChainSiteModule,
-
     SiteTableModule,
-
     SiteOrderModule,
-
     SiteReviewModule,
-
     SiteOperatorModule,
-
     SiteScheduleModule,
-
     SiteMenuModule,
-
     SiteAddressModule,
-
     CategoryPlateModule,
-
     PlateDescriptionTagModule,
-
     PlateImageModule,
-
     PlatePromotionModule,
-    
+    OrderDetailPlatesModule,
+    OrderOrderDetailModule,
+    OrderPayModeModule,
+    OrderTableModule,
+    SitePromotionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

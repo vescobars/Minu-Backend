@@ -53,7 +53,7 @@ export class ChainSiteService {
         return chain.restaurantSites;
     }
     
-    async associateSitesMuseum(chainId: string, restaurantSites: RestaurantSiteEntity[]): Promise<RestaurantChainEntity> {
+    async associateSitesChain(chainId: string, restaurantSites: RestaurantSiteEntity[]): Promise<RestaurantChainEntity> {
         const chain: RestaurantChainEntity = await this.restaurantChainRepository.findOne({where: {id: chainId}, relations: ["restaurantSites"]});
     
         if (!chain)
