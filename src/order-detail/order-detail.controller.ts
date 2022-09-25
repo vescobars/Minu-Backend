@@ -10,7 +10,7 @@ import { OrderDetailService } from './order-detail.service';
 export class OrderDetailController {
     constructor(private readonly orderDetailService:OrderDetailService){}
     
-    @Get()
+    @Get(':chainId/sites/:siteId/orders/:orderId/orderDetails')
     async findAll() {
         return await this.orderDetailService.findAll();
     }
@@ -20,7 +20,7 @@ export class OrderDetailController {
         return await this.orderDetailService.findOne(orderDetailId);
     }
 
-    @Post()
+    @Post(':chainId/sites/:siteId/orders/:orderId/orderDetails')
     async create(@Body() orderDetailDto: OrderDetailDto) {
         const orderDetail: OrderDetailEntity = plainToInstance(OrderDetailEntity, orderDetailDto);
         return await this.orderDetailService.create(orderDetail);
