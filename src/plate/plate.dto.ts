@@ -1,17 +1,24 @@
-import {IsNotEmpty, IsNumber, IsString, IsUrl} from 'class-validator';
+import {IsNotEmpty, IsNumber, IsString, IsUUID} from 'class-validator';
+import { isNumberObject } from 'util/types';
 export class PlateDto {
-    @IsString()
-    @IsNotEmpty()
-    name: string;
 
-    @IsString()
-    description: string;
+ @IsUUID()
+ @IsNotEmpty()
+ readonly id: string;
 
-    @IsNumber()
-    @IsNotEmpty()
-    value: number;
-
-    @IsString()
-    @IsNotEmpty()
-    notes: string;
+ @IsString()
+ @IsNotEmpty()
+ readonly name: string;
+ 
+ @IsString()
+ @IsNotEmpty()
+ readonly description: string;
+ 
+ @IsNumber()
+ @IsNotEmpty()
+ readonly value: number;
+ 
+ @IsString()
+ @IsNotEmpty()
+ readonly notes: string;
 }
