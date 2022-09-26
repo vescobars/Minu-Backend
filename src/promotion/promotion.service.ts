@@ -32,7 +32,7 @@ export class PromotionService {
         if (!persistedPromotion)
           throw new BusinessLogicException("The promotion with the given id was not found", BusinessError.NOT_FOUND);
        
-          promotion.id = id; 
+        promotion.id = id; 
        
         return await this.promotionRepository.save(promotion);
     }

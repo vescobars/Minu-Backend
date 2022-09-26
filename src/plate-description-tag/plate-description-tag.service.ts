@@ -24,7 +24,7 @@ export class PlateDescriptionTagService {
         if (!plate)
           throw new BusinessLogicException("The plate with the given id was not found", BusinessError.NOT_FOUND);
     
-          plate.descriptionTags = [...plate.descriptionTags, descriptionTag];
+        plate.descriptionTags = [...plate.descriptionTags, descriptionTag];
         return await this.plateRepository.save(plate);
       }
     
@@ -83,7 +83,7 @@ export class PlateDescriptionTagService {
         if (!plateDescriptionTag)
             throw new BusinessLogicException("The descriptionTag with the given id is not associated to the plate", BusinessError.PRECONDITION_FAILED)
  
-            plate.descriptionTags = plate.descriptionTags.filter(e => e.id !== descriptionTagId);
+        plate.descriptionTags = plate.descriptionTags.filter(e => e.id !== descriptionTagId);
         await this.plateRepository.save(plate);
     }  
 }

@@ -24,7 +24,7 @@ export class PlateImageService {
         if (!plate)
           throw new BusinessLogicException("The plate with the given id was not found", BusinessError.NOT_FOUND);
     
-          plate.images = [...plate.images, image];
+        plate.images = [...plate.images, image];
         return await this.plateRepository.save(plate);
       }
     
@@ -83,7 +83,7 @@ export class PlateImageService {
         if (!plateImage)
             throw new BusinessLogicException("The image with the given id is not associated to the plate", BusinessError.PRECONDITION_FAILED)
  
-            plate.images = plate.images.filter(e => e.id !== imageId);
+        plate.images = plate.images.filter(e => e.id !== imageId);
         await this.plateRepository.save(plate);
     }  
 }
