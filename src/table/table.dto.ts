@@ -3,13 +3,13 @@ import { IsBoolean, IsNotEmpty, IsNumber } from "class-validator";
 export class TableDto {
     @IsNumber()
     @IsNotEmpty()
-    seats:number;
+    readonly seats:number;
 
     @IsNumber()
     @IsNotEmpty()
-    number:number;
+    readonly number:number;
 
     @IsBoolean()
     @IsNotEmpty()
-    occupied:boolean;
+    readonly occupied:boolean;
 }

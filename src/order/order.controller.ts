@@ -4,6 +4,7 @@ import { OrderService } from './order.service';
 import { OrderDto } from './order.dto';
 import { OrderEntity } from './order.entity';
 import { plainToInstance } from 'class-transformer';
+import { HttpCode } from '@nestjs/common/decorators';
 
 @Controller('orders')
 @UseInterceptors(BusinessErrorsInterceptor)
@@ -34,6 +35,7 @@ export class OrderController {
     }
 
     @Delete(':orderId')
+    @HttpCode(204)
     async delete(@Param('orderId') orderId:string){
         return await this.orderService.delete(orderId);
     }
