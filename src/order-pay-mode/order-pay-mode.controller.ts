@@ -5,33 +5,33 @@ import { PayModeEntity } from '../pay-mode/pay-mode.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { OrderPayModeService } from './order-pay-mode.service';
 
-@Controller('chains')
+@Controller('sites')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class OrderPayModeController {
     constructor(private readonly orderPayModeService: OrderPayModeService){}
 
-    @Post(':chainId/sites/:siteId/orders/:orderId/paymodes/:paymodeId')
-    async addPayModeOrder(@Param('orderId') orderId: string, @Param('paymodeId') paymodeId: string){
+    @Post(':siteId/orders/:orderId/paymodes/:paymodeId')
+    async addPayModeOrder(@Param('siteId') siteId:string, @Param('orderId') orderId: string, @Param('paymodeId') paymodeId: string){
        return await this.orderPayModeService.addPayModeOrder(orderId, paymodeId);
     }
 
-    @Get(':chainId/sites/:siteId/orders/:orderId/paymodes/:paymodeId')
+    @Get(':siteId/orders/:orderId/paymodes/:paymodeId')
     async findPayModeByOrderIdPayModeId(@Param('orderId') orderId: string, @Param('paymodeId') paymodeId: string){
        return await this.orderPayModeService.findPayModeByOrderIdPayModeId(orderId, paymodeId);
     }
 
-    @Get(':chainId/sites/:siteId/orders/:orderId/paymodes')
+    @Get(':siteId/orders/:orderId/paymodes')
     async findPayModeByOrderId(@Param('orderId') orderId: string){
        return await this.orderPayModeService.findPayModeByOrderId(orderId);
     }
 
-    @Put(':chainId/sites/:siteId/orders/:orderId/paymodes')
+    @Put(':siteId/orders/:orderId/paymodes')
     async associatePayModeOrder(@Body() paymodeDto: PayModeDto, @Param('orderId') orderId: string){
        const paymode = plainToInstance(PayModeEntity, paymodeDto)
        return await this.orderPayModeService.associatePayModeOrder(orderId, paymode);
     }
 
-    @Delete(':chainId/sites/:siteId/orders/:orderId/paymodes/:paymodeId')
+    @Delete(':siteId/orders/:orderId/paymodes/:paymodeId')
     @HttpCode(204)
     async deletePayModeOrder(@Param('orderId') orderId: string, @Param('paymodeId') paymodeId: string){
        return await this.orderPayModeService.deletePayModeOrder(orderId, paymodeId);

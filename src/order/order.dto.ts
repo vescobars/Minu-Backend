@@ -5,9 +5,9 @@ export class OrderDto {
   @IsNotEmpty()
   state: string;
 
-  @IsDate()
+  @IsString()
   @IsNotEmpty()
-  date: Date;
+  date: string;
 
   @IsNumber()
   @IsNotEmpty()
