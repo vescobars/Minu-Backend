@@ -5,7 +5,7 @@ import { OrderDetailDto } from './order-detail.dto';
 import { OrderDetailEntity } from './order-detail.entity';
 import { OrderDetailService } from './order-detail.service';
 
-@Controller('orderDetail')
+@Controller('orderDetails')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class OrderDetailController {
     constructor(private readonly orderDetailService:OrderDetailService){}
