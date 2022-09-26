@@ -1,0 +1,556 @@
+{
+	"info": {
+		"_postman_id": "82d25173-8260-4c05-9417-1e037984cb79",
+		"name": "Sites-Addresses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17049912"
+	},
+	"item": [
+		{
+			"name": "Add a restaurantSite",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"site_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Site1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/sites",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a restaurantSite to a restaurantChain",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rc1\",\r\n    \"name\": \"chain1\",\r\n    \"restaurantSites\": [\r\n        {\r\n            \"id\": \"rs1\",\r\n            \"description\": \"Site of chain1. Located in Bogotá.\",\r\n            \"openingTime\": \"\",\r\n            \"closingTime\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Add an address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"address_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"location\": \"Loc\",\r\n    \"city\": \"Bogota\",\r\n    \"neighborhood\": \"Chapinero Norte\",\r\n    \"direction\": \"Cl. 69a #9-66\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/address",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"address"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a restaurantSite to a restaurantChain",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rc1\",\r\n    \"name\": \"chain1\",\r\n    \"restaurantSites\": [\r\n        {\r\n            \"id\": \"rs1\",\r\n            \"description\": \"Site of chain1. Located in Bogotá.\",\r\n            \"openingTime\": \"\",\r\n            \"closingTime\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Add address to a site",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}/addresses/{{address_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}",
+						"addresses",
+						"{{address_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a restaurantSite to a restaurantChain",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rc1\",\r\n    \"name\": \"chain1\",\r\n    \"restaurantSites\": [\r\n        {\r\n            \"id\": \"rs1\",\r\n            \"description\": \"Site of chain1. Located in Bogotá.\",\r\n            \"openingTime\": \"\",\r\n            \"closingTime\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get address of a site",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}",
+						"addresses"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a restaurantSite of a restaurantChain",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rs1\",\r\n    \"description\": \"Site of chain1. Located in Bogotá.\",\r\n    \"openingTime\": \"\",\r\n    \"closingTime\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update address of a site",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"location\": \"Loc2\",\r\n    \"city\": \"Bogota\",\r\n    \"neighborhood\": \"Chapinero Norte\",\r\n    \"direction\": \"Cl. 70a #9-66\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}",
+						"addresses"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update restaurantSites of a restaurantChain",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"rc1\",\r\n    \"name\":\"chain1\",\r\n    \"restaurantSites\":[\r\n            {\r\n                \"id\": \"rs1\",\r\n                \"description\": \"New site of chain1. Located in Bogotá.\",\r\n                \"openingTime\": \"\",\r\n                \"closingTime\": \"\"\r\n            }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete address of a site",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}/addresses/{{address_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}",
+						"addresses",
+						"{{address_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a restaurantSite of a restaurantChain",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete a restaurantSite",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a restaurantChain",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000/api/v1"
+		}
+	]
+}

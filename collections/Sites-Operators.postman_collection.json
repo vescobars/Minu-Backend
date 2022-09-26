@@ -1,0 +1,865 @@
+{
+	"info": {
+		"_postman_id": "0144b600-b932-4743-bf65-a0d30b596703",
+		"name": "Sites-Operators",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17049912"
+	},
+	"item": [
+		{
+			"name": "Add a restaurantSite",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"site_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Site1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/sites",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a restaurantSite to a restaurantChain",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rc1\",\r\n    \"name\": \"chain1\",\r\n    \"restaurantSites\": [\r\n        {\r\n            \"id\": \"rs1\",\r\n            \"description\": \"Site of chain1. Located in Bogotá.\",\r\n            \"openingTime\": \"\",\r\n            \"closingTime\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Add an operator 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"operator_id_1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Nicolas\",\r\n    \"cellphone\": \"+57 310 000 0000\",\r\n    \"lastname\": \"Rodriguez\",\r\n    \"email\": \"nicolas@email.com\",\r\n    \"role\": \"supervisor\",\r\n    \"active\": true,\r\n    \"image\": \"http://image/nicolas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/operators",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"operators"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a restaurantSite to a restaurantChain",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rc1\",\r\n    \"name\": \"chain1\",\r\n    \"restaurantSites\": [\r\n        {\r\n            \"id\": \"rs1\",\r\n            \"description\": \"Site of chain1. Located in Bogotá.\",\r\n            \"openingTime\": \"\",\r\n            \"closingTime\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Add an operator 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"operator_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Veronica\",\r\n    \"cellphone\": \"+57 310 000 0000\",\r\n    \"lastname\": \"Escobar\",\r\n    \"email\": \"veronica@email.com\",\r\n    \"role\": \"supervisor\",\r\n    \"active\": true,\r\n    \"image\": \"http://image/veronica\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/operators",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"operators"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a restaurantSite to a restaurantChain",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rc1\",\r\n    \"name\": \"chain1\",\r\n    \"restaurantSites\": [\r\n        {\r\n            \"id\": \"rs1\",\r\n            \"description\": \"Site of chain1. Located in Bogotá.\",\r\n            \"openingTime\": \"\",\r\n            \"closingTime\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Add an operator to a site",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}/operators/{{operator_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}",
+						"operators",
+						"{{operator_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a restaurantSite to a restaurantChain",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rc1\",\r\n    \"name\": \"chain1\",\r\n    \"restaurantSites\": [\r\n        {\r\n            \"id\": \"rs1\",\r\n            \"description\": \"Site of chain1. Located in Bogotá.\",\r\n            \"openingTime\": \"\",\r\n            \"closingTime\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get an operator of a site",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}/operators/{{operator_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}",
+						"operators",
+						"{{operator_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a restaurantSite of a restaurantChain",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rs1\",\r\n    \"description\": \"Site of chain1. Located in Bogotá.\",\r\n    \"openingTime\": \"\",\r\n    \"closingTime\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get all operators of a site",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}/operators",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}",
+						"operators"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all restaurantSites of a restaurantChain",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": \"rs1\",\r\n        \"description\": \"Site of chain1. Located in Bogotá.\",\r\n        \"openingTime\": \"\",\r\n        \"closingTime\": \"\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update operators of a site Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": \"{{operator_id_2}}\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}/operators",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}",
+						"operators"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update restaurantSites of a restaurantChain",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"rc1\",\r\n    \"name\":\"chain1\",\r\n    \"restaurantSites\":[\r\n            {\r\n                \"id\": \"rs1\",\r\n                \"description\": \"New site of chain1. Located in Bogotá.\",\r\n                \"openingTime\": \"\",\r\n                \"closingTime\": \"\"\r\n            }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete an operator of a site",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}/operators/{{operator_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}",
+						"operators",
+						"{{operator_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a restaurantSite of a restaurantChain",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete an operator 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/operators/{{operator_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"operators",
+						"{{operator_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a restaurantChain",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete an operator 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/operators/{{operator_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"operators",
+						"{{operator_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a restaurantChain",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete a restaurantSite Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sites/{{site_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sites",
+						"{{site_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a restaurantChain",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000/api/v1"
+		}
+	]
+}
