@@ -8,10 +8,10 @@ export class PromotionEntity {
     id: string;
 
     @Column()
-    startDate: Date;
+    startDate: string;
 
     @Column()
-    endDate: Date;
+    endDate: string;
 
     @Column()
     discount: number;
