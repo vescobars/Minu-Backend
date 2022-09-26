@@ -18,7 +18,7 @@ export class ClientCoordinateService {
     private readonly coordinateRepository: Repository<CoordinateEntity>,
   ) {}
 
-  async addImageClient(
+  async addCoordinateClient(
     clientId: string,
     coordinateId: string,
   ): Promise<ClientEntity> {
@@ -46,7 +46,7 @@ export class ClientCoordinateService {
     return await this.clientRepository.save(client);
   }
 
-  async findImageByMuseumId(clientId: string): Promise<CoordinateEntity> {
+  async findCoordinateByClientId(clientId: string): Promise<CoordinateEntity> {
     const client: ClientEntity = await this.clientRepository.findOne({
       where: { id: clientId },
       relations: ['currentLocation'],
@@ -60,7 +60,7 @@ export class ClientCoordinateService {
     return client.currentLocation;
   }
 
-  async associateImageClient(
+  async associateCoordinateClient(
     clientId: string,
     coordinate: CoordinateEntity,
   ): Promise<ClientEntity> {
@@ -89,7 +89,7 @@ export class ClientCoordinateService {
     return await this.clientRepository.save(client);
   }
 
-  async deleteImageClient(clientId: string, coordinateId: string) {
+  async deleteCoordinateClient(clientId: string, coordinateId: string) {
     const coordinate: CoordinateEntity =
       await this.coordinateRepository.findOne({
         where: { id: coordinateId },

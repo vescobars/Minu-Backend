@@ -1,0 +1,2852 @@
+{
+	"info": {
+		"_postman_id": "31a0a5a1-f92e-4273-baaa-3ec83c9eaac3",
+		"name": "VEscobar Postman Web",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14847975"
+	},
+	"item": [
+		{
+			"name": "Prerequisite Requests",
+			"item": [
+				{
+					"name": "Create Chain Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"chainId\", data.id);\r",
+									"pm.environment.set(\"chainId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chainName\": \"MacDonalds\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Site Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"siteId\", data.id);\r",
+									"pm.environment.set(\"siteId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Sede carrera 70 #180-35\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sites",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"orderId\", data.id);\r",
+									"pm.environment.set(\"orderId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\": \"Preparing\",\r\n    \"date\":  \"11/09/2022 12:11:04 PM\",\r\n    \"totalValue\": 10000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Table Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"tableId\", data.id);\r",
+									"pm.environment.set(\"tableId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"seats\":4,\r\n    \"number\":1,\r\n    \"occupied\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tables",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create OrderDetail Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"orderDetailId\", data.id);\r",
+									"pm.environment.set(\"orderDetailId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"notes\": \"No onions please\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orderDetails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create PayMode Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"paymodeId\", data.id);\r",
+									"pm.environment.set(\"paymodeId\", data.id);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"Nequi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paymodes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Plate Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"plateId\", data.id);\r",
+									"pm.environment.set(\"plateId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fried Chicken\",\r\n    \"description\": \"Delicious Fried Chicken\",\r\n    \"value\": 15000,\r\n    \"notes\": \"No nut alergies\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plates",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"orderId\", data.id);\r",
+									"pm.environment.set(\"orderId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\": \"Preparing\",\r\n    \"date\":  \"11/09/2022 12:11:04 PM\",\r\n    \"totalValue\": 10000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"state\": \"Preparing\",\r\n    \"date\":  \"11/09/2022 12:11:04 PM\",\r\n    \"totalValue\": 10000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"state\": \"Preparing\",\n    \"date\": \"2022-11-09T17:11:04.000Z\",\n    \"totalValue\": 10000,\n    \"id\": \"53af4661-a4e2-4816-8b3b-7bbae44f1560\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get One Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get One Order",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/{{orderId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"{{orderId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"state\": \"Preparing\",\n    \"date\": \"2022-11-09T17:11:04.000Z\",\n    \"totalValue\": 10000,\n    \"id\": \"53af4661-a4e2-4816-8b3b-7bbae44f1560\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get ALL orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get ALL orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\r\n    {\r\n    \"state\": \"Preparing\",\r\n    \"date\": \"2022-11-09T17:11:04.000Z\",\r\n    \"totalValue\": 10000,\r\n    \"id\": \"53af4661-a4e2-4816-8b3b-7bbae44f1560\"\r\n    },\r\n    {\r\n    \"state\": \"Ready\",\r\n    \"date\": \"2022-10-09T17:11:04.000Z\",\r\n    \"totalValue\": 14000,\r\n    \"id\": \"53adsada-a4e2-4816-8b3b-7bbae44f1560\"\r\n    }\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Modify Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\": \"Ready\",\r\n    \"date\": \"2022-11-09T17:20:04.000Z\",\r\n    \"totalValue\": 10000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify Order",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"state\": \"Ready\",\r\n    \"date\": \"2022-11-09T17:20:04.000Z\",\r\n    \"totalValue\": 10000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/{{orderId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"{{orderId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"state\": \"Ready\",\r\n    \"date\": \"2022-11-09T17:20:04.000Z\",\r\n    \"totalValue\": 10000\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Order",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/{{orderId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"{{orderId}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OrderDetail",
+			"item": [
+				{
+					"name": "Create OrderDetail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"orderDetailId\", data.id);\r",
+									"pm.environment.set(\"orderDetailId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"notes\": \"No onions please\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orderDetails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderDetails"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create order details for an order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"235cfba8-feef-4033-84b5-231a47121472\",\r\n    \"notes\": \"No onions\",\r\n    \"plates\": [\r\n        {\r\n            \"name\": \"Cheesseburger\",\r\n            \"description\": \"150gr patty and american cheese\",\r\n            \"value\": 15000,\r\n            \"notes\": \"\"\r\n        },\r\n        {\r\n            \"name\": \"Small Fries\",\r\n            \"description\": \"\",\r\n            \"value\": 5000,\r\n            \"notes\": \"\"\r\n        },\r\n        {\r\n            \"name\": \"Club Colombia Negra\",\r\n            \"description\": \"\",\r\n            \"value\": 3000,\r\n            \"notes\": \"\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orderDetails/{{orderDetailId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orderDetails",
+										"{{orderDetailId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"235cfba8-feef-4033-84b5-231a47121472\",\n    \"notes\": \"No onions\",\n    \"plates\": [\n        {\n            \"name\": \"Cheesseburger\",\n            \"description\": \"150gr patty and american cheese\",\n            \"value\": 15000,\n            \"notes\": \"\"\n        },\n        {\n            \"name\": \"Small Fries\",\n            \"description\": \"\",\n            \"value\": 5000,\n            \"notes\": \"\"\n        },\n        {\n            \"name\": \"Club Colombia Negra\",\n            \"description\": \"\",\n            \"value\": 3000,\n            \"notes\": \"\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get ONE OrderDetails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orderDetails/{{orderDetailId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderDetails",
+								"{{orderDetailId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get an orders  order details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orderDetails/{{orderDetailId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orderDetails",
+										"{{orderDetailId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"d0708f7d-3f4e-4254-8209-ec1191b9edf5\",\n    \"notes\": \"No onions please\",\n    \"plates\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Get ALL OrderDetails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orderDetails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderDetails"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get ALL OrderDetails",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orderDetails",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orderDetails"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"d0708f7d-3f4e-4254-8209-ec1191b9edf5\",\n        \"notes\": \"No onions please\",\n        \"plates\": []\n    },\n    {\n        \"id\": \"adsasd89s-3f4e-4254-8209-ec1191b9edf5\",\n        \"notes\": \"No tomatoes please\",\n        \"plates\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Modify OrderDetail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"notes\": \"More onions please\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orderDetails/{{orderDetailId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderDetails",
+								"{{orderDetailId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify a order details for an order",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"235cfba8-feef-4033-84b5-231a47121472\",\r\n    \"notes\": \"No onions and tomatoes\",\r\n    \"plates\": [\r\n        {\r\n            \"name\": \"Cheesseburger\",\r\n            \"description\": \"300gr patty and american cheese\",\r\n            \"value\": 15000,\r\n            \"notes\": \"\"\r\n        },\r\n        {\r\n            \"name\": \"Small Fries\",\r\n            \"description\": \"\",\r\n            \"value\": 5000,\r\n            \"notes\": \"\"\r\n        },\r\n        {\r\n            \"name\": \"Club Colombia Negra\",\r\n            \"description\": \"\",\r\n            \"value\": 3000,\r\n            \"notes\": \"\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orderDetails/{{orderDetailId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orderDetails",
+										"{{orderDetailId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"id\": \"d0708f7d-3f4e-4254-8209-ec1191b9edf5\",\r\n    \"notes\": \"No onions please\",\r\n    \"plates\": []\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete OrderDetail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orderDetails/{{orderDetailId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderDetails",
+								"{{orderDetailId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete order details for an order",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orderDetails/{{orderDetailId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orderDetails",
+										"{{orderDetailId}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PayMode",
+			"item": [
+				{
+					"name": "Create PayMode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"paymodeId\", data.id);\r",
+									"pm.environment.set(\"paymodeId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"Nequi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paymodes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymodes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create paymode for an order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\":\"Daviplata\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/paymodes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"paymodes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"0c480dac-92ae-4b1d-ad6a-12e66f118e6d\",\n    \"type\": \"Daviplata\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get One PayMode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paymodes/{{paymodeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymodes",
+								"{{paymodeId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get el metodo de pago de una orden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/paymodes/{{paymodeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sites",
+										"{{siteId}}",
+										"orders",
+										"{{orderId}}",
+										"paymodes",
+										"{{paymodeId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"0c480dac-92ae-4b1d-ad6a-12e66f118e6d\",\n    \"type\": \"Nequi\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All PayModes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paymodes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymodes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All PayModes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/paymodes/{{paymodeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sites",
+										"{{siteId}}",
+										"orders",
+										"{{orderId}}",
+										"paymodes",
+										"{{paymodeId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "[\r\n    {\r\n    \"id\": \"0c480dac-92ae-4b1d-ad6a-12e66f118e6d\",\r\n    \"type\": \"Nequi\"\r\n    },\r\n    {\r\n    \"id\": \"abac293-92ae-4b1d-ad6a-12e66f118e6d\",\r\n    \"type\": \"Daviplata\"\r\n    }   \r\n]"
+						}
+					]
+				},
+				{
+					"name": "Modify PayMode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"Daviplata\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paymodes/{{paymodeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymodes",
+								"{{paymodeId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify PayMode",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"Daviplata\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/paymodes/{{paymodeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"paymodes",
+										"{{paymodeId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"dad55122-8d79-4de3-87d1-c2f62959b9b6\",\n    \"type\": \"Daviplata\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete PayMode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paymodes/{{paymodeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymodes",
+								"{{paymodeId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete PayMode",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/paymodes/{{paymodeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"paymodes",
+										"{{paymodeId}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Table",
+			"item": [
+				{
+					"name": "Create Table",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.collectionVariables.set(\"tableId\", data.id);\r",
+									"pm.environment.set(\"tableId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"seats\":4,\r\n    \"number\":1,\r\n    \"occupied\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tables",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tables"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Table",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"seats\":4,\r\n    \"number\":1,\r\n    \"occupied\":true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/tables",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tables"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"seats\": 4,\r\n    \"number\": 1,\r\n    \"occupied\": true,\r\n    \"id\": \"dd44d638-a4e7-4fbd-b69c-e98cd3ce2342\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get ONE table",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tables/{{tableId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tables",
+								"{{tableId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get ONE table",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tables/{{tableId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tables",
+										"{{tableId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"seats\": 4,\n    \"number\": 1,\n    \"occupied\": true,\n    \"id\": \"dd44d638-a4e7-4fbd-b69c-e98cd3ce2342\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get ALL tables",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tables",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tables"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get ALL tables",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tables",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tables"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\r\n    {\r\n    \"seats\": 4,\r\n    \"number\": 1,\r\n    \"occupied\": true,\r\n    \"id\": \"dd44d638-a4e7-4fbd-b69c-e98cd3ce2342\"\r\n    },\r\n    {\r\n    \"seats\": 3,\r\n    \"number\": 2,\r\n    \"occupied\": false,\r\n    \"id\": \"dads78a9s-a4e7-4fbd-b69c-e98cd3ce2342\"\r\n    }\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Modify Table",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"seats\": 4,\r\n    \"number\": 1,\r\n    \"occupied\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tables/{{tableId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tables",
+								"{{tableId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify Table",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"seats\": 4,\r\n    \"number\": 1,\r\n    \"occupied\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/tables/{{tableId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tables",
+										"{{tableId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"seats\": 4,\r\n    \"number\": 1,\r\n    \"occupied\": false,\r\n    \"id\": \"dd44d638-a4e7-4fbd-b69c-e98cd3ce2342\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Table",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tables/{{tableId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tables",
+								"{{tableId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Table",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tables/{{tableId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tables",
+										"{{tableId}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order-Paymode",
+			"item": [
+				{
+					"name": "Create paymode for an order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/paymodes/{{paymodeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"paymodes",
+								"{{paymodeId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create paymode for an order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/paymodes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sites",
+										"{{siteId}}",
+										"orders",
+										"{{orderId}}",
+										"paymodes"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get el metodo de pago de una orden",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/paymodes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"paymodes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get el metodo de pago de una orden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/paymodes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"paymodes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"0c480dac-92ae-4b1d-ad6a-12e66f118e6d\",\n    \"type\": \"Nequi\"\n}"
+						},
+						{
+							"name": "Get the payment method for an order when it hasnt been payed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/paymodes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"paymodes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete OrderPaymode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chainId}}/sites/{{siteId}}/orders/{{orderId}}/paymodes/{{paymodeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chainId}}",
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"paymodes",
+								"{{paymodeId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete OrderPaymode",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/paymodes/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"paymodes",
+										"{id}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Modify the payment method for an order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chainId}}/sites/{{siteId}}/orders/{{orderId}}/paymodes/{{paymodeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chainId}}",
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"paymodes",
+								"{{paymodeId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify the payment method for an order",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\":\"Daviplata\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/paymodes/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"paymodes",
+										"{id}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"0c480dac-92ae-4b1d-ad6a-12e66f118e6d\",\n    \"type\": \"Daviplata\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order-Table",
+			"item": [
+				{
+					"name": "Create order and associate it with a table",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/tables/{{tableId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"tables",
+								"{{tableId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create order and associate it with a table",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"id\": \"a886bedb-24fd-489b-bb31-db3ae4b46d17\",\r\n        \"state\": \"Preparing Order\",\r\n        \"date\": \"2022-01-18\",\r\n        \"total_value\": 23000,\r\n        \"orderDetail\": {\r\n            \"id\": \"235cfba8-feef-4033-84b5-231a47121472\",\r\n            \"notes\": \"No onions\",\r\n            \"plates\": [\r\n                {\r\n                    \"name\": \"Cheesseburger\",\r\n                    \"description\": \"150gr patty and american cheese\",\r\n                    \"value\": 15000,\r\n                    \"notes\": \"\"\r\n                },\r\n                {\r\n                    \"name\": \"Small Fries\",\r\n                    \"description\": \"\",\r\n                    \"value\": 5000,\r\n                    \"notes\": \"\"\r\n                },\r\n                {\r\n                    \"name\": \"Club Colombia Negra\",\r\n                    \"description\": \"\",\r\n                    \"value\": 3000,\r\n                    \"notes\": \"\"\r\n                }\r\n            ]\r\n        },\r\n        \"paymode\": {\r\n            \"id\": \"0c480dac-92ae-4b1d-ad6a-12e66f118e6d\",\r\n            \"type\": null\r\n        },\r\n        \"table\": {\r\n            \"id\": \"c2da841e-21d4-4039-85b8-b58613425758\",\r\n            \"seats\": 4,\r\n            \"number\": 1,\r\n            \"occupied\": true\r\n        }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/tables",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"tables"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"id\": \"c2da841e-21d4-4039-85b8-b58613425758\",\r\n    \"seats\": 4,\r\n    \"number\": 1,\r\n    \"occupied\": true\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Table associated with an order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/tables",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"tables"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Table associated with an order",
+							"originalRequest": {
+								"method": "GET",
+								"header": []
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"c2da841e-21d4-4039-85b8-b58613425758\",\n    \"seats\": 4,\n    \"number\": 1,\n    \"occupied\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Modify the table for an order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"seats\": 4,\r\n    \"number\": 1,\r\n    \"occupied\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/tables",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"tables"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify the table for an order",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"676656c4-ea05-4881-a48f-d363aba992dc\",\r\n    \"seats\": 4,\r\n    \"number\": 1,\r\n    \"occupied\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/tables/{{tableId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sites",
+										"{{siteId}}",
+										"orders",
+										"{{orderId}}",
+										"tables",
+										"{{tableId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"id\": \"676656c4-ea05-4881-a48f-d363aba992dc\",\r\n    \"seats\": 4,\r\n    \"number\": 1,\r\n    \"occupied\": false\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete table from an order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/tables/{{tableId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"tables",
+								"{{tableId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete table from an order",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/tables",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"tables"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order-OrderDetail",
+			"item": [
+				{
+					"name": "Add OrderDetail To Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/orderDetails/{{orderDetailId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"orderDetails",
+								"{{orderDetailId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add OrderDetail To Order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/orderDetail/{{orderDetailId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sites",
+										"{{siteId}}",
+										"orders",
+										"{{orderId}}",
+										"orderDetail",
+										"{{orderDetailId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"98ee9a13-7964-46a1-a4a7-8fb5934a8173\",\n    \"state\": \"Preparing\",\n    \"date\": \"2022-11-09T17:11:04.000Z\",\n    \"totalValue\": 10000,\n    \"orderDetail\": {\n        \"id\": \"c319bb9c-e3ea-4b34-abd7-3d047b3b2db9\",\n        \"notes\": \"No onions please\"\n    },\n    \"payMode\": null,\n    \"table\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Order Detail from Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/orderDetails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"orderDetails"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Order Detail from Order",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/orderDetails",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sites",
+										"{{siteId}}",
+										"orders",
+										"{{orderId}}",
+										"orderDetails"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"98ee9a13-7964-46a1-a4a7-8fb5934a8173\",\n    \"state\": \"Preparing\",\n    \"date\": \"2022-11-09T17:11:04.000Z\",\n    \"totalValue\": 10000,\n    \"orderDetail\": {\n        \"id\": \"c319bb9c-e3ea-4b34-abd7-3d047b3b2db9\",\n        \"notes\": \"No onions please\"\n    },\n    \"payMode\": null,\n    \"table\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Modify Orders Order Detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"notes\": \"More onions please\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/orderDetails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"orderDetails"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify Orders Order Detail",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"notes\": \"More onions please\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/orderDetails",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sites",
+										"{{siteId}}",
+										"orders",
+										"{{orderId}}",
+										"orderDetails"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"98ee9a13-7964-46a1-a4a7-8fb5934a8173\",\n    \"state\": \"Preparing\",\n    \"date\": \"2022-11-09T17:11:04.000Z\",\n    \"totalValue\": 10000,\n    \"orderDetail\": {\n        \"notes\": \"More onions please\"\n    },\n    \"payMode\": null,\n    \"table\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete order detail from order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/orderDetails/{{orderDetailId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sites",
+								"{{siteId}}",
+								"orders",
+								"{{orderId}}",
+								"orderDetails",
+								"{{orderDetailId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete order detail from order",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/sites/{{siteId}}/orders/{{orderId}}/orderDetails/{{orderDetailId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sites",
+										"{{siteId}}",
+										"orders",
+										"{{orderId}}",
+										"orderDetails",
+										"{{orderDetailId}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OrderDetail-Plate",
+			"item": [
+				{
+					"name": "Create plates in an orderDetail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/orderDetails/{{orderDetailId}}/plates/{{plateId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"orderDetails",
+								"{{orderDetailId}}",
+								"plates",
+								"{{plateId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create plates in an orderDetail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"name\": \"Cheesseburger\",\r\n        \"description\": \"150gr patty and american cheese\",\r\n        \"value\": 15000,\r\n        \"notes\": \"\"\r\n    },\r\n    {\r\n        \"name\": \"Small Fries\",\r\n        \"description\": \"\",\r\n        \"value\": 5000,\r\n        \"notes\": \"\"\r\n    },\r\n    {\r\n        \"name\": \"Club Colombia Negra\",\r\n        \"description\": \"\",\r\n        \"value\": 3000,\r\n        \"notes\": \"\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}restaurantSites/{id}/orders/{id}/orderDetails/{id}/plates",
+									"host": [
+										"{{baseUrl}}restaurantSites"
+									],
+									"path": [
+										"{id}",
+										"orders",
+										"{id}",
+										"orderDetails",
+										"{id}",
+										"plates"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"a886bedb-24fd-489b-bb31-db3ae4b46d17\",\n    \"state\": \"Preparing Order\",\n    \"date\": \"2022-01-18\",\n    \"total_value\": 23000,\n    \"orderDetail\":{\n        \"id\":\"235cfba8-feef-4033-84b5-231a47121472\",\n        \"notes\":\"No onions\",\n        \"plates\":[\n            {\n                \"name\":\"Cheesseburger\",\n                \"description\":\"150gr patty and american cheese\",\n                \"value\":15000,\n                \"notes\":\"\"\n            },\n            {\n                \"name\":\"Small Fries\",\n                \"description\":\"\",\n                \"value\":5000,\n                \"notes\":\"\"\n            },\n            {\n                \"name\":\"Club Colombia Negra\",\n                \"description\":\"\",\n                \"value\":3000,\n                \"notes\":\"\"\n            }\n        ]\n    },\n    \"paymode\":{\n        \"id\": \"0c480dac-92ae-4b1d-ad6a-12e66f118e6d\",\n        \"type\":null\n    },\n    \"table\":{\n        \"id\":\"c2da841e-21d4-4039-85b8-b58613425758\",\n        \"seats\":4,\n        \"number\":1,\n        \"occupied\":true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get ALL plates in an orderDetail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/orderDetails/{{orderDetailId}}/plates",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"orderDetails",
+								"{{orderDetailId}}",
+								"plates"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get plates in an orderDetail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/orderDetails/{id}/plates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"orderDetails",
+										"{id}",
+										"plates"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"Cheesseburger\",\n        \"description\": \"150gr patty and american cheese\",\n        \"value\": 15000,\n        \"notes\": \"\"\n    },\n    {\n        \"name\": \"Small Fries\",\n        \"description\": \"\",\n        \"value\": 5000,\n        \"notes\": \"\"\n    },\n    {\n        \"name\": \"Club Colombia Negra\",\n        \"description\": \"\",\n        \"value\": 3000,\n        \"notes\": \"\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get ONE plates in an orderDetail Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/orderDetails/{{orderDetailId}}/plates/{{plateId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"orderDetails",
+								"{{orderDetailId}}",
+								"plates",
+								"{{plateId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get ONE plates in an orderDetail Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/orderDetails/{id}/plates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"orderDetails",
+										"{id}",
+										"plates"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"name\": \"Small Fries\",\n    \"description\": \"\",\n    \"value\": 5000,\n    \"notes\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Modify ALL plates in an orderDetail Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n            \"id\": \"cc8ff175-3de7-4007-9fb4-e29a0962591e\",\r\n            \"name\": \"Fried Chicken\",\r\n            \"description\": \"Delicious Fried Chicken\",\r\n            \"value\": 15000,\r\n            \"notes\": \"No nut alergies\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/orderDetails/{{orderDetailId}}/plates",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"orderDetails",
+								"{{orderDetailId}}",
+								"plates"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify all plates in an orderDetail Copy",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"name\": \"Cheesseburger\",\r\n        \"description\": \"150gr patty and american cheese\",\r\n        \"value\": 15000,\r\n        \"notes\": \"\"\r\n    },\r\n    {\r\n        \"name\": \"Small Fries\",\r\n        \"description\": \"\",\r\n        \"value\": 5000,\r\n        \"notes\": \"\"\r\n    },\r\n    {\r\n        \"name\": \"Club Colombia Negra\",\r\n        \"description\": \"\",\r\n        \"value\": 3000,\r\n        \"notes\": \"\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/orderDetails/{id}/plates/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"orderDetails",
+										"{id}",
+										"plates",
+										"{id}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"id\": \"a886bedb-24fd-489b-bb31-db3ae4b46d17\",\r\n    \"state\": \"Preparing Order\",\r\n    \"date\": \"2022-01-18\",\r\n    \"total_value\": 23000,\r\n    \"orderDetail\":{\r\n        \"id\":\"235cfba8-feef-4033-84b5-231a47121472\",\r\n        \"notes\":\"No onions\",\r\n        \"plates\":[\r\n            {\r\n                \"name\":\"Cheesseburger\",\r\n                \"description\":\"150gr patty and american cheese\",\r\n                \"value\":15000,\r\n                \"notes\":\"\"\r\n            },\r\n            {\r\n                \"name\":\"Small Fries\",\r\n                \"description\":\"\",\r\n                \"value\":5000,\r\n                \"notes\":\"\"\r\n            },\r\n            {\r\n                \"name\":\"Club Colombia Negra\",\r\n                \"description\":\"\",\r\n                \"value\":3000,\r\n                \"notes\":\"\"\r\n            }\r\n        ]\r\n    },\r\n    \"paymode\":{\r\n        \"id\": \"0c480dac-92ae-4b1d-ad6a-12e66f118e6d\",\r\n        \"type\":null\r\n    },\r\n    \"table\":{\r\n        \"id\":\"c2da841e-21d4-4039-85b8-b58613425758\",\r\n        \"seats\":4,\r\n        \"number\":1,\r\n        \"occupied\":true\r\n    }\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete ONE plate in an order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/orderDetails/{{orderDetailId}}/plates/{{plateId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"orderDetails",
+								"{{orderDetailId}}",
+								"plates",
+								"{{plateId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete ONE plate in an order",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/restaurantSites/{id}/orders/{id}/orderDetails/{id}/plates/{id}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurantSites",
+										"{id}",
+										"orders",
+										"{id}",
+										"orderDetails",
+										"{id}",
+										"plates",
+										"{id}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"//make sure to run all the post requests in the Prerequisites"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "chainId",
+			"value": ""
+		},
+		{
+			"key": "siteId",
+			"value": ""
+		},
+		{
+			"key": "orderId",
+			"value": ""
+		},
+		{
+			"key": "tableId",
+			"value": ""
+		},
+		{
+			"key": "orderDetailId",
+			"value": ""
+		},
+		{
+			"key": "paymodeId",
+			"value": ""
+		},
+		{
+			"key": "plateId",
+			"value": ""
+		}
+	]
+}

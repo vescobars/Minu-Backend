@@ -4,7 +4,7 @@ import {OneToOne,OneToMany,ManyToOne,ManyToMany, Column, Entity, PrimaryGenerate
 
 @Entity()
 export class TableEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id:string;
 
     @Column()
