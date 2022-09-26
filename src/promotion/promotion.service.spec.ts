@@ -7,7 +7,7 @@ import { PromotionService } from './promotion.service';
 import { faker } from '@faker-js/faker';
 import { PlateEntity } from '../plate/plate.entity';
 import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
-/*
+
 describe('PromotionService', () => {
   let service: PromotionService;
   let repository: Repository<PromotionEntity>;
@@ -22,9 +22,10 @@ describe('PromotionService', () => {
     service = module.get<PromotionService>(PromotionService);
     repository = module.get<Repository<PromotionEntity>>(getRepositoryToken(PromotionEntity));
     promotionsList.length = 0;
-    await seedDatabase();
+    //await seedDatabase();
   });
 
+  /*
   const seedDatabase = async () => {
     repository.clear();
     
@@ -39,11 +40,13 @@ describe('PromotionService', () => {
         promotionsList.push(promotion);
     }
   }
+  */
 
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
 
+  /*
   it('findAll should return all promotions', async () => {
     const promotions: PromotionEntity[] = await service.findAll();
     expect(promotions).not.toBeNull();
@@ -94,5 +97,5 @@ describe('PromotionService', () => {
      const deletedPromotion: PromotionEntity = await repository.findOne({ where: { id: promotion.id } })
     expect(deletedPromotion).toBeNull();
   });
+  */
 });
-*/

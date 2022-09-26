@@ -7,7 +7,7 @@ import { faker } from '@faker-js/faker';
 import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 import { PromotionEntity } from '../promotion/promotion.entity';
 
-/*
+
 describe('SitePromotionService', () => {
   let service: SitePromotionService;
   let siteRepository: Repository<RestaurantSiteEntity>;
@@ -25,9 +25,10 @@ describe('SitePromotionService', () => {
     siteRepository = module.get<Repository<RestaurantSiteEntity>>(getRepositoryToken(RestaurantSiteEntity));
     promotionRepository = module.get<Repository<PromotionEntity>>(getRepositoryToken(PromotionEntity));
 
-    await seedDatabase();
+    //await seedDatabase();
   });
 
+  /*
   const seedDatabase = async () => {
     promotionRepository.clear();
     siteRepository.clear();
@@ -48,11 +49,12 @@ describe('SitePromotionService', () => {
       promotions: promotionsList 
     })
   }
-
+  */
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
 
+  /*
   it('addPromotionSite should add an promotion to a site', async () => {
     const newPromotion: PromotionEntity = await promotionRepository.save({
       startDate: faker.date.recent(),
@@ -199,5 +201,5 @@ describe('SitePromotionService', () => {
 
     await expect(()=> service.deletePromotionSite(site.id, newPromotion.id)).rejects.toHaveProperty("message", "The promotion with the given id is not associated to the site"); 
   });
+  */
 });
-*/
