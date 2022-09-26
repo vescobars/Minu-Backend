@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors,} from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-//import { ReviewDto } from '../review/review.dto';
+import { ReviewDto } from '../review/review.dto';
 import { ReviewEntity } from '../review/review.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { SiteReviewService } from './site-review.service';
@@ -34,8 +34,6 @@ export class SiteReviewController {
     return await this.SiteReviewService.addReviewSite(siteId, reviewId);
   }
   
- /* 
- //Waiting for reviewDto implementation by gcagua
  @Put(':siteId/reviews')
   async associateReviewsSite(
     @Body() reviewsDto: ReviewDto[],
@@ -46,7 +44,7 @@ export class SiteReviewController {
       siteId,
       reviews,
     );
-  } */
+  }
 
   @Delete(':siteId/reviews/:reviewId')
   @HttpCode(204)
