@@ -5,34 +5,34 @@ import { plainToInstance } from 'class-transformer';
 import { PayModeDto } from './pay-mode.dto';
 import { PayModeEntity } from './pay-mode.entity';
 
-@Controller('chains')
+@Controller('paymodes')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class PayModeController {
     constructor(private readonly payModeService:PayModeService){}
 
-    @Get(':chainId/sites/:siteId/orders/:orderId/paymodes')
+    @Get()
     async findAll() {
       return await this.payModeService.findAll();
     }
   
-    @Get(':chainId/sites/:siteId/orders/:orderId/paymodes/:paymodeId')
+    @Get(':paymodeId')
     async findOne(@Param('payModeId') payModeId: string) {
       return await this.payModeService.findOne(payModeId);
     }
   
-    @Post(':chainId/sites/:siteId/orders/:orderId/paymodes')
+    @Post()
     async create(@Body() payModeDto: PayModeDto) {
       const payMode: PayModeEntity = plainToInstance(PayModeEntity, payModeDto);
       return await this.payModeService.create(payMode);
     }
   
-    @Put(':chainId/sites/:siteId/orders/:orderId/paymodes/:paymodeId')
+    @Put(':paymodeId')
     async update(@Param('payModeId') payModeId: string, @Body() payModeDto: PayModeDto) {
       const payMode: PayModeEntity = plainToInstance(PayModeEntity, payModeDto);
       return await this.payModeService.update(payModeId, payMode);
     }
   
-    @Delete(':chainId/sites/:siteId/orders/:orderId/paymodes/:paymodeId')
+    @Delete(':paymodeId')
     @HttpCode(204)
     async delete(@Param('payModeId') payModeId: string) {
       return await this.payModeService.delete(payModeId);
