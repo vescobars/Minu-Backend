@@ -8,14 +8,14 @@ import { SiteReviewService } from './site-review.service';
 @Controller('sites')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class SiteReviewController {
-    constructor(private readonly SiteReviewService: SiteReviewService) {}
+    constructor(private readonly siteReviewService: SiteReviewService) {}
 
   @Get(':siteId/reviews/:reviewId')
   async findReviewBySiteIdReviewId(
     @Param('siteId') siteId: string,
     @Param('reviewId') reviewId: string,
   ) {
-    return await this.SiteReviewService.findReviewBySiteIdReviewId(
+    return await this.siteReviewService.findReviewBySiteIdReviewId(
       siteId,
       reviewId,
     );
@@ -23,7 +23,7 @@ export class SiteReviewController {
 
   @Get(':siteId/reviews')
   async findReviewsBySiteId(@Param('siteId') siteId: string) {
-    return await this.SiteReviewService.findReviewsBySiteId(siteId);
+    return await this.siteReviewService.findReviewsBySiteId(siteId);
   }
 
   @Post(':siteId/reviews/:reviewId')
@@ -31,7 +31,7 @@ export class SiteReviewController {
     @Param('siteId') siteId: string,
     @Param('reviewId') reviewId: string,
   ) {
-    return await this.SiteReviewService.addReviewSite(siteId, reviewId);
+    return await this.siteReviewService.addReviewSite(siteId, reviewId);
   }
   
  @Put(':siteId/reviews')
@@ -40,7 +40,7 @@ export class SiteReviewController {
     @Param('siteId') siteId: string,
   ) {
     const reviews = plainToInstance(ReviewEntity, reviewsDto);
-    return await this.SiteReviewService.associateReviewsSite(
+    return await this.siteReviewService.associateReviewsSite(
       siteId,
       reviews,
     );
@@ -52,6 +52,6 @@ export class SiteReviewController {
     @Param('siteId') siteId: string,
     @Param('reviewId') reviewId: string,
   ) {
-    return await this.SiteReviewService.deleteReviewSite(siteId, reviewId);
+    return await this.siteReviewService.deleteReviewSite(siteId, reviewId);
   }
 }

@@ -8,14 +8,14 @@ import { SiteTableService } from './site-table.service';
 @Controller('sites')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class SiteTableController {
-    constructor(private readonly SiteTableService: SiteTableService) {}
+    constructor(private readonly siteTableService: SiteTableService) {}
 
   @Get(':siteId/tables/:tableId')
   async findTableBySiteIdTableId(
     @Param('siteId') siteId: string,
     @Param('tableId') tableId: string,
   ) {
-    return await this.SiteTableService.findTableBySiteIdTableId(
+    return await this.siteTableService.findTableBySiteIdTableId(
       siteId,
       tableId,
     );
@@ -23,7 +23,7 @@ export class SiteTableController {
 
   @Get(':siteId/tables')
   async findTablesBySiteId(@Param('siteId') siteId: string) {
-    return await this.SiteTableService.findTablesBySiteId(siteId);
+    return await this.siteTableService.findTablesBySiteId(siteId);
   }
 
   @Post(':siteId/tables/:tableId')
@@ -31,7 +31,7 @@ export class SiteTableController {
     @Param('siteId') siteId: string,
     @Param('tableId') tableId: string,
   ) {
-    return await this.SiteTableService.addTableSite(siteId, tableId);
+    return await this.siteTableService.addTableSite(siteId, tableId);
   }
   
  @Put(':siteId/tables')
@@ -40,7 +40,7 @@ export class SiteTableController {
     @Param('siteId') siteId: string,
   ) {
     const tables = plainToInstance(TableEntity, tablesDto);
-    return await this.SiteTableService.associateTablesSite(
+    return await this.siteTableService.associateTablesSite(
       siteId,
       tables,
     );
@@ -52,6 +52,6 @@ export class SiteTableController {
     @Param('siteId') siteId: string,
     @Param('tableId') tableId: string,
   ) {
-    return await this.SiteTableService.deleteTableSite(siteId, tableId);
+    return await this.siteTableService.deleteTableSite(siteId, tableId);
   }
 }

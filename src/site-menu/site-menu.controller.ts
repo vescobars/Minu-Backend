@@ -8,11 +8,11 @@ import { SiteMenuService } from './site-menu.service';
 @Controller('sites')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class SiteMenuController {
-    constructor(private readonly SiteMenuService: SiteMenuService) {}
+    constructor(private readonly siteMenuService: SiteMenuService) {}
 
   @Get(':siteId/menus')
   async findMenuBySiteId(@Param('siteId') siteId: string) {
-    return await this.SiteMenuService.findMenuBySiteId(siteId);
+    return await this.siteMenuService.findMenuBySiteId(siteId);
   }
 
   @Post(':siteId/menus/:menuId')
@@ -20,7 +20,7 @@ export class SiteMenuController {
     @Param('siteId') siteId: string,
     @Param('menuId') menuId: string,
   ) {
-    return await this.SiteMenuService.addMenuSite(siteId, menuId);
+    return await this.siteMenuService.addMenuSite(siteId, menuId);
   }
   
  
@@ -31,7 +31,7 @@ export class SiteMenuController {
     @Param('siteId') siteId: string,
   ) {
     const menu = plainToInstance(MenuEntity, menuDto);
-    return await this.SiteMenuService.associateMenuSite(
+    return await this.siteMenuService.associateMenuSite(
       siteId,
       menu,
     );
@@ -43,6 +43,6 @@ export class SiteMenuController {
     @Param('siteId') siteId: string,
     @Param('menuId') menuId: string,
   ) {
-    return await this.SiteMenuService.deleteMenuSite(siteId, menuId);
+    return await this.siteMenuService.deleteMenuSite(siteId, menuId);
   }
 }
