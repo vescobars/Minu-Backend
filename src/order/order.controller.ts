@@ -23,6 +23,7 @@ export class OrderController {
     @Post()
     async create(@Body() orderDto:OrderDto){
         const order:OrderEntity = plainToInstance(OrderEntity,orderDto);
+        order.date = new Date(order.date);
         return await this.orderService.create(order);
     }
 
