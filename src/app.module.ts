@@ -71,8 +71,8 @@ import { SitePromotionModule } from './site-promotion/site-promotion.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'nicolascelisjn24',
-      database: 'minu',
+      password: 'postgres123',
+      database: 'db',
       entities: [
         AddressEntity,
         CategoryEntity,
