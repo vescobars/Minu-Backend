@@ -32,7 +32,7 @@ export class TableController {
         return await this.tableService.update(tableId, table);
     }
 
-    @Delete(':chainId/sites/:siteId/tables')
+    @Delete(':chainId/sites/:siteId/tables/:tableId')
     @HttpCode(204)
     async delete(@Param('tableId') tableId: string) {
         return await this.tableService.delete(tableId);
