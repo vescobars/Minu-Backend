@@ -17,9 +17,9 @@ export class PromotionService {
  
     async findOne(id: string): Promise<PromotionEntity> {
         const promotion: PromotionEntity = await this.promotionRepository.findOne({where: {id}, relations: [] } );
-        if (!promotion)
+        if (!promotion){
           throw new BusinessLogicException("The promotion with the given id was not found", BusinessError.NOT_FOUND);
-   
+        }
         return promotion;
     }
    
@@ -29,8 +29,9 @@ export class PromotionService {
  
     async update(id: string, promotion: PromotionEntity): Promise<PromotionEntity> {
         const persistedPromotion: PromotionEntity = await this.promotionRepository.findOne({where:{id}});
-        if (!persistedPromotion)
+        if (!persistedPromotion){
           throw new BusinessLogicException("The promotion with the given id was not found", BusinessError.NOT_FOUND);
+        }
        
         promotion.id = id; 
        
@@ -39,9 +40,9 @@ export class PromotionService {
  
     async delete(id: string) {
         const promotion: PromotionEntity = await this.promotionRepository.findOne({where:{id}});
-        if (!promotion)
+        if (!promotion){
           throw new BusinessLogicException("The promotion with the given id was not found", BusinessError.NOT_FOUND);
-     
+        }
         await this.promotionRepository.remove(promotion);
     }
 }
