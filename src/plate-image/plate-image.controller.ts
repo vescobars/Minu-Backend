@@ -3,6 +3,7 @@ import { BusinessErrorsInterceptor } from '../shared/interceptors/business-error
 import { plainToInstance } from 'class-transformer';
 import { PlateImageService } from './plate-image.service';
 import { ImageEntity } from '../image/image.entity';
+import { ImageDto } from '../image/image.dto';
 
 @Controller('plates')
 @UseInterceptors(BusinessErrorsInterceptor)

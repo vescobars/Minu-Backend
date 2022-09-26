@@ -5,8 +5,4 @@ export class CategoryDto {
  @IsNotEmpty()
  readonly name: string;
  
- @IsUUID()
- @IsNotEmpty()
- readonly id: string;
- 
 }
