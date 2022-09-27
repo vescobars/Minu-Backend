@@ -25,21 +25,23 @@ export class CategoryPlateService {
     const plate: PlateEntity = await this.plateRepository.findOne({
       where: { id: plateId },
     });
-    if (!plate)
+    if (!plate){
       throw new BusinessLogicException(
         'The plate with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+    }
 
     const category: CategoryEntity = await this.categoryRepository.findOne({
       where: { id: categoryId },
       relations: ['plates'],
     });
-    if (!category)
+    if (!category){
       throw new BusinessLogicException(
         'The category with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+    }
 
     category.plates = [...category.plates, plate];
     return await this.categoryRepository.save(category);
@@ -52,31 +54,34 @@ export class CategoryPlateService {
     const plate: PlateEntity = await this.plateRepository.findOne({
       where: { id: plateId },
     });
-    if (!plate)
+    if (!plate){
       throw new BusinessLogicException(
         'The plate with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+    }
 
     const category: CategoryEntity = await this.categoryRepository.findOne({
       where: { id: categoryId },
       relations: ['plates'],
     });
-    if (!category)
+    if (!category){
       throw new BusinessLogicException(
         'The category with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+    }
 
     const categoryPlate: PlateEntity = category.plates.find(
       (e) => e.id === plate.id,
     );
 
-    if (!categoryPlate)
+    if (!categoryPlate){
       throw new BusinessLogicException(
         'The plate with the given id is not associated to the category',
         BusinessError.PRECONDITION_FAILED,
       );
+    }
 
     return categoryPlate;
   }
@@ -86,11 +91,12 @@ export class CategoryPlateService {
       where: { id: categoryId },
       relations: ['plates'],
     });
-    if (!category)
+    if (!category){
       throw new BusinessLogicException(
         'The category with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+    }
 
     return category.plates;
   }
@@ -104,21 +110,23 @@ export class CategoryPlateService {
       relations: ['plates'],
     });
 
-    if (!category)
+    if (!category){
       throw new BusinessLogicException(
         'The category with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+    }
 
     for (let i = 0; i < plates.length; i++) {
       const plate: PlateEntity = await this.plateRepository.findOne({
         where: { id: plates[i].id },
       });
-      if (!plate)
+      if (!plate){
         throw new BusinessLogicException(
           'The plate with the given id was not found',
           BusinessError.NOT_FOUND,
         );
+      }
     }
 
     category.plates = plates;
@@ -139,21 +147,23 @@ export class CategoryPlateService {
       where: { id: categoryId },
       relations: ['plates'],
     });
-    if (!category)
+    if (!category){
       throw new BusinessLogicException(
         'The category with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+    }
 
     const categoryPlate: PlateEntity = category.plates.find(
       (e) => e.id === plate.id,
     );
 
-    if (!categoryPlate)
+    if (!categoryPlate){
       throw new BusinessLogicException(
         'The plate with the given id is not associated to the category',
         BusinessError.PRECONDITION_FAILED,
       );
+    }
 
     category.plates = category.plates.filter((e) => e.id !== plateId);
     await this.categoryRepository.save(category);
