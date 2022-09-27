@@ -8,14 +8,14 @@ import { SiteOperatorService } from './site-operator.service';
 @Controller('sites')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class SiteOperatorController {
-    constructor(private readonly SiteOperatorService: SiteOperatorService) {}
+    constructor(private readonly siteOperatorService: SiteOperatorService) {}
 
   @Get(':siteId/operators/:operatorId')
   async findOperatorBySiteIdOperatorId(
     @Param('siteId') siteId: string,
     @Param('operatorId') operatorId: string,
   ) {
-    return await this.SiteOperatorService.findOperatorBySiteIdOperatorId(
+    return await this.siteOperatorService.findOperatorBySiteIdOperatorId(
       siteId,
       operatorId,
     );
@@ -23,7 +23,7 @@ export class SiteOperatorController {
 
   @Get(':siteId/operators')
   async findOperatorsBySiteId(@Param('siteId') siteId: string) {
-    return await this.SiteOperatorService.findOperatorsBySiteId(siteId);
+    return await this.siteOperatorService.findOperatorsBySiteId(siteId);
   }
 
   @Post(':siteId/operators/:operatorId')
@@ -31,7 +31,7 @@ export class SiteOperatorController {
     @Param('siteId') siteId: string,
     @Param('operatorId') operatorId: string,
   ) {
-    return await this.SiteOperatorService.addOperatorSite(siteId, operatorId);
+    return await this.siteOperatorService.addOperatorSite(siteId, operatorId);
   }
 
  /* 
@@ -42,7 +42,7 @@ export class SiteOperatorController {
     @Param('siteId') siteId: string,
   ) {
     const operators = plainToInstance(RestaurantOperatorEntity, operatorsDto);
-    return await this.SiteOperatorService.associateOperatorsSite(
+    return await this.siteOperatorService.associateOperatorsSite(
       siteId,
       operators,
     );
@@ -54,6 +54,6 @@ export class SiteOperatorController {
     @Param('siteId') siteId: string,
     @Param('operatorId') operatorId: string,
   ) {
-    return await this.SiteOperatorService.deleteOperatorSite(siteId, operatorId);
+    return await this.siteOperatorService.deleteOperatorSite(siteId, operatorId);
   }
 }

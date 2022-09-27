@@ -82,6 +82,7 @@ export class OrderOrderDetailService {
         if (!orderOrderDetail)
             throw new BusinessLogicException("The orderDetail with the given id is not associated to the order", BusinessError.PRECONDITION_FAILED)
  
+        orderDetail.plates = null;
         order.orderDetail = null;
         await this.orderRepository.save(order);
     }

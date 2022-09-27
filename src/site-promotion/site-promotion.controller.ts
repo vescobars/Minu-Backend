@@ -8,14 +8,14 @@ import { SitePromotionService } from './site-promotion.service';
 @Controller('sites')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class SitePromotionController {
-    constructor(private readonly SitePromotionService: SitePromotionService) {}
+    constructor(private readonly sitePromotionService: SitePromotionService) {}
 
   @Get(':siteId/promotions/:promotionId')
   async find(
     @Param('siteId') siteId: string,
     @Param('promotionId') promotionId: string,
   ) {
-    return await this.SitePromotionService.findPromotionBySiteIdPromotionId(
+    return await this.sitePromotionService.findPromotionBySiteIdPromotionId(
       siteId,
       promotionId,
     );
@@ -23,7 +23,7 @@ export class SitePromotionController {
 
   @Get(':siteId/promotions')
   async findPromotionsBySiteId(@Param('siteId') siteId: string) {
-    return await this.SitePromotionService.findPromotionsBySiteId(siteId);
+    return await this.sitePromotionService.findPromotionsBySiteId(siteId);
   }
 
   @Post(':siteId/promotions/:promotionId')
@@ -31,7 +31,7 @@ export class SitePromotionController {
     @Param('siteId') siteId: string,
     @Param('promotionId') promotionId: string,
   ) {
-    return await this.SitePromotionService.addPromotionSite(siteId, promotionId);
+    return await this.sitePromotionService.addPromotionSite(siteId, promotionId);
   }
   
  /*
@@ -42,7 +42,7 @@ export class SitePromotionController {
     @Param('siteId') siteId: string,
   ) {
     const promotions = plainToInstance(PromotionEntity, promotionsDto);
-    return await this.SitePromotionService.associatePromotionsSite(
+    return await this.sitePromotionService.associatePromotionsSite(
       siteId,
       promotions,
     );
@@ -54,6 +54,6 @@ export class SitePromotionController {
     @Param('siteId') siteId: string,
     @Param('promotionId') promotionId: string,
   ) {
-    return await this.SitePromotionService.deletePromotionSite(siteId, promotionId);
+    return await this.sitePromotionService.deletePromotionSite(siteId, promotionId);
   }
 }

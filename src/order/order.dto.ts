@@ -3,13 +3,13 @@ import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class OrderDto {
   @IsString()
   @IsNotEmpty()
-  state: string;
+  readonly state: string;
 
-  @IsDate()
+  @IsString()
   @IsNotEmpty()
-  date: Date;
+  readonly date: string;
 
   @IsNumber()
   @IsNotEmpty()
-  totalValue: number;
+  readonly totalValue: number;
 }

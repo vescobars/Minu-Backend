@@ -8,11 +8,11 @@ import { SiteAddressService } from './site-address.service';
 @Controller('sites')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class SiteAddressController {
-    constructor(private readonly SiteAddressService: SiteAddressService) {}
+    constructor(private readonly siteAddressService: SiteAddressService) {}
 
   @Get(':siteId/addresses')
   async findAddressBySiteId(@Param('siteId') siteId: string) {
-    return await this.SiteAddressService.findAddressBySiteId(siteId);
+    return await this.siteAddressService.findAddressBySiteId(siteId);
   }
 
   @Post(':siteId/addresses/:addressId')
@@ -20,7 +20,7 @@ export class SiteAddressController {
     @Param('siteId') siteId: string,
     @Param('addressId') addressId: string,
   ) {
-    return await this.SiteAddressService.addAddressSite(siteId, addressId);
+    return await this.siteAddressService.addAddressSite(siteId, addressId);
   }
   
  /*
@@ -31,7 +31,7 @@ export class SiteAddressController {
     @Param('siteId') siteId: string,
   ) {
     const address = plainToInstance(AddressEntity, addressDto);
-    return await this.SiteAddressService.associateAddressSite(
+    return await this.siteAddressService.associateAddressSite(
       siteId,
       address,
     );
@@ -43,6 +43,6 @@ export class SiteAddressController {
     @Param('siteId') siteId: string,
     @Param('addressId') addressId: string,
   ) {
-    return await this.SiteAddressService.deleteAddressSite(siteId, addressId);
+    return await this.siteAddressService.deleteAddressSite(siteId, addressId);
   }
 }
