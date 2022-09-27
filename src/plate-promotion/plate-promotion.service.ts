@@ -18,8 +18,9 @@ export class PlatePromotionService {
     
     async getPromotionByPlateId(plateId: string): Promise<PromotionEntity> {
         const plate: PlateEntity = await this.plateRepository.findOne({where: {id: plateId}, relations: ["promotions"]});
-        if (!plate)
+        if (!plate){
           throw new BusinessLogicException("The plate with the given id was not found", BusinessError.NOT_FOUND)
+        }
        
         return plate.promotion;
     }
