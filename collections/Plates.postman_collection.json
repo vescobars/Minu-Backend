@@ -1,0 +1,1934 @@
+{
+	"info": {
+		"_postman_id": "dac34d88-8cbe-4fdb-bbe7-e8d8b116e372",
+		"name": "Plates",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17275124"
+	},
+	"item": [
+		{
+			"name": "Add a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"plate_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 200,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/plates",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plates",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\",\r\n    \"promotions\": [],\r\n    \"descriptionTags\": []\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all plates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of plates > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all plates",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n        \"name\": \"XXL pizza\",\n        \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\n        \"value\": 20000,\n        \"notes\": \"you can add extra cheesse and tomato paste\",\n        \"promotions\": [],\n        \"descriptionTags\": []\n    },\n    {\n        \"id\": \"48a9ab90-1276-11ed-861d-0242ac120003\",\n        \"name\": \"XXL burger\",\n        \"description\": \"extra extra large burger with onion and extra cheesse\",\n        \"value\": 25000,\n        \"notes\": \"with small fries and no soda\",\n        \"promotions\": [],\n        \"descriptionTags\": []\n    },\n    {\n        \"id\": \"48a9ab90-1276-11ed-861d-0242ac120004\",\n        \"name\": \"Roastbeef sandwich\",\n        \"description\": \"The best of the roastbeef sandwiches\",\n        \"value\": 23000,\n        \"notes\": \"no fries and drinks included\",\n        \"promotions\": [],\n        \"descriptionTags\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get one plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get one plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\",\r\n    \"promotions\": [],\r\n    \"descriptionTags\": []\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get an invalid plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The museum with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get an invalid plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{baseUrl}}/plates/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The plate with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Update a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and cheddar cheesse (new type of cheesse)\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{museum_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{museum_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update a plate",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and cheddar cheesse (new type of cheesse)\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{museum_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{museum_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\",\r\n    \"promotions\": [],\r\n    \"descriptionTags\": []\r\n    \r\n}"
+				}
+			]
+		},
+		{
+			"name": "Update an invalid plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The plate with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update an invalid plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The plate with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{museum_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{museum_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a plate",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{museum_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{museum_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete an invalid plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The plate with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete an invalid plate",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The plate with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a promotion to a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotion_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions",
+						"{{promotion_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a promotion to a plate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotins_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions",
+								"{{promotins_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\",\r\n    \"promotions\": [\r\n        {\r\n            \"name\": \"30% off in your first order\",\r\n            \"startDate\": \"30/01/2022\",\r\n            \"endDate\": \"27/02/2022\",\r\n            \"discount\": 0.3,\r\n            \"description\": \"30% off\"\r\n        }\r\n    ],\r\n    \"descriptionTags\": []\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Add an invalid promotion to a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The artwork with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add an invalid promotion to a plate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The promotion with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get a promotion of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotion_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions",
+						"{{promotion_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a promotion of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotions_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions",
+								"{{promotions_id_1}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"7e265679-3a85-416d-afca-80fd04e2b79c\",\r\n    \"name\": \"30% off in your first order\",\r\n    \"startDate\": \"30/01/2022\",\r\n    \"endDate\": \"27/02/2022\",\r\n    \"discount\": 0.3,\r\n    \"description\": \"30% off\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get an invalid promotion of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The promotion with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get an invalid promotion of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The promotion with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get a promotion non-associated to a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The promotion with the given id is not associated to the museum\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotion_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions",
+						"{{promotion_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a promotion non-associated to a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotion_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions",
+								"{{promotion_id_2}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The promotion with the given id is not associated to the plate\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all promotions of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all promotions of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\r\n    {\r\n    \"id\": \"7e265679-3a85-416d-afca-80fd04e2b79c\",\r\n    \"name\": \"30% off in your first order\",\r\n    \"startDate\": \"30/01/2022\",\r\n    \"endDate\": \"27/02/2022\",\r\n    \"discount\": 0.3,\r\n    \"description\": \"30% off\"\r\n}\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Get all promotions of an invalid plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The plate with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000/promotions",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"00000000-0000-0000-0000-000000000000",
+						"promotions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all promotions of an invalid plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000/promotions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"00000000-0000-0000-0000-000000000000",
+								"promotions"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The plate with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Update promotions of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"{{promotion_id_2}}\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update promotions of a plate",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{promotion_id_2}}\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\",\r\n    \"promotions\": [\r\n        {\r\n            \"name\": \"30% off in your first order\",\r\n            \"startDate\": \"30/01/2022\",\r\n            \"endDate\": \"27/02/2022\",\r\n            \"discount\": 0.3,\r\n            \"description\": \"30% off\"\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Update invalid promotions of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The artwork with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update invalid promotions of a plate",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The promotion with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Update promotions of an invalid plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The plate with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"{{artwork_id_2}}\"\r\n   }\r\n]"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000/promotions",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"00000000-0000-0000-0000-000000000000",
+						"promotions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update promotions of an invalid plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{artwork_id_2}}\"\r\n   }\r\n]"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000/promotions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"00000000-0000-0000-0000-000000000000",
+								"promotions"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The plate with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete a promotion of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotion_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions",
+						"{{promotion_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a promotion of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotion_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions",
+								"{{promotion_id_2}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete a promotion of an invalid plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The museum with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000/promotions/{{promotion_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"00000000-0000-0000-0000-000000000000",
+						"promotions",
+						"{{promotion_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a promotion of an invalid plate",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/00000000-0000-0000-0000-000000000000/promotions/{{promotion_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"00000000-0000-0000-0000-000000000000",
+								"promotions",
+								"{{promotion_id_2}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The plate with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete an invalid promotion of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The promotion with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete an invalid promotion of a plate",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The promotion with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete a promotion non-associated to a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The promotion with the given id is not associated to the museum\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotion_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"promotions",
+						"{{promotion_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a promotion non-associated to a plate",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/promotions/{{promotion_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"promotions",
+								"{{promotion_id_1}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The promotion with the given id is not associated to a plate\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a descriptionTag to a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/descriptionTags/{{tag_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"descriptionTags",
+						"{{tag_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a descriptionTag to a plate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/descriptionTags/{{tag_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"descriptionTags",
+								"{{tag_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\",\r\n    \"promotions\": [\r\n        {\r\n            \"name\": \"30% off in your first order\",\r\n            \"startDate\": \"30/01/2022\",\r\n            \"endDate\": \"27/02/2022\",\r\n            \"discount\": 0.3,\r\n            \"description\": \"30% off\"\r\n        }\r\n    ],\r\n    \"descriptionTags\": [\r\n        {\r\n            \"name\": \"asian food\"\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get a descriptionTag of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/descriptionTags/{{tag_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"descriptionTags",
+						"{{tag_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a descriptionTag of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/descriptionTags/{{tag_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"descriptionTags",
+								"{{tag_id_1}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n     \"name\": \"asian food\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all descriptionTags of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{tag_id}}/descriptionTags",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{tag_id}}",
+						"descriptionTags"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all descriptionTags of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{tag_id}}/descriptionTags",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{tag_id}}",
+								"descriptionTags"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n     \"name\": \"asian food\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Update descriptionTags of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"{{tag_id_2}}\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{tag_id}}/descriptionTags",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{tag_id}}",
+						"descriptionTags"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update descriptionTags of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{tag_id_2}}\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{tag_id}}/descriptionTags",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{tag_id}}",
+								"descriptionTags"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 20000,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\",\r\n    \"promotions\": [\r\n        {\r\n            \"name\": \"30% off in your first order\",\r\n            \"startDate\": \"30/01/2022\",\r\n            \"endDate\": \"27/02/2022\",\r\n            \"discount\": 0.3,\r\n            \"description\": \"30% off\"\r\n        }\r\n    ],\r\n    \"descriptionTags\": [\r\n        {\r\n            \"name\": \"asian food\"\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete a descriptionTag of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plate/{{plate_id}}/descriptionTags/{{tag_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plate",
+						"{{plate_id}}",
+						"descriptionTags",
+						"{{tag_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a descriptionTag of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plate/{{plate_id}}/descriptionTags/{{tag_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plate",
+								"{{plate_id}}",
+								"descriptionTags",
+								"{{tag_id_2}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Add an image to a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/images/{{image_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"images",
+						"{{image_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add an image to a plate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/artworks/{{image_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"artworks",
+								"{{image_id_1}}"
+							]
+						}
+					},
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"name\": \"XXL pizza\",\r\n    \"description\": \"extra extra large pizza with pepperoni and extra cheesse\",\r\n    \"value\": 200,\r\n    \"notes\": \"you can add extra cheesse and tomato paste\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"www.gituser.com/content/hdf8239\"\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get an image of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/images/{{image_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"images",
+						"{{image_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get an image of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"url\": \"www.gituser.com/content/hdf8239\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all images of a plate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/plates/{{plate_id}}/images",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"plates",
+						"{{plate_id}}",
+						"images"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all images of a plate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plates/{{plate_id}}/images",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plates",
+								"{{plate_id}}",
+								"images"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"url\": \"www.gituser.com/content/hdf8239\"\r\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": " http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}

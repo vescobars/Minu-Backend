@@ -8,14 +8,14 @@ import { SiteOrderService } from './site-order.service';
 @Controller('sites')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class SiteOrderController {
-    constructor(private readonly SiteOrderService: SiteOrderService) {}
+    constructor(private readonly siteOrderService: SiteOrderService) {}
 
   @Get(':siteId/orders/:orderId')
   async findOrderBySiteIdOrderId(
     @Param('siteId') siteId: string,
     @Param('orderId') orderId: string,
   ) {
-    return await this.SiteOrderService.findOrderBySiteIdOrderId(
+    return await this.siteOrderService.findOrderBySiteIdOrderId(
       siteId,
       orderId,
     );
@@ -23,7 +23,7 @@ export class SiteOrderController {
 
   @Get(':siteId/orders')
   async findOrdersBySiteId(@Param('siteId') siteId: string) {
-    return await this.SiteOrderService.findOrdersBySiteId(siteId);
+    return await this.siteOrderService.findOrdersBySiteId(siteId);
   }
 
   @Post(':siteId/orders/:orderId')
@@ -31,7 +31,7 @@ export class SiteOrderController {
     @Param('siteId') siteId: string,
     @Param('orderId') orderId: string,
   ) {
-    return await this.SiteOrderService.addOrderSite(siteId, orderId);
+    return await this.siteOrderService.addOrderSite(siteId, orderId);
   }
   
  @Put(':siteId/orders')
@@ -40,7 +40,7 @@ export class SiteOrderController {
     @Param('siteId') siteId: string,
   ) {
     const orders = plainToInstance(OrderEntity, ordersDto);
-    return await this.SiteOrderService.associateOrdersSite(
+    return await this.siteOrderService.associateOrdersSite(
       siteId,
       orders,
     );
@@ -52,6 +52,6 @@ export class SiteOrderController {
     @Param('siteId') siteId: string,
     @Param('orderId') orderId: string,
   ) {
-    return await this.SiteOrderService.deleteOrderSite(siteId, orderId);
+    return await this.siteOrderService.deleteOrderSite(siteId, orderId);
   }
 }
