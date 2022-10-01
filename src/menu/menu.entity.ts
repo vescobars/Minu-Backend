@@ -24,7 +24,11 @@ export class MenuEntity {
   @OneToMany(() => CategoryEntity, (categories) => categories.menu)
   categories: CategoryEntity[];
 
-  @OneToOne(() => RestaurantSiteEntity, (restaurantSite) => restaurantSite.menu)
+  @OneToOne(
+    () => RestaurantSiteEntity,
+    (restaurantSite) => restaurantSite.menu,
+  )
+  @JoinColumn()
   restaurantSite: RestaurantSiteEntity;
 
   @OneToOne(
