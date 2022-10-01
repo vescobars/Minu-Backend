@@ -19,6 +19,9 @@ export class MenuEntity {
   id: string;
 
   @Column()
+  file: string;
+
+  @Column()
   date: Date;
 
   @OneToMany(() => CategoryEntity, (categories) => categories.menu)

@@ -28,7 +28,8 @@ describe('MenuService', () => {
     menusList = [];
     for(let i = 0; i < 5; i++){
         const menu: MenuEntity = await repository.save({
-        date: faker.date.birthdate()})
+        date: faker.date.birthdate(),
+        file: faker.company.name()})
         menusList.push(menu);
     }
   }
@@ -58,6 +59,7 @@ describe('MenuService', () => {
     const menu: MenuEntity = {
       id: "",
       date: faker.date.birthdate(), 
+      file: faker.company.name(),
       categories: [],
       restaurantSite: null,
       menuVisualTemplate:null,
