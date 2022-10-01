@@ -33,7 +33,7 @@ export class MenuEntity {
 
   @OneToOne(
     () => MenuVisualTemplateEntity,
-    (MenuVisualTemplate) => MenuVisualTemplate.menu,
+    (menuVisualTemplate) => menuVisualTemplate.menu,
   )
   @JoinColumn()
   menuVisualTemplate: MenuVisualTemplateEntity;

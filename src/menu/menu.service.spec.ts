@@ -59,7 +59,9 @@ describe('MenuService', () => {
       id: "",
       date: faker.date.birthdate(), 
       categories: [],
-      restaurantSite: null
+      restaurantSite: null,
+      menuVisualTemplate:null,
+      menuVisualPreferences:null,
     }
 
     const newMenu: MenuEntity = await service.create(menu);
