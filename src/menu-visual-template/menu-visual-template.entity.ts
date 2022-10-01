@@ -1,5 +1,5 @@
 import { MenuEntity } from '../menu/menu.entity';
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn, JoinColumn } from 'typeorm';
 
 @Entity()
 export class MenuVisualTemplateEntity {
@@ -13,5 +13,6 @@ export class MenuVisualTemplateEntity {
   file: string;
 
   @OneToOne(() => MenuEntity, (menu) => menu.menuVisualTemplate)
+  @JoinColumn()
   menu: MenuEntity;
 }
