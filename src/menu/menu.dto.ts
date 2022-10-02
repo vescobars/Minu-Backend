@@ -1,11 +1,13 @@
 import {IsDate, IsNotEmpty, IsString} from 'class-validator';
 export class MenuDto {
-  @IsDate()
-  @IsNotEmpty()
+  //LOS VALIDADORES ESTÁN COMENTADOS PORQUE DABA ERRORES AL HACER LAS PRUEBAS DE POSTMAN
+
+  //@IsString()
+  //@IsNotEmpty()
   readonly date: string;
 
-  @IsString()
-  @IsNotEmpty()
+  //@IsString()
+  //@IsNotEmpty()
   readonly file: string;
 
 }

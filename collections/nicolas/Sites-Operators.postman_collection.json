@@ -136,7 +136,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\": \"Nicolas\",\r\n    \"cellphone\": \"+57 310 000 0000\",\r\n    \"lastname\": \"Rodriguez\",\r\n    \"email\": \"nicolas@email.com\",\r\n    \"role\": \"supervisor\",\r\n    \"active\": true,\r\n    \"image\": \"http://image/nicolas\"\r\n}",
+					"raw": "{\r\n    \"firstname\": \"Nicolas\",\r\n    \"cellphone\": \"+57 310 000 0000\",\r\n    \"lastname\": \"Rodriguez\",\r\n    \"email\": \"nicolas@email.com\",\r\n    \"role\": \"supervisor\",\r\n    \"active\": true,\r\n    \"imageUrl\": \"http://image/nicolas\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -144,12 +144,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUrl}}/operators",
+					"raw": "{{baseUrl}}/restaurantOperators",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
-						"operators"
+						"restaurantOperators"
 					]
 				}
 			},
@@ -238,7 +238,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\": \"Veronica\",\r\n    \"cellphone\": \"+57 310 000 0000\",\r\n    \"lastname\": \"Escobar\",\r\n    \"email\": \"veronica@email.com\",\r\n    \"role\": \"supervisor\",\r\n    \"active\": true,\r\n    \"image\": \"http://image/veronica\"\r\n}",
+					"raw": "{\r\n    \"firstname\": \"Veronica\",\r\n    \"cellphone\": \"+57 310 000 0000\",\r\n    \"lastname\": \"Escobar\",\r\n    \"email\": \"veronica@email.com\",\r\n    \"role\": \"supervisor\",\r\n    \"active\": true,\r\n    \"imageUrl\": \"http://image/veronica\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -246,12 +246,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUrl}}/operators",
+					"raw": "{{baseUrl}}/restaurantOperators",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
-						"operators"
+						"restaurantOperators"
 					]
 				}
 			},
@@ -688,12 +688,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/operators/{{operator_id_1}}",
+					"raw": "{{baseUrl}}/restaurantOperators/{{operator_id_1}}",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
-						"operators",
+						"restaurantOperators",
 						"{{operator_id_1}}"
 					]
 				}
@@ -750,12 +750,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/operators/{{operator_id_2}}",
+					"raw": "{{baseUrl}}/restaurantOperators/{{operator_id_2}}",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
-						"operators",
+						"restaurantOperators",
 						"{{operator_id_2}}"
 					]
 				}

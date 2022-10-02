@@ -23,12 +23,14 @@ export class MenuController {
   @Post()
   async create(@Body() menuDto: MenuDto) {
     const menu: MenuEntity = plainToInstance(MenuEntity, menuDto);
+    menu.date = new Date(menu.date);
     return await this.menuService.create(menu);
   }
 
   @Put(':menuId')
   async update(@Param('menuId') menuId: string, @Body() menuDto: MenuDto) {
     const menu: MenuEntity = plainToInstance(MenuEntity, menuDto);
+    menu.date = new Date(menu.date);
     return await this.menuService.update(menuId, menu);
   }
 
