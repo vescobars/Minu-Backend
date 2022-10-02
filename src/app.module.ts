@@ -15,13 +15,10 @@ import { OrderDetailModule } from './order-detail/order-detail.module';
 import { TableModule } from './table/table.module';
 import { MenuModule } from './menu/menu.module';
 import { AddressModule } from './address/address.module';
-import { CoordinateModule } from './coordinate/coordinate.module';
 import { RestaurantOperatorModule } from './restaurant-operator/restaurant-operator.module';
 import { RestaurantChainModule } from './restaurant-chain/restaurant-chain.module';
 import { RestaurantSiteModule } from './restaurant-site/restaurant-site.module';
 import { ImageModule } from './image/image.module';
-import { MenuVisualPreferencesModule } from './menu-visual-preferences/menu-visual-preferences.module';
-import { MenuVisualTemplateModule } from './menu-visual-template/menu-visual-template.module';
 import { ScheduleModule } from './schedule/schedule.module';
 import { OrderEntity } from './order/order.entity';
 import { OrderDetailEntity } from './order-detail/order-detail.entity';
@@ -30,22 +27,17 @@ import { TableEntity } from './table/table.entity';
 import { RestaurantChainEntity } from './restaurant-chain/restaurant-chain.entity';
 import { RestaurantSiteEntity } from './restaurant-site/restaurant-site.entity';
 import { ImageEntity } from './image/image.entity';
-import { MenuVisualPreferenceEntity } from './menu-visual-preferences/menu-visual-preferences.entity';
 import { CategoryEntity } from './category/category.entity';
 import { ClientEntity } from './client/client.entity';
 import { DescriptionTagEntity } from './description-tag/description-tag.entity';
-import { MenuVisualTemplateEntity } from './menu-visual-template/menu-visual-template.entity';
 import { PlateEntity } from './plate/plate.entity';
 import { PromotionEntity } from './promotion/promotion.entity';
 import { ReviewEntity } from './review/review.entity';
 import { ScheduleEntity } from './schedule/schedule.entity';
 import { MenuEntity } from './menu/menu.entity';
-import { CoordinateEntity } from './coordinate/coordinate.entity';
 import { RestaurantOperatorEntity } from './restaurant-operator/restaurant-operator.entity';
 import { AddressEntity } from './address/address.entity';
-import { ClientImageModule } from './client-image/client-image.module';
 import { ClientOrderModule } from './client-order/client-order.module';
-import { ClientCoordinateModule } from './client-coordinate/client-coordinate.module';
 import { ChainSiteModule } from './chain-site/chain-site.module';
 import { SiteTableModule } from './site-table/site-table.module';
 import { SiteOrderModule } from './site-order/site-order.module';
@@ -63,6 +55,7 @@ import { OrderOrderDetailModule } from './order-order-detail/order-order-detail.
 import { OrderPayModeModule } from './order-pay-mode/order-pay-mode.module';
 import { OrderTableModule } from './order-table/order-table.module';
 import { SitePromotionModule } from './site-promotion/site-promotion.module';
+import { MenuCategoryModule } from './menu-category/menu-category.module';
 
 @Module({
   imports: [
@@ -71,18 +64,15 @@ import { SitePromotionModule } from './site-promotion/site-promotion.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres123',
-      database: 'db',
+      password: 'nicolascelisjn24',
+      database: 'minu',
       entities: [
         AddressEntity,
         CategoryEntity,
         ClientEntity,
-        CoordinateEntity,
         DescriptionTagEntity,
         ImageEntity,
         MenuEntity,
-        MenuVisualPreferenceEntity,
-        MenuVisualTemplateEntity,
         OrderEntity,
         OrderDetailEntity,
         PayModeEntity,
@@ -102,12 +92,9 @@ import { SitePromotionModule } from './site-promotion/site-promotion.module';
     AddressModule,
     CategoryModule,
     ClientModule,
-    CoordinateModule,
     DescriptionTagModule,
     ImageModule,
     MenuModule,
-    MenuVisualPreferencesModule,
-    MenuVisualTemplateModule,
     OrderModule,
     OrderDetailModule,
     PayModeModule,
@@ -119,10 +106,8 @@ import { SitePromotionModule } from './site-promotion/site-promotion.module';
     ReviewModule,
     ScheduleModule,
     TableModule,
-    ClientImageModule,
     ClientOrderModule,
     SiteScheduleModule,
-    ClientCoordinateModule,
     ChainSiteModule,
     SiteTableModule,
     SiteOrderModule,
@@ -140,6 +125,7 @@ import { SitePromotionModule } from './site-promotion/site-promotion.module';
     OrderPayModeModule,
     OrderTableModule,
     SitePromotionModule,
+    MenuCategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

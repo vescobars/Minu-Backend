@@ -32,6 +32,7 @@ describe('SiteMenuService', () => {
  
     menu = await menuRepository.save({
       date: faker.date.recent(),
+      file: faker.lorem.sentence(),
     })
 
     site = await siteRepository.save({
@@ -47,6 +48,7 @@ describe('SiteMenuService', () => {
   it('addMenuSite should add an menu to a site', async () => {
     const newMenu: MenuEntity = await menuRepository.save({
       date: faker.date.recent(),
+      file: faker.lorem.sentence(),
     });
  
     const newSite: RestaurantSiteEntity = await siteRepository.save({
@@ -57,11 +59,13 @@ describe('SiteMenuService', () => {
    
     expect(result.menu).not.toBeNull();
     expect(result.menu.date).toEqual(newMenu.date);
+    expect(result.menu.file).toEqual(newMenu.file);
   });
 
   it('addMenuSite should thrown exception for an invalid menu', async () => {
     const newMenu: MenuEntity = await menuRepository.save({
       date: faker.date.recent(),
+      file: faker.lorem.sentence(),
     });
  
     await expect(() => service.addMenuSite(newMenu.id, "0")).rejects.toHaveProperty("message", "The menu with the given id was not found");
@@ -78,6 +82,7 @@ describe('SiteMenuService', () => {
   it('findMenuBySiteId should return menu by site', async ()=>{
     const menu: MenuEntity = await service.findMenuBySiteId(site.id);
     expect(menu.date).toEqual(menu.date);
+    expect(menu.file).toEqual(menu.file);
   });
 
   it('findMenuBySiteId should throw an exception for an invalid site', async () => {
@@ -87,17 +92,20 @@ describe('SiteMenuService', () => {
   it('associateMenuSite should update menu for a site', async () => {
     const newMenu: MenuEntity = await menuRepository.save({
       date: faker.date.recent(),
+      file: faker.lorem.sentence(),
     });
  
     const updatedSite: RestaurantSiteEntity = await service.associateMenuSite(site.id, newMenu);
     
     expect(updatedSite.menu.id).toEqual(newMenu.id);
     expect(updatedSite.menu.date).toEqual(newMenu.date);
+    expect(updatedSite.menu.file).toEqual(newMenu.file);
   });
 
   it('associateMenuSite should throw an exception for an invalid site', async () => {
     const newMenu: MenuEntity = await menuRepository.save({
-      date: faker.date.recent()
+      date: faker.date.recent(),
+      file: faker.lorem.sentence(),
     });
  
     await expect(()=> service.associateMenuSite("0", newMenu)).rejects.toHaveProperty("message", "The site with the given id was not found");

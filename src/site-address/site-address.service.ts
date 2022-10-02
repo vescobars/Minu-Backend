@@ -45,7 +45,7 @@ export class SiteAddressService {
         if (!addressEntity)
           throw new BusinessLogicException('The address with the given id was not found', BusinessError.NOT_FOUND);
     
-        site.address = address;
+        site.address = addressEntity;
         return await this.siteRepository.save(site);
       }
     
