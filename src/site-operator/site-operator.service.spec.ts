@@ -40,6 +40,7 @@ describe('SiteOperatorService', () => {
           email: faker.internet.email(),
           role: faker.company.bsBuzz(),
           active: faker.datatype.boolean(),
+          imageUrl : faker.lorem.sentence()
         })
         operatorsList.push(operator);
     }
@@ -62,6 +63,7 @@ describe('SiteOperatorService', () => {
       email: faker.internet.email(),
       role: faker.company.bsBuzz(),
       active: faker.datatype.boolean(),
+      imageUrl : faker.lorem.sentence()
     });
 
     const newSite: RestaurantSiteEntity = await siteRepository.save({
@@ -78,6 +80,7 @@ describe('SiteOperatorService', () => {
     expect(result.restaurantOperators[0].email).toBe(newOperator.email)
     expect(result.restaurantOperators[0].role).toBe(newOperator.role)
     expect(result.restaurantOperators[0].active).toBe(newOperator.active)
+    expect(result.restaurantOperators[0].imageUrl).toBe(newOperator.imageUrl)
   });
 
   it('addOperatorSite should thrown exception for an invalid operator', async () => {
@@ -96,6 +99,7 @@ describe('SiteOperatorService', () => {
       email: faker.internet.email(),
       role: faker.company.bsBuzz(),
       active: faker.datatype.boolean(),
+      imageUrl : faker.lorem.sentence()
     });
 
     await expect(() => service.addOperatorSite("0", newOperator.id)).rejects.toHaveProperty("message", "The site with the given id was not found");
@@ -111,6 +115,7 @@ describe('SiteOperatorService', () => {
     expect(storedOperator.email).toBe(operator.email);
     expect(storedOperator.role).toBe(operator.role);
     expect(storedOperator.active).toBe(operator.active);
+    expect(storedOperator.imageUrl).toBe(operator.imageUrl);
   });
 
   it('findOperatorBySiteIdOperatorId should throw an exception for an invalid operator', async () => {
@@ -130,6 +135,7 @@ describe('SiteOperatorService', () => {
       email: faker.internet.email(),
       role: faker.company.bsBuzz(),
       active: faker.datatype.boolean(),
+      imageUrl : faker.lorem.sentence()
     });
 
     await expect(()=> service.findOperatorBySiteIdOperatorId(site.id, newOperator.id)).rejects.toHaveProperty("message", "The operator with the given id is not associated to the site"); 
@@ -152,6 +158,7 @@ describe('SiteOperatorService', () => {
       email: faker.internet.email(),
       role: faker.company.bsBuzz(),
       active: faker.datatype.boolean(),
+      imageUrl : faker.lorem.sentence()
     });
 
     const updatedSite: RestaurantSiteEntity = await service.associateOperatorsSite(site.id, [newOperator]);
@@ -163,6 +170,7 @@ describe('SiteOperatorService', () => {
     expect(updatedSite.restaurantOperators[0].email).toBe(newOperator.email);
     expect(updatedSite.restaurantOperators[0].role).toBe(newOperator.role);
     expect(updatedSite.restaurantOperators[0].active).toBe(newOperator.active);
+    expect(updatedSite.restaurantOperators[0].imageUrl).toBe(newOperator.imageUrl);
   });
 
   it('associateOperatorsSite should throw an exception for an invalid site', async () => {
@@ -173,6 +181,7 @@ describe('SiteOperatorService', () => {
       email: faker.internet.email(),
       role: faker.company.bsBuzz(),
       active: faker.datatype.boolean(),
+      imageUrl : faker.lorem.sentence()
     });
 
     await expect(()=> service.associateOperatorsSite("0", [newOperator])).rejects.toHaveProperty("message", "The site with the given id was not found"); 
@@ -214,6 +223,7 @@ describe('SiteOperatorService', () => {
       email: faker.internet.email(),
       role: faker.company.bsBuzz(),
       active: faker.datatype.boolean(),
+      imageUrl : faker.lorem.sentence()
     });
 
     await expect(()=> service.deleteOperatorSite(site.id, newOperator.id)).rejects.toHaveProperty("message", "The operator with the given id is not associated to the site"); 

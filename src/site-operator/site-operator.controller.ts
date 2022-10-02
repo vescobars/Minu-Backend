@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors,} from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-//import { RestaurantOperatorDto } from '../restaurant-operator/restaurant-operator.dto';
+import { RestaurantOperatorDto } from '../restaurant-operator/restaurant-operator.dto';
 import { RestaurantOperatorEntity } from '../restaurant-operator/restaurant-operator.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { SiteOperatorService } from './site-operator.service';
@@ -34,8 +34,6 @@ export class SiteOperatorController {
     return await this.siteOperatorService.addOperatorSite(siteId, operatorId);
   }
 
- /* 
- //Wating for operatorDto implementation by penichejr  
  @Put(':siteId/operators')
   async associateOperatorsSite(
     @Body() operatorsDto: RestaurantOperatorDto[],
@@ -46,7 +44,7 @@ export class SiteOperatorController {
       siteId,
       operators,
     );
-  } */
+  }
 
   @Delete(':siteId/operators/:operatorId')
   @HttpCode(204)

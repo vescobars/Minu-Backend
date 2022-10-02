@@ -72,8 +72,8 @@ import { MenuCategoryModule } from './menu-category/menu-category.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
-      database: 'db',
+      password: 'nicolascelisjn24',
+      database: 'minu',
       entities: [
         AddressEntity,
         CategoryEntity,
