@@ -1,39 +1,41 @@
+/* archivo: src/client-review/client-review.service.ts */
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { ClientEntity } from '../client/client.entity';
-import { OrderEntity } from '../order/order.entity';
+import { ReviewEntity } from '../review/review.entity';
 import {
   BusinessError,
   BusinessLogicException,
 } from '../shared/errors/business-errors';
-import { Repository } from 'typeorm';
 
 @Injectable()
-export class ClientOrderService {
+export class ReviewClientService {
   constructor(
     @InjectRepository(ClientEntity)
     private readonly clientRepository: Repository<ClientEntity>,
 
-    @InjectRepository(OrderEntity)
-    private readonly orderRepository: Repository<OrderEntity>,
+    @InjectRepository(ReviewEntity)
+    private readonly reviewRepository: Repository<ReviewEntity>,
   ) {}
 
-  async addOrderClient(
+  async addReviewClient(
     clientId: string,
-    orderId: string,
+    reviewId: string,
   ): Promise<ClientEntity> {
-    const order: OrderEntity = await this.orderRepository.findOne({
-      where: { id: orderId },
+    const review: ReviewEntity = await this.reviewRepository.findOne({
+      where: { id: reviewId },
     });
-    if (!order)
+    if (!review)
       throw new BusinessLogicException(
-        'The order with the given id was not found',
+        'The review with the given id was not found',
         BusinessError.NOT_FOUND,
       );
 
     const client: ClientEntity = await this.clientRepository.findOne({
       where: { id: clientId },
-      relations: ['orders'],
+      relations: ['reviews'],
     });
     if (!client)
       throw new BusinessLogicException(
@@ -41,26 +43,26 @@ export class ClientOrderService {
         BusinessError.NOT_FOUND,
       );
 
-    client.orders = [...client.orders, order];
+    client.reviews = [...client.reviews, review];
     return await this.clientRepository.save(client);
   }
 
-  async findOrderByClientIdOrderId(
+  async findReviewByClientIdReviewId(
     clientId: string,
-    orderId: string,
-  ): Promise<OrderEntity> {
-    const order: OrderEntity = await this.orderRepository.findOne({
-      where: { id: orderId },
+    reviewId: string,
+  ): Promise<ReviewEntity> {
+    const review: ReviewEntity = await this.reviewRepository.findOne({
+      where: { id: reviewId },
     });
-    if (!order)
+    if (!review)
       throw new BusinessLogicException(
-        'The order with the given id was not found',
+        'The review with the given id was not found',
         BusinessError.NOT_FOUND,
       );
 
     const client: ClientEntity = await this.clientRepository.findOne({
       where: { id: clientId },
-      relations: ['orders'],
+      relations: ['reviews'],
     });
     if (!client)
       throw new BusinessLogicException(
@@ -68,23 +70,23 @@ export class ClientOrderService {
         BusinessError.NOT_FOUND,
       );
 
-    const clientOrder: OrderEntity = client.orders.find(
-      (e) => e.id === order.id,
+    const clientReview: ReviewEntity = client.reviews.find(
+      (e) => e.id === review.id,
     );
 
-    if (!clientOrder)
+    if (!clientReview)
       throw new BusinessLogicException(
-        'The order with the given id is not associated to the client',
+        'The review with the given id is not associated to the client',
         BusinessError.PRECONDITION_FAILED,
       );
 
-    return clientOrder;
+    return clientReview;
   }
 
-  async findOrdersByClientId(clientId: string): Promise<OrderEntity[]> {
+  async findReviewsByClientId(clientId: string): Promise<ReviewEntity[]> {
     const client: ClientEntity = await this.clientRepository.findOne({
       where: { id: clientId },
-      relations: ['orders'],
+      relations: ['reviews'],
     });
     if (!client)
       throw new BusinessLogicException(
@@ -92,16 +94,16 @@ export class ClientOrderService {
         BusinessError.NOT_FOUND,
       );
 
-    return client.orders;
+    return client.reviews;
   }
 
-  async associateOrdersClient(
+  async associateReviewsClient(
     clientId: string,
-    orders: OrderEntity[],
+    reviews: ReviewEntity[],
   ): Promise<ClientEntity> {
     const client: ClientEntity = await this.clientRepository.findOne({
       where: { id: clientId },
-      relations: ['orders'],
+      relations: ['reviews'],
     });
 
     if (!client)
@@ -110,34 +112,34 @@ export class ClientOrderService {
         BusinessError.NOT_FOUND,
       );
 
-    for (let i = 0; i < orders.length; i++) {
-      const order: OrderEntity = await this.orderRepository.findOne({
-        where: { id: orders[i].id },
+    for (let i = 0; i < reviews.length; i++) {
+      const review: ReviewEntity = await this.reviewRepository.findOne({
+        where: { id: reviews[i].id },
       });
-      if (!order)
+      if (!review)
         throw new BusinessLogicException(
-          'The order with the given id was not found',
+          'The review with the given id was not found',
           BusinessError.NOT_FOUND,
         );
     }
 
-    client.orders = orders;
+    client.reviews = reviews;
     return await this.clientRepository.save(client);
   }
 
-  async deleteOrderClient(clientId: string, orderId: string) {
-    const order: OrderEntity = await this.orderRepository.findOne({
-      where: { id: orderId },
+  async deleteReviewClient(clientId: string, reviewId: string) {
+    const review: ReviewEntity = await this.reviewRepository.findOne({
+      where: { id: reviewId },
     });
-    if (!order)
+    if (!review)
       throw new BusinessLogicException(
-        'The order with the given id was not found',
+        'The review with the given id was not found',
         BusinessError.NOT_FOUND,
       );
 
     const client: ClientEntity = await this.clientRepository.findOne({
       where: { id: clientId },
-      relations: ['orders'],
+      relations: ['reviews'],
     });
     if (!client)
       throw new BusinessLogicException(
@@ -145,17 +147,17 @@ export class ClientOrderService {
         BusinessError.NOT_FOUND,
       );
 
-    const clientOrder: OrderEntity = client.orders.find(
-      (e) => e.id === order.id,
+    const clientReview: ReviewEntity = client.reviews.find(
+      (e) => e.id === review.id,
     );
 
-    if (!clientOrder)
+    if (!clientReview)
       throw new BusinessLogicException(
-        'The order with the given id is not associated to the client',
+        'The review with the given id is not associated to the client',
         BusinessError.PRECONDITION_FAILED,
       );
 
-    client.orders = client.orders.filter((e) => e.id !== orderId);
+    client.reviews = client.reviews.filter((e) => e.id !== reviewId);
     await this.clientRepository.save(client);
   }
 }
