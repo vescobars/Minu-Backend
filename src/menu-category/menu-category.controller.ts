@@ -10,28 +10,28 @@ import { MenuCategoryService } from './menu-category.service';
 export class MenuCategoryController {
     constructor(private readonly menuCategoryService: MenuCategoryService){}
 
-    @Post(':menuId/categorys/:categoryId')
+    @Post(':menuId/categories/:categoryId')
     async addCategoryMenu(@Param('menuId') menuId: string, @Param('categoryId') categoryId: string){
         return await this.menuCategoryService.addCategoryMenu(menuId, categoryId);
     }
 
-    @Get(':menuId/categorys/:categoryId')
+    @Get(':menuId/categories/:categoryId')
     async findCategoryByMenuIdCategoryId(@Param('menuId') menuId: string, @Param('categoryId') categoryId: string){
         return await this.menuCategoryService.findCategoryByMenuIdCategoryId(menuId, categoryId);
     }
 
-    @Get(':menuId/categorys')
+    @Get(':menuId/categories')
     async findCategorysByMenuId(@Param('menuId') menuId: string){
         return await this.menuCategoryService.findCategorysByMenuId(menuId);
     }
 
-    @Put(':menuId/categorys')
+    @Put(':menuId/categories')
     async associateCategorysMenu(@Body() categorysDto: CategoryDto[], @Param('menuId') menuId: string){
         const categorys = plainToInstance(CategoryEntity, categorysDto)
         return await this.menuCategoryService.associateCategorysMenu(menuId, categorys);
     }
     
-    @Delete(':menuId/categorys/:categoryId')
+    @Delete(':menuId/categories/:categoryId')
     @HttpCode(204)
     async deleteCategoryMenu(@Param('menuId') menuId: string, @Param('categoryId') categoryId: string){
         return await this.menuCategoryService.deleteCategoryMenu(menuId, categoryId);
