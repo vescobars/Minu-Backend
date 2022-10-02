@@ -135,12 +135,105 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUrl}}/address",
+					"raw": "{{baseUrl}}/addresses",
 					"host": [
 						"{{baseUrl}}"
 					],
 					"path": [
-						"address"
+						"addresses"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a restaurantSite to a restaurantChain",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"rc1\",\r\n    \"name\": \"chain1\",\r\n    \"restaurantSites\": [\r\n        {\r\n            \"id\": \"rs1\",\r\n            \"description\": \"Site of chain1. Located in Bogotá.\",\r\n            \"openingTime\": \"\",\r\n            \"closingTime\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains/{{chain_id}}/sites/{{site_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains",
+								"{{chain_id}}",
+								"sites",
+								"{{site_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Add an address 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"address_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"location\": \"Loc2\",\r\n    \"city\": \"Cali\",\r\n    \"neighborhood\": \"Granada\",\r\n    \"direction\": \"Av. 9 Nte. #14-57, Cali, Valle del Cauca\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/addresses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"addresses"
 					]
 				}
 			},
@@ -370,7 +463,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"location\": \"Loc2\",\r\n    \"city\": \"Bogota\",\r\n    \"neighborhood\": \"Chapinero Norte\",\r\n    \"direction\": \"Cl. 70a #9-66\"\r\n}",
+					"raw": "{\r\n    \"id\": \"{{address_id_2}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -444,7 +537,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/sites/{{site_id}}/addresses/{{address_id}}",
+					"raw": "{{baseUrl}}/sites/{{site_id}}/addresses/{{address_id_2}}",
 					"host": [
 						"{{baseUrl}}"
 					],
@@ -452,7 +545,7 @@
 						"sites",
 						"{{site_id}}",
 						"addresses",
-						"{{address_id}}"
+						"{{address_id_2}}"
 					]
 				}
 			},

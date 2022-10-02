@@ -31,7 +31,6 @@ export class MenuEntity {
     () => RestaurantSiteEntity,
     (restaurantSite) => restaurantSite.menu,
   )
-  @JoinColumn()
   restaurantSite: RestaurantSiteEntity;
 
   @OneToOne(

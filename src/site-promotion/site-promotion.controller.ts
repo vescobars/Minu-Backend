@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-//import { PromotionDto } from '../promotion/promotion.dto';
+import { PromotionDto } from '../promotion/promotion.dto';
 import { PromotionEntity } from '../promotion/promotion.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { SitePromotionService } from './site-promotion.service';
@@ -34,8 +34,6 @@ export class SitePromotionController {
     return await this.sitePromotionService.addPromotionSite(siteId, promotionId);
   }
   
- /*
- //Waiting for promotionDto implementation by gcagua 
  @Put(':siteId/promotions')
   async associatePromotionsSite(
     @Body() promotionsDto: PromotionDto[],
@@ -46,7 +44,7 @@ export class SitePromotionController {
       siteId,
       promotions,
     );
-  } */
+  }
 
   @Delete(':siteId/promotions/:promotionId')
   @HttpCode(204)

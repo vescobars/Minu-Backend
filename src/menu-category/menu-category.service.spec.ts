@@ -12,7 +12,7 @@ describe('MenuCategoryService', () => {
   let menuRepository: Repository<MenuEntity>;
   let categoryRepository: Repository<CategoryEntity>;
   let menu: MenuEntity;
-  let categorysList : CategoryEntity[];
+  let categoriesList : CategoryEntity[];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -31,18 +31,18 @@ describe('MenuCategoryService', () => {
     categoryRepository.clear();
     menuRepository.clear();
 
-    categorysList = [];
+    categoriesList = [];
     for(let i = 0; i < 5; i++){
         const category: CategoryEntity = await categoryRepository.save({
           name: faker.company.name()
         })
-        categorysList.push(category);
+        categoriesList.push(category);
     }
 
     menu = await menuRepository.save({
       date: faker.date.birthdate(),
       file: faker.company.name(),
-      categories: categorysList
+      categories: categoriesList
     })
   }
 
@@ -86,7 +86,7 @@ describe('MenuCategoryService', () => {
   
 
   it('findCategoryByMenuIdCategoryId should return category by menu', async () => {
-    const category: CategoryEntity = categorysList[0];
+    const category: CategoryEntity = categoriesList[0];
     const storedCategory: CategoryEntity = await service.findCategoryByMenuIdCategoryId(menu.id, category.id)
     expect(storedCategory).not.toBeNull();
     expect(storedCategory.name).toBe(category.name);
@@ -99,7 +99,7 @@ describe('MenuCategoryService', () => {
   });
 
   it('findCategoryByMenuIdCategoryId should throw an exception for an invalid menu', async () => {
-    const category: CategoryEntity = categorysList[0]; 
+    const category: CategoryEntity = categoriesList[0]; 
     await expect(()=> service.findCategoryByMenuIdCategoryId("0", category.id)).rejects.toHaveProperty("message", "The menu with the given id was not found"); 
   });
 
@@ -143,7 +143,7 @@ describe('MenuCategoryService', () => {
   });
 
   it('associateCategorysMenu should throw an exception for an invalid category', async () => {
-    const newCategory: CategoryEntity = categorysList[0];
+    const newCategory: CategoryEntity = categoriesList[0];
     newCategory.id = "0";
 
     await expect(()=> service.associateCategorysMenu(menu.id, [newCategory])).rejects.toHaveProperty("message", "The category with the given id was not found"); 
@@ -151,11 +151,11 @@ describe('MenuCategoryService', () => {
 
   
   it('deleteCategoryToMenu should remove an category from a menu', async () => {
-    const category: CategoryEntity = categorysList[0];
+    const category: CategoryEntity = categoriesList[0];
     
     await service.deleteCategoryMenu(menu.id, category.id);
 
-    const storedMenu: MenuEntity = await menuRepository.findOne({where: {id: menu.id}, relations: ["categorys"]});
+    const storedMenu: MenuEntity = await menuRepository.findOne({where: {id: menu.id}, relations: ["categories"]});
     const deletedCategory: CategoryEntity = storedMenu.categories.find(a => a.id === category.id);
 
     expect(deletedCategory).toBeUndefined();
@@ -168,13 +168,13 @@ describe('MenuCategoryService', () => {
   });
 
   it('deleteCategoryToMenu should thrown an exception for an invalid menu', async () => {
-    const category: CategoryEntity = categorysList[0];
+    const category: CategoryEntity = categoriesList[0];
     await expect(()=> service.deleteCategoryMenu("0", category.id)).rejects.toHaveProperty("message", "The menu with the given id was not found"); 
   });
 
   it('deleteCategoryToMenu should thrown an exception for an non asocciated category', async () => {
     const newCategory: CategoryEntity = await categoryRepository.save({
-      name: faker.company.companyName(), 
+      name: faker.company.name(), 
       year: parseInt(faker.random.numeric()),
       description: faker.lorem.sentence(),
       type: "Painting",
