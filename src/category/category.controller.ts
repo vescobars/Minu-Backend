@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { CategoryDto } from './category.dto';
 import { CategoryEntity } from './category.entity';
@@ -20,8 +21,9 @@ export class CategoryController {
       return await this.categoryService.findOne(categoryId);
     }
   
+    @UseGuards(JwtAuthGuard)
     @Post()
-    async create(@Body() categoryDto: CategoryDto) {
+    async create(@Body() categoryDto: CategoryDto): Promise<CategoryEntity> {
       const category: CategoryEntity = plainToInstance(CategoryEntity, categoryDto);
       return await this.categoryService.create(category);
     }
