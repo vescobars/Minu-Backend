@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-
+import { ConfigModule } from '@nestjs/config';
 import { CategoryModule } from './category/category.module';
 import { PromotionModule } from './promotion/promotion.module';
 import { PlateModule } from './plate/plate.module';
@@ -63,9 +63,12 @@ import { OrderOrderDetailModule } from './order-order-detail/order-order-detail.
 import { OrderPayModeModule } from './order-pay-mode/order-pay-mode.module';
 import { OrderTableModule } from './order-table/order-table.module';
 import { SitePromotionModule } from './site-promotion/site-promotion.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({}),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -140,6 +143,8 @@ import { SitePromotionModule } from './site-promotion/site-promotion.module';
     OrderPayModeModule,
     OrderTableModule,
     SitePromotionModule,
+    UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
