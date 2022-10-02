@@ -56,6 +56,7 @@ import { OrderPayModeModule } from './order-pay-mode/order-pay-mode.module';
 import { OrderTableModule } from './order-table/order-table.module';
 import { SitePromotionModule } from './site-promotion/site-promotion.module';
 import { MenuCategoryModule } from './menu-category/menu-category.module';
+import { ReviewClientModule } from './review-client/review-client.module';
 
 @Module({
   imports: [
@@ -64,8 +65,8 @@ import { MenuCategoryModule } from './menu-category/menu-category.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'nicolascelisjn24',
-      database: 'minu',
+      password: 'postgres123',
+      database: 'db',
       entities: [
         AddressEntity,
         CategoryEntity,
@@ -126,6 +127,7 @@ import { MenuCategoryModule } from './menu-category/menu-category.module';
     OrderTableModule,
     SitePromotionModule,
     MenuCategoryModule,
+    ReviewClientModule,
   ],
   controllers: [AppController],
   providers: [AppService],
