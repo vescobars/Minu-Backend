@@ -15,7 +15,7 @@ import { ScheduleEntity } from 'src/schedule/schedule.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { SiteScheduleService } from './site-schedule.service';
 
-@Controller('restaurantSites')
+@Controller('sites')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class SiteScheduleController {
   constructor(private readonly siteScheduleService: SiteScheduleService) {}
