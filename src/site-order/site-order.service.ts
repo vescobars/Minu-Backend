@@ -12,11 +12,11 @@ export class SiteOrderService {
         private readonly restaurantSiteRepository: Repository<RestaurantSiteEntity>,
      
         @InjectRepository(OrderEntity)
-        private readonly orderEntity: Repository<OrderEntity>
+        private readonly orderRepository: Repository<OrderEntity>
     ) {}
 
     async addOrderSite(siteId: string, orderId: string): Promise<RestaurantSiteEntity> {
-        const order: OrderEntity = await this.orderEntity.findOne({where: {id: orderId}});
+        const order: OrderEntity = await this.orderRepository.findOne({where: {id: orderId}});
         if (!order)
           throw new BusinessLogicException("The order with the given id was not found", BusinessError.NOT_FOUND);
        
@@ -29,7 +29,7 @@ export class SiteOrderService {
       }
      
     async findOrderBySiteIdOrderId(siteId: string, orderId: string): Promise<OrderEntity> {
-        const order: OrderEntity = await this.orderEntity.findOne({where: {id: orderId}});
+        const order: OrderEntity = await this.orderRepository.findOne({where: {id: orderId}});
         if (!order)
           throw new BusinessLogicException("The order with the given id was not found", BusinessError.NOT_FOUND)
         
@@ -60,7 +60,7 @@ export class SiteOrderService {
           throw new BusinessLogicException("The site with the given id was not found", BusinessError.NOT_FOUND)
      
         for (let i = 0; i < orders.length; i++) {
-          const order: OrderEntity = await this.orderEntity.findOne({where: {id: orders[i].id}});
+          const order: OrderEntity = await this.orderRepository.findOne({where: {id: orders[i].id}});
           if (!order)
             throw new BusinessLogicException("The order with the given id was not found", BusinessError.NOT_FOUND)
         }
@@ -70,7 +70,7 @@ export class SiteOrderService {
       }
     
     async deleteOrderSite(siteId: string, orderId: string){
-        const order: OrderEntity = await this.orderEntity.findOne({where: {id: orderId}});
+        const order: OrderEntity = await this.orderRepository.findOne({where: {id: orderId}});
         if (!order)
           throw new BusinessLogicException("The order with the given id was not found", BusinessError.NOT_FOUND)
      

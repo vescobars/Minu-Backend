@@ -33,7 +33,7 @@ export class ClientOrderService {
 
     const client: ClientEntity = await this.clientRepository.findOne({
       where: { id: clientId },
-      relations: ['orders', 'exhibitions'],
+      relations: ['orders'],
     });
     if (!client)
       throw new BusinessLogicException(

@@ -7,6 +7,90 @@
 	},
 	"item": [
 		{
+			"name": "Add a restaurantChain",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"chain_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"chainName\": \"Restaurante 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/chains",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"chains"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a restaurantChain",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"rc1\",\r\n    \"chainName\": \"Restaurante 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/chains",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"chains"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
 			"name": "Add a restaurantSite",
 			"event": [
 				{
@@ -87,90 +171,6 @@
 								"{{chain_id}}",
 								"sites",
 								"{{site_id_1}}"
-							]
-						}
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": null,
-					"header": null,
-					"cookie": [],
-					"body": null
-				}
-			]
-		},
-		{
-			"name": "Add a restaurantChain",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var data = pm.response.json()\r",
-							"pm.globals.set(\"chain_id\", data.id);\r",
-							"\r",
-							"pm.test(\"Status code is 201\", function () {\r",
-							"   pm.response.to.have.status(201);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"chainName\": \"Restaurante 1\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseUrl}}/chains",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"chains"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Add a restaurantChain",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\":\"rc1\",\r\n    \"chainName\": \"Restaurante 1\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/chains",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"chains"
 							]
 						}
 					},

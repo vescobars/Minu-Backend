@@ -1,9 +1,5 @@
 import {IsNotEmpty, IsNumber, IsString, IsUrl} from 'class-validator';
 export class PromotionDto {
-
- @IsString()
- @IsNotEmpty()
- readonly name: string;
  
  @IsString()
  @IsNotEmpty()

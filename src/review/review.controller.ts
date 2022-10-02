@@ -1,4 +1,6 @@
+
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
+
 import { plainToInstance } from 'class-transformer';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
@@ -9,7 +11,8 @@ import { ReviewService } from './review.service';
 @Controller('reviews')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class ReviewController {
-    constructor(private readonly reviewService: ReviewService) {}
+
+  constructor(private readonly reviewService: ReviewService) {}
   
   @UseGuards(JwtAuthGuard)
   @Get()
@@ -32,7 +35,10 @@ export class ReviewController {
   
   @UseGuards(JwtAuthGuard)
   @Put(':reviewId')
-  async update(@Param('reviewId') reviewId: string, @Body() reviewDto: ReviewDto) {
+  async update(
+    @Param('reviewId') reviewId: string,
+    @Body() reviewDto: ReviewDto,
+  ) {
     const review: ReviewEntity = plainToInstance(ReviewEntity, reviewDto);
     return await this.reviewService.update(reviewId, review);
   }

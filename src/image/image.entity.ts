@@ -17,15 +17,6 @@ export class ImageEntity {
   @Column()
   url: string;
 
-  @OneToOne(() => ClientEntity, (client) => client.profileImage)
-  client: ClientEntity;
-
-  @OneToOne(
-    () => RestaurantOperatorEntity,
-    (restaurantOperator) => restaurantOperator.profileImage,
-  )
-  restaurantOperator: RestaurantOperatorEntity;
-
   @ManyToOne(() => PlateEntity, (plate) => plate.images)
   plate: PlateEntity;
 }

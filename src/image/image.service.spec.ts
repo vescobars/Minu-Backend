@@ -57,8 +57,6 @@ describe('ImageService', () => {
     const image: ImageEntity = {
       id: "",
       url: faker.lorem.sentence(),
-      client: null,
-      restaurantOperator: null,
       plate: null,
     }
 

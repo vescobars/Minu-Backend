@@ -4,11 +4,8 @@ import { TableEntity } from '../../table/table.entity';
 import { PayModeEntity } from '../../pay-mode/pay-mode.entity';
 import { AddressEntity } from '../../address/address.entity';
 import { ClientEntity } from '../../client/client.entity';
-import { CoordinateEntity } from '../../coordinate/coordinate.entity';
 import { ImageEntity } from '../../image/image.entity';
 import { MenuEntity } from '../../menu/menu.entity';
-import { MenuVisualPreferenceEntity } from '../../menu-visual-preferences/menu-visual-preferences.entity';
-import { MenuVisualTemplateEntity } from '../../menu-visual-template/menu-visual-template.entity';
 import { RestaurantChainEntity } from '../../restaurant-chain/restaurant-chain.entity';
 import { RestaurantOperatorEntity } from '../../restaurant-operator/restaurant-operator.entity';
 import { RestaurantSiteEntity } from '../../restaurant-site/restaurant-site.entity';
@@ -21,7 +18,7 @@ import { PlateEntity } from '../../plate/plate.entity';
 import { ReviewEntity } from '../../review/review.entity';
 
 export const TypeOrmTestingConfig = () => [
- TypeOrmModule.forRoot({
+  TypeOrmModule.forRoot({
     type: 'sqlite',
     database: ':memory:',
     dropSchema: true,
@@ -33,12 +30,9 @@ export const TypeOrmTestingConfig = () => [
       AddressEntity,
       CategoryEntity,
       ClientEntity,
-      CoordinateEntity,
       DescriptionTagEntity,
       ImageEntity,
       MenuEntity,
-      MenuVisualPreferenceEntity,
-      MenuVisualTemplateEntity,
       PlateEntity,
       PromotionEntity,
       RestaurantChainEntity,
@@ -47,9 +41,28 @@ export const TypeOrmTestingConfig = () => [
       ReviewEntity,
       ScheduleEntity,
       CategoryEntity,
-      DescriptionTagEntity],
+      DescriptionTagEntity,
+    ],
     synchronize: true,
-    keepConnectionAlive: true
- }),
- TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity,AddressEntity,CategoryEntity,ClientEntity,CoordinateEntity,DescriptionTagEntity,ImageEntity,MenuEntity,MenuVisualPreferenceEntity,MenuVisualTemplateEntity,PlateEntity,PromotionEntity,RestaurantChainEntity,RestaurantOperatorEntity,RestaurantSiteEntity,ReviewEntity,ScheduleEntity]),
+    keepConnectionAlive: true,
+  }),
+  TypeOrmModule.forFeature([
+    PayModeEntity,
+    TableEntity,
+    OrderEntity,
+    OrderDetailEntity,
+    AddressEntity,
+    CategoryEntity,
+    ClientEntity,
+    DescriptionTagEntity,
+    ImageEntity,
+    MenuEntity,
+    PlateEntity,
+    PromotionEntity,
+    RestaurantChainEntity,
+    RestaurantOperatorEntity,
+    RestaurantSiteEntity,
+    ReviewEntity,
+    ScheduleEntity,
+  ]),
 ];

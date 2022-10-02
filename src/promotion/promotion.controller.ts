@@ -18,29 +18,33 @@ export class PromotionController {
     }
     
     @UseGuards(JwtAuthGuard)
-    @Get(':reviewId')
-    async findOne(@Param('reviewId') reviewId: string) {
-      return await this.promotionService.findOne(reviewId);
+    @Get(':promotionId')
+    async findOne(@Param('promotionId') promotionId: string) {
+      return await this.promotionService.findOne(promotionId);
     }
     
     @UseGuards(JwtAuthGuard)
     @Post()
-    async create(@Body() reviewDto: PromotionDto) {
-      const review: PromotionEntity = plainToInstance(PromotionEntity, reviewDto);
-      return await this.promotionService.create(review);
+    async create(@Body() promotionDto: PromotionDto) {
+      const promotion: PromotionEntity = plainToInstance(PromotionEntity, promotionDto);
+      promotion.startDate = new Date(promotion.startDate);
+      promotion.endDate = new Date(promotion.endDate);
+      return await this.promotionService.create(promotion);
     }
-    
+
     @UseGuards(JwtAuthGuard)
-    @Put(':reviewId')
-    async update(@Param('reviewId') reviewId: string, @Body() reviewDto: PromotionDto) {
-      const review: PromotionEntity = plainToInstance(PromotionEntity, reviewDto);
-      return await this.promotionService.update(reviewId, review);
+    @Put(':promotionId')
+    async update(@Param('promotionId') promotionId: string, @Body() promotionDto: PromotionDto) {
+      const promotion: PromotionEntity = plainToInstance(PromotionEntity, promotionDto);
+      promotion.startDate = new Date(promotion.startDate);
+      promotion.endDate = new Date(promotion.endDate);
+      return await this.promotionService.update(promotionId, promotion);
     }
-    
+  
     @UseGuards(JwtAuthGuard)
-    @Delete(':reviewId')
+    @Delete(':promotionId')
     @HttpCode(204)
-    async delete(@Param('reviewId') reviewId: string) {
-      return await this.promotionService.delete(reviewId);
+    async delete(@Param('promotionId') promotionId: string) {
+      return await this.promotionService.delete(promotionId);
     }
 }
