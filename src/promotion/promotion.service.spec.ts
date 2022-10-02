@@ -22,16 +22,15 @@ describe('PromotionService', () => {
     service = module.get<PromotionService>(PromotionService);
     repository = module.get<Repository<PromotionEntity>>(getRepositoryToken(PromotionEntity));
     promotionsList.length = 0;
-    //await seedDatabase();
+    await seedDatabase();
   });
 
-  /*
+  
   const seedDatabase = async () => {
     repository.clear();
     
     for(let i = 0; i < 5; i++){
         const promotion: PromotionEntity = await repository.save({
-          id: faker.datatype.uuid(),
           startDate: faker.date.recent(),
           endDate: faker.date.recent(),
           discount: faker.datatype.number(),
@@ -40,13 +39,13 @@ describe('PromotionService', () => {
         promotionsList.push(promotion);
     }
   }
-  */
+ 
 
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
 
-  /*
+  
   it('findAll should return all promotions', async () => {
     const promotions: PromotionEntity[] = await service.findAll();
     expect(promotions).not.toBeNull();
@@ -97,5 +96,5 @@ describe('PromotionService', () => {
      const deletedPromotion: PromotionEntity = await repository.findOne({ where: { id: promotion.id } })
     expect(deletedPromotion).toBeNull();
   });
-  */
+ 
 });

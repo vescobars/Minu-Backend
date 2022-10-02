@@ -6,7 +6,6 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { CoordinateEntity } from '../coordinate/coordinate.entity';
 
 @Entity()
 export class AddressEntity {
@@ -24,10 +23,6 @@ export class AddressEntity {
 
   @Column()
   direction: string;
-
-  @OneToOne(() => CoordinateEntity, (coordinate) => coordinate.address)
-  @JoinColumn()
-  coordinate: CoordinateEntity;
 
   @OneToOne(() => RestaurantSiteEntity,(restaurantSite) => restaurantSite.address)
   restaurantSite: RestaurantSiteEntity;

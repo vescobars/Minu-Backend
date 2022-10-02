@@ -16,14 +16,14 @@ export class ClientService {
 
   async findAll(): Promise<ClientEntity[]> {
     return await this.clientRepository.find({
-      relations: ['profileImage', 'orders', 'currentLocation', 'reviews'],
+      relations: ['orders', 'reviews'],
     });
   }
 
   async findOne(id: string): Promise<ClientEntity> {
     const client: ClientEntity = await this.clientRepository.findOne({
       where: { id },
-      relations: ['profileImage', 'orders', 'currentLocation', 'reviews'],
+      relations: ['orders', 'reviews'],
     });
     if (!client)
       throw new BusinessLogicException(

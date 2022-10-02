@@ -67,7 +67,6 @@ describe('AddressService', () => {
       city: faker.lorem.sentence(), 
       neighborhood: faker.address.cityName(), 
       direction: faker.address.secondaryAddress(),
-      coordinate:null,
       restaurantSite: null
     }
 
