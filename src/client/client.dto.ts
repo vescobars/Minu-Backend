@@ -15,4 +15,8 @@ export class ClientDto {
   @IsEmail()
   @IsNotEmpty()
   readonly email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly imageUrl: string;
 }

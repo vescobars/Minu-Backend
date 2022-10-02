@@ -75,7 +75,6 @@ describe('RestaurantOperatorService', () => {
         role: faker.company.name(),
         active: faker.datatype.boolean(),
         imageUrl : faker.company.name(),
-        profileImage: null,
         restaurantSite: null
     }
 

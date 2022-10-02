@@ -29,12 +29,6 @@ export class RestaurantOperatorEntity {
     @Column()
     imageUrl:string
 
-    
-
-    @OneToOne(() => ImageEntity, profileImage => profileImage.restaurantOperator)
-    @JoinColumn()
-    profileImage: ImageEntity;
-
     @ManyToOne(() => RestaurantSiteEntity, restaurantSite => restaurantSite.restaurantOperators)
     restaurantSite: RestaurantSiteEntity;
 
