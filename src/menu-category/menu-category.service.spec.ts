@@ -42,7 +42,7 @@ describe('MenuCategoryService', () => {
     menu = await menuRepository.save({
       date: faker.date.birthdate(),
       file: faker.company.name(),
-      categorys: categorysList
+      categories: categorysList
     })
   }
 
@@ -83,7 +83,7 @@ describe('MenuCategoryService', () => {
 
     await expect(() => service.addCategoryMenu("0", newCategory.id)).rejects.toHaveProperty("message", "The menu with the given id was not found");
   });
-  /*
+  
 
   it('findCategoryByMenuIdCategoryId should return category by menu', async () => {
     const category: CategoryEntity = categorysList[0];
@@ -92,7 +92,7 @@ describe('MenuCategoryService', () => {
     expect(storedCategory.name).toBe(category.name);
 
   });
-  */
+  
 
   it('findCategoryByMenuIdCategoryId should throw an exception for an invalid category', async () => {
     await expect(()=> service.findCategoryByMenuIdCategoryId(menu.id, "0")).rejects.toHaveProperty("message", "The category with the given id was not found"); 
@@ -111,14 +111,14 @@ describe('MenuCategoryService', () => {
     await expect(()=> service.findCategoryByMenuIdCategoryId(menu.id, newCategory.id)).rejects.toHaveProperty("message", "The category with the given id is not associated to the menu"); 
   });
 
-  /*
+  
   it('findCategorysByMenuId should return categorys by menu', async ()=>{
     const categorys: CategoryEntity[] = await service.findCategorysByMenuId(menu.id);
     expect(categorys.length).toBe(5)
   });
-  */
-
   
+
+
   it('findCategorysByMenuId should throw an exception for an invalid menu', async () => {
     await expect(()=> service.findCategorysByMenuId("0")).rejects.toHaveProperty("message", "The menu with the given id was not found"); 
   });
@@ -149,7 +149,7 @@ describe('MenuCategoryService', () => {
     await expect(()=> service.associateCategorysMenu(menu.id, [newCategory])).rejects.toHaveProperty("message", "The category with the given id was not found"); 
   });
 
-  /*
+  
   it('deleteCategoryToMenu should remove an category from a menu', async () => {
     const category: CategoryEntity = categorysList[0];
     
@@ -161,7 +161,7 @@ describe('MenuCategoryService', () => {
     expect(deletedCategory).toBeUndefined();
 
   });
-  */
+  
 
   it('deleteCategoryToMenu should thrown an exception for an invalid category', async () => {
     await expect(()=> service.deleteCategoryMenu(menu.id, "0")).rejects.toHaveProperty("message", "The category with the given id was not found"); 
