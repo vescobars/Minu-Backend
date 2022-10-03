@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-
+import { ConfigModule } from '@nestjs/config';
 import { CategoryModule } from './category/category.module';
 import { PromotionModule } from './promotion/promotion.module';
 import { PlateModule } from './plate/plate.module';
@@ -55,17 +55,21 @@ import { OrderOrderDetailModule } from './order-order-detail/order-order-detail.
 import { OrderPayModeModule } from './order-pay-mode/order-pay-mode.module';
 import { OrderTableModule } from './order-table/order-table.module';
 import { SitePromotionModule } from './site-promotion/site-promotion.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 import { MenuCategoryModule } from './menu-category/menu-category.module';
+import { ReviewClientModule } from './review-client/review-client.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({}),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'nicolascelisjn24',
-      database: 'minu',
+      password: 'postgres123',
+      database: 'db',
       entities: [
         AddressEntity,
         CategoryEntity,
@@ -125,7 +129,10 @@ import { MenuCategoryModule } from './menu-category/menu-category.module';
     OrderPayModeModule,
     OrderTableModule,
     SitePromotionModule,
+    UserModule,
+    AuthModule,
     MenuCategoryModule,
+    ReviewClientModule,
   ],
   controllers: [AppController],
   providers: [AppService],

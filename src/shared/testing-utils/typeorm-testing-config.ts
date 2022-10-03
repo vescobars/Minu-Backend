@@ -18,7 +18,7 @@ import { PlateEntity } from '../../plate/plate.entity';
 import { ReviewEntity } from '../../review/review.entity';
 
 export const TypeOrmTestingConfig = () => [
- TypeOrmModule.forRoot({
+  TypeOrmModule.forRoot({
     type: 'sqlite',
     database: ':memory:',
     dropSchema: true,
@@ -41,9 +41,28 @@ export const TypeOrmTestingConfig = () => [
       ReviewEntity,
       ScheduleEntity,
       CategoryEntity,
-      DescriptionTagEntity],
+      DescriptionTagEntity,
+    ],
     synchronize: true,
-    keepConnectionAlive: true
- }),
- TypeOrmModule.forFeature([PayModeEntity,TableEntity,OrderEntity,OrderDetailEntity,AddressEntity,CategoryEntity,ClientEntity,DescriptionTagEntity,ImageEntity,MenuEntity,PlateEntity,PromotionEntity,RestaurantChainEntity,RestaurantOperatorEntity,RestaurantSiteEntity,ReviewEntity,ScheduleEntity]),
+    keepConnectionAlive: true,
+  }),
+  TypeOrmModule.forFeature([
+    PayModeEntity,
+    TableEntity,
+    OrderEntity,
+    OrderDetailEntity,
+    AddressEntity,
+    CategoryEntity,
+    ClientEntity,
+    DescriptionTagEntity,
+    ImageEntity,
+    MenuEntity,
+    PlateEntity,
+    PromotionEntity,
+    RestaurantChainEntity,
+    RestaurantOperatorEntity,
+    RestaurantSiteEntity,
+    ReviewEntity,
+    ScheduleEntity,
+  ]),
 ];
