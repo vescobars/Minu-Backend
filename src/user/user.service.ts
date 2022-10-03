@@ -30,6 +30,7 @@ export class UserService {
        new User(23, "readerVeronica", "Veronica", [Role.Reader]),
        new User(24, "writerVeronica", "Veronica", [Role.Writer]),
        new User(25, "deleterVeronica", "Veronica", [Role.Deleter]),
+       new User(26, "master","123",[Role.Admin,Role.Writer,Role.Deleter,Role.Reader])
    ];
 
    async findOne(username: string): Promise<User | undefined> {
