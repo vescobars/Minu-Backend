@@ -2,6 +2,9 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
 
 import { plainToInstance } from 'class-transformer';
+import { RolesGuard } from 'src/auth/guards/role.guard';
+import { Role } from 'src/enums/role.enum';
+import { HasRoles } from 'src/shared/security/roles.decorators';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { ReviewDto } from './review.dto';
@@ -14,19 +17,23 @@ export class ReviewController {
 
   constructor(private readonly reviewService: ReviewService) {}
   
-  @UseGuards(JwtAuthGuard)
+  @HasRoles(Role.Reader)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   async findAll() {
     return await this.reviewService.findAll();
   }
   
-  @UseGuards(JwtAuthGuard)
+  @HasRoles(Role.Reader)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':reviewId')
   async findOne(@Param('reviewId') reviewId: string) {
     return await this.reviewService.findOne(reviewId);
   }
   
   @UseGuards(JwtAuthGuard)
+  @HasRoles(Role.Writer)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
   async create(@Body() reviewDto: ReviewDto) {
     const review: ReviewEntity = plainToInstance(ReviewEntity, reviewDto);
@@ -34,6 +41,8 @@ export class ReviewController {
   }
   
   @UseGuards(JwtAuthGuard)
+  @HasRoles(Role.Writer)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Put(':reviewId')
   async update(
     @Param('reviewId') reviewId: string,
@@ -43,7 +52,8 @@ export class ReviewController {
     return await this.reviewService.update(reviewId, review);
   }
   
-  @UseGuards(JwtAuthGuard)
+  @HasRoles(Role.Deleter)
+    @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':reviewId')
   @HttpCode(204)
   async delete(@Param('reviewId') reviewId: string) {
