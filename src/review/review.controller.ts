@@ -1,5 +1,15 @@
-
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 
 import { plainToInstance } from 'class-transformer';
 import { RolesGuard } from 'src/auth/guards/role.guard';
@@ -14,23 +24,22 @@ import { ReviewService } from './review.service';
 @Controller('reviews')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class ReviewController {
-
   constructor(private readonly reviewService: ReviewService) {}
-  
+
   @HasRoles(Role.Reader)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   async findAll() {
     return await this.reviewService.findAll();
   }
-  
+
   @HasRoles(Role.Reader)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':reviewId')
   async findOne(@Param('reviewId') reviewId: string) {
     return await this.reviewService.findOne(reviewId);
   }
-  
+
   @UseGuards(JwtAuthGuard)
   @HasRoles(Role.Writer)
   @UseGuards(JwtAuthGuard, RolesGuard)
@@ -39,7 +48,7 @@ export class ReviewController {
     const review: ReviewEntity = plainToInstance(ReviewEntity, reviewDto);
     return await this.reviewService.create(review);
   }
-  
+
   @UseGuards(JwtAuthGuard)
   @HasRoles(Role.Writer)
   @UseGuards(JwtAuthGuard, RolesGuard)
@@ -51,9 +60,9 @@ export class ReviewController {
     const review: ReviewEntity = plainToInstance(ReviewEntity, reviewDto);
     return await this.reviewService.update(reviewId, review);
   }
-  
+
   @HasRoles(Role.Deleter)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':reviewId')
   @HttpCode(204)
   async delete(@Param('reviewId') reviewId: string) {
