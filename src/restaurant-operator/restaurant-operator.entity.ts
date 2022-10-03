@@ -26,6 +26,11 @@ export class RestaurantOperatorEntity {
     @Column()
     active:boolean
 
+    @Column()
+    imageUrl:string
+
+    
+
     @OneToOne(() => ImageEntity, profileImage => profileImage.restaurantOperator)
     @JoinColumn()
     profileImage: ImageEntity;

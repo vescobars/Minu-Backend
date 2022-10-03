@@ -1,4 +1,4 @@
-import {Entity, Column, PrimaryGeneratedColumn, OneToOne} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from 'typeorm';
 import { MenuEntity } from '../menu/menu.entity';
 
 
@@ -13,7 +13,8 @@ export class MenuVisualPreferenceEntity {
     @Column()
     file: string;
     
-    @OneToOne(() => MenuEntity, menu => menu.menuVisualPreferences)
-    menu: MenuEntity;
+    @OneToOne(() => MenuEntity, (menu) => menu.menuVisualPreferences)
+  @JoinColumn()
+  menu: MenuEntity;
     
 }

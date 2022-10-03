@@ -19,17 +19,24 @@ export class MenuEntity {
   id: string;
 
   @Column()
+  file: string;
+
+  @Column()
   date: Date;
 
   @OneToMany(() => CategoryEntity, (categories) => categories.menu)
   categories: CategoryEntity[];
 
-  @OneToOne(() => RestaurantSiteEntity, (restaurantSite) => restaurantSite.menu)
+  @OneToOne(
+    () => RestaurantSiteEntity,
+    (restaurantSite) => restaurantSite.menu,
+  )
+  @JoinColumn()
   restaurantSite: RestaurantSiteEntity;
 
   @OneToOne(
     () => MenuVisualTemplateEntity,
-    (MenuVisualTemplate) => MenuVisualTemplate.menu,
+    (menuVisualTemplate) => menuVisualTemplate.menu,
   )
   @JoinColumn()
   menuVisualTemplate: MenuVisualTemplateEntity;

@@ -63,6 +63,7 @@ import { OrderOrderDetailModule } from './order-order-detail/order-order-detail.
 import { OrderPayModeModule } from './order-pay-mode/order-pay-mode.module';
 import { OrderTableModule } from './order-table/order-table.module';
 import { SitePromotionModule } from './site-promotion/site-promotion.module';
+import { MenuCategoryModule } from './menu-category/menu-category.module';
 
 @Module({
   imports: [
@@ -71,7 +72,7 @@ import { SitePromotionModule } from './site-promotion/site-promotion.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres123',
+      password: 'postgres',
       database: 'db',
       entities: [
         AddressEntity,
@@ -140,6 +141,7 @@ import { SitePromotionModule } from './site-promotion/site-promotion.module';
     OrderPayModeModule,
     OrderTableModule,
     SitePromotionModule,
+    MenuCategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
