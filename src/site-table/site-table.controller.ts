@@ -1,7 +1,11 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors,} from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors, UseGuards} from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { TableDto } from '../table/table.dto';
 import { TableEntity } from '../table/table.entity';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/role.guard';
+import { Role } from '../enums/role.enum';
+import { HasRoles } from '../shared/security/roles.decorators';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { SiteTableService } from './site-table.service';
 
@@ -10,6 +14,8 @@ import { SiteTableService } from './site-table.service';
 export class SiteTableController {
     constructor(private readonly siteTableService: SiteTableService) {}
 
+  @HasRoles(Role.Reader)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':siteId/tables/:tableId')
   async findTableBySiteIdTableId(
     @Param('siteId') siteId: string,
@@ -20,12 +26,14 @@ export class SiteTableController {
       tableId,
     );
   }
-
+  @HasRoles(Role.Reader)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':siteId/tables')
   async findTablesBySiteId(@Param('siteId') siteId: string) {
     return await this.siteTableService.findTablesBySiteId(siteId);
   }
-
+  @HasRoles(Role.Writer)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Post(':siteId/tables/:tableId')
   async addTableSite(
     @Param('siteId') siteId: string,
@@ -33,8 +41,9 @@ export class SiteTableController {
   ) {
     return await this.siteTableService.addTableSite(siteId, tableId);
   }
-  
- @Put(':siteId/tables')
+  @HasRoles(Role.Writer)
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Put(':siteId/tables')
   async associateTablesSite(
     @Body() tablesDto: TableDto[],
     @Param('siteId') siteId: string,
@@ -45,7 +54,8 @@ export class SiteTableController {
       tables,
     );
   }
-
+  @HasRoles(Role.Deleter)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':siteId/tables/:tableId')
   @HttpCode(204)
   async deleteTableSite(

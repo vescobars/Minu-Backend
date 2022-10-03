@@ -1,7 +1,11 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors,} from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors, UseGuards} from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { MenuDto } from '../menu/menu.dto';
 import { MenuEntity } from '../menu/menu.entity';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/role.guard';
+import { Role } from '../enums/role.enum';
+import { HasRoles } from '../shared/security/roles.decorators';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { SiteMenuService } from './site-menu.service';
 
@@ -10,11 +14,14 @@ import { SiteMenuService } from './site-menu.service';
 export class SiteMenuController {
     constructor(private readonly siteMenuService: SiteMenuService) {}
 
+  @HasRoles(Role.Reader)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':siteId/menus')
   async findMenuBySiteId(@Param('siteId') siteId: string) {
     return await this.siteMenuService.findMenuBySiteId(siteId);
   }
-
+  @HasRoles(Role.Writer)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Post(':siteId/menus/:menuId')
   async addMenuSite(
     @Param('siteId') siteId: string,
@@ -22,8 +29,9 @@ export class SiteMenuController {
   ) {
     return await this.siteMenuService.addMenuSite(siteId, menuId);
   }
-  
- @Put(':siteId/menus')
+  @HasRoles(Role.Writer)
+  @UseGuards(JwtAuthGuard, RolesGuard)  
+  @Put(':siteId/menus')
   async associateMenuSite(
     @Body() menuDto: MenuDto,
     @Param('siteId') siteId: string,
@@ -34,7 +42,8 @@ export class SiteMenuController {
       menu,
     );
   }
-
+  @HasRoles(Role.Deleter)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':siteId/menus/:menuId')
   @HttpCode(204)
   async deleteMenuSite(
