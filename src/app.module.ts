@@ -59,6 +59,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { MenuCategoryModule } from './menu-category/menu-category.module';
 import { ReviewClientModule } from './review-client/review-client.module';
+import { EnumsModule } from './enums/enums.module';
 
 @Module({
   imports: [
@@ -133,6 +134,7 @@ import { ReviewClientModule } from './review-client/review-client.module';
     AuthModule,
     MenuCategoryModule,
     ReviewClientModule,
+    EnumsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
