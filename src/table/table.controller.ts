@@ -15,34 +15,41 @@ export class TableController {
     constructor(private readonly tableService:TableService){}
     
     @Get()
-    @HasRoles(Role.Admin)
+    @HasRoles(Role.Reader)
     @UseGuards(JwtAuthGuard, RolesGuard)
     async findAll() {
         return await this.tableService.findAll();
     }
 
-    @HasRoles(Role.Admin)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    
     @Get(':tableId')
+    @HasRoles(Role.Reader)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     async findOne(@Param('tableId') tableId: string) {
         return await this.tableService.findOne(tableId);
     }
-
-    @HasRoles(Role.Admin)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    
     @Post()
+    @HasRoles(Role.Writer)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     async create(@Body() tableDto: TableDto) {
         const table: TableEntity = plainToInstance(TableEntity, tableDto);
         return await this.tableService.create(table);
     }
 
+    
     @Put(':tableId')
+    @HasRoles(Role.Writer)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     async update(@Param('tableId') tableId: string, @Body() tableDto: TableDto) {
         const table: TableEntity = plainToInstance(TableEntity, tableDto);
         return await this.tableService.update(tableId, table);
     }
 
+    
     @Delete(':tableId')
+    @HasRoles(Role.Deleter)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @HttpCode(204)
     async delete(@Param('tableId') tableId: string) {
         return await this.tableService.delete(tableId);
