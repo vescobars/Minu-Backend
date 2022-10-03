@@ -70,7 +70,7 @@ import { EnumsModule } from './enums/enums.module';
       port: 5432,
       username: 'postgres',
       password: 'postgres123',
-      database: 'db',
+      database: 'minu',
       entities: [
         AddressEntity,
         CategoryEntity,
