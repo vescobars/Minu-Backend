@@ -1,5 +1,8 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
+import { RolesGuard } from '../auth/guards/role.guard';
+import { Role } from '../enums/role.enum';
+import { HasRoles } from '../shared/security/roles.decorators';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { PlateDto } from './plate.dto';
@@ -11,33 +14,38 @@ import { PlateService } from './plate.service';
 export class PlateController {
     constructor(private readonly plateService: PlateService) {}
   
-    @UseGuards(JwtAuthGuard)
+    @HasRoles(Role.Reader)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Get()
     async findAll(){
         return await this.plateService.findAll();
     }
   
-    @UseGuards(JwtAuthGuard)
+    @HasRoles(Role.Reader)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Get(':plateId')
     async findOne(@Param('plateId') plateId: string) {
       return await this.plateService.findOne(plateId);
     }
   
-    @UseGuards(JwtAuthGuard)
+    @HasRoles(Role.Writer)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Post()
     async create(@Body() plateDto: PlateDto) {
       const plate: PlateEntity = plainToInstance(PlateEntity, plateDto);
       return await this.plateService.create(plate);
     }
   
-    @UseGuards(JwtAuthGuard)
+    @HasRoles(Role.Writer)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Put(':plateId')
     async update(@Param('plateId') plateId: string, @Body() plateDto: PlateDto) {
     const plate: PlateEntity = plainToInstance(PlateEntity, plateDto);
     return await this.plateService.update(plateId, plate);
     }
   
-    @UseGuards(JwtAuthGuard)
+    @HasRoles(Role.Deleter)
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Delete(':plateId')
     @HttpCode(204)
     async delete(@Param('plateId') plateId: string) {
