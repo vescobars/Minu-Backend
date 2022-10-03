@@ -1,4 +1,3 @@
-import { MenuVisualTemplateEntity } from '../menu-visual-template/menu-visual-template.entity';
 import { RestaurantSiteEntity } from '../restaurant-site/restaurant-site.entity';
 
 import {
@@ -11,7 +10,6 @@ import {
 } from 'typeorm';
 
 import { CategoryEntity } from '../category/category.entity';
-import { MenuVisualPreferenceEntity } from '../menu-visual-preferences/menu-visual-preferences.entity';
 
 @Entity()
 export class MenuEntity {
@@ -31,20 +29,5 @@ export class MenuEntity {
     () => RestaurantSiteEntity,
     (restaurantSite) => restaurantSite.menu,
   )
-  @JoinColumn()
   restaurantSite: RestaurantSiteEntity;
-
-  @OneToOne(
-    () => MenuVisualTemplateEntity,
-    (menuVisualTemplate) => menuVisualTemplate.menu,
-  )
-  @JoinColumn()
-  menuVisualTemplate: MenuVisualTemplateEntity;
-
-  @OneToOne(
-    () => MenuVisualPreferenceEntity,
-    (menuVisualPreferences) => menuVisualPreferences.menu,
-  )
-  @JoinColumn()
-  menuVisualPreferences: MenuVisualPreferenceEntity;
 }

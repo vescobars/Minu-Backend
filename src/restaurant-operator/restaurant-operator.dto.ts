@@ -2,21 +2,17 @@ import {IsBoolean, IsNotEmpty, IsString, IsUrl} from 'class-validator';
 export class RestaurantOperatorDto {
   @IsString()
   @IsNotEmpty()
-  readonly id: string;
-  
-  @IsString()
-  @IsNotEmpty()
   readonly firstname: string;
   
   @IsString()
   @IsNotEmpty()
-  readonly cellpnone: string;
+  readonly cellphone: string;
   
   @IsString()
   @IsNotEmpty()
   readonly lastname: string;
   
-  @IsUrl()
+  @IsString()
   @IsNotEmpty()
   readonly role: string;
 

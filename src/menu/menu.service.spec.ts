@@ -62,8 +62,6 @@ describe('MenuService', () => {
       file: faker.company.name(),
       categories: [],
       restaurantSite: null,
-      menuVisualTemplate:null,
-      menuVisualPreferences:null,
     }
 
     const newMenu: MenuEntity = await service.create(menu);

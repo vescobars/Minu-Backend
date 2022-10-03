@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors,} from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-//import { AddressDto } from '../address/address.dto';
+import { AddressDto } from '../address/address.dto';
 import { AddressEntity } from '../address/address.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { SiteAddressService } from './site-address.service';
@@ -23,8 +23,6 @@ export class SiteAddressController {
     return await this.siteAddressService.addAddressSite(siteId, addressId);
   }
   
- /*
- //Waiting for AddressDto implementation by penichejr
  @Put(':siteId/addresses')
   async associateAddressSite(
     @Body() addressDto: AddressDto,
@@ -35,7 +33,7 @@ export class SiteAddressController {
       siteId,
       address,
     );
-  } */
+  }
 
   @Delete(':siteId/addresses/:addressId')
   @HttpCode(204)

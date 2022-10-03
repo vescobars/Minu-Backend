@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors,} from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-//import { MenuDto } from '../menu/menu.dto';
+import { MenuDto } from '../menu/menu.dto';
 import { MenuEntity } from '../menu/menu.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { SiteMenuService } from './site-menu.service';
@@ -23,8 +23,6 @@ export class SiteMenuController {
     return await this.siteMenuService.addMenuSite(siteId, menuId);
   }
   
- 
- /* //Waiting for MenuDto implementation by penichejr
  @Put(':siteId/menus')
   async associateMenuSite(
     @Body() menuDto: MenuDto,
@@ -35,7 +33,7 @@ export class SiteMenuController {
       siteId,
       menu,
     );
-  } */
+  }
 
   @Delete(':siteId/menus/:menuId')
   @HttpCode(204)

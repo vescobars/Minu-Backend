@@ -5,33 +5,44 @@ import { PromotionEntity } from '../promotion/promotion.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { PlatePromotionService } from './plate-promotion.service';
 
-@Controller('plate')
+@Controller('plates')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class PlatePromotionController {
 
     constructor(private readonly platePromotionService: PlatePromotionService){}
 
-    /**
-   @Post(':plateId/promotions/:promotionId')
-   async addPromotionPlate(@Param('plateId') plateId: string, @Param('promotionId') promotionId: string){
-       return await this.platePromotionService.addPromotionPlate(plateId, promotionId);
-   }
-
-   @Get(':plateId/promotions/:promotionId')
-   async findPromotionByPlateIdPromotionId(@Param('plateId') plateId: string, @Param('promotionId') promotionId: string){
-       return await this.platePromotionService.getPromotionByPlateId(plateId, promotionId);
-   }
-
+    @Get(':plateId/promotions')
+    async findPromotionByPlateId(@Param('plateId') plateId: string) {
+      return await this.platePromotionService.findPromotionByPlateId(plateId);
+    }
+  
+    @Post(':plateId/promotions/:promotionId')
+    async addPromotionPlate(
+      @Param('plateId') plateId: string,
+      @Param('promotionId') promotionId: string,
+    ) {
+      return await this.platePromotionService.addPromotionPlate(plateId, promotionId);
+    }
+    
    @Put(':plateId/promotions')
-   async associatePromotionsPlate(@Body() promotionsDto: PromotionDto[], @Param('plateId') plateId: string){
-       const promotions = plainToInstance(PromotionEntity, promotionsDto)
-       return await this.platePromotionService.associatePromotionsPlate(plateId, promotions);
-   }
-
-   @Delete(':plateId/promotions/:promotionId')
-   @HttpCode(204)
-   async deletePromotionPlate(@Param('plateId') plateId: string, @Param('promotionId') promotionId: string){
-       return await this.platePromotionService.deletePromotionPlate(plateId, promotionId);
-   }
-   */
+    async associatePromotionPlate(
+      @Body() PromotionDto: PromotionDto,
+      @Param('plateId') plateId: string,
+    ) {
+      const promotion = plainToInstance(PromotionEntity, PromotionDto);
+      return await this.platePromotionService.associatePromotionPlate(
+        plateId,
+        promotion,
+      );
+    }
+  
+    @Delete(':plateId/promotions/:promotionId')
+    @HttpCode(204)
+    async deletePromotionPlate(
+      @Param('plateId') plateId: string,
+      @Param('promotionId') promotionId: string,
+    ) {
+      return await this.platePromotionService.deletePromotionPlate(plateId, promotionId);
+    }
+  
 }
