@@ -69,8 +69,8 @@ import { EnumsModule } from './enums/enums.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres123',
-      database: 'db',
+      password: 'nicolascelisjn24',
+      database: 'minu',
       entities: [
         AddressEntity,
         CategoryEntity,
