@@ -33,8 +33,8 @@ export class ChainSiteController {
   async findSitesByChainId(@Param('chainId') chainId: string) {
     return await this.chainSiteService.findSitesByChainId(chainId);
   }
-  @HasRoles(Role.Writer)
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  // @HasRoles(Role.Writer)
+  // @UseGuards(JwtAuthGuard, RolesGuard)
   @Post(':chainId/sites/:siteId')
   async addSiteChain(
     @Param('chainId') chainId: string,

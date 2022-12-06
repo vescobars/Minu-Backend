@@ -14,8 +14,8 @@ import { SiteOrderService } from './site-order.service';
 export class SiteOrderController {
     constructor(private readonly siteOrderService: SiteOrderService) {}
     
-  @HasRoles(Role.Reader)
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  // @HasRoles(Role.Reader)
+  // @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':siteId/orders/:orderId')
   async findOrderBySiteIdOrderId(
     @Param('siteId') siteId: string,
@@ -26,14 +26,14 @@ export class SiteOrderController {
       orderId,
     );
   }
-  @HasRoles(Role.Reader)
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  // @HasRoles(Role.Reader)
+  // @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':siteId/orders')
   async findOrdersBySiteId(@Param('siteId') siteId: string) {
     return await this.siteOrderService.findOrdersBySiteId(siteId);
   }
-  @HasRoles(Role.Writer)
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  // @HasRoles(Role.Writer)
+  // @UseGuards(JwtAuthGuard, RolesGuard)
   @Post(':siteId/orders/:orderId')
   async addordersite(
     @Param('siteId') siteId: string,
@@ -41,8 +41,8 @@ export class SiteOrderController {
   ) {
     return await this.siteOrderService.addOrderSite(siteId, orderId);
   }
-  @HasRoles(Role.Writer)
-  @UseGuards(JwtAuthGuard, RolesGuard) 
+  // @HasRoles(Role.Writer)
+  // @UseGuards(JwtAuthGuard, RolesGuard) 
   @Put(':siteId/orders')
   async associateOrdersSite(
     @Body() ordersDto: OrderDto[],

@@ -26,14 +26,14 @@ export class SiteReviewController {
       reviewId,
     );
   }
-  @HasRoles(Role.Reader)
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  // @HasRoles(Role.Reader)
+  // @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':siteId/reviews')
   async findReviewsBySiteId(@Param('siteId') siteId: string) {
     return await this.siteReviewService.findReviewsBySiteId(siteId);
   }
-  @HasRoles(Role.Writer)
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  // @HasRoles(Role.Writer)
+  // @UseGuards(JwtAuthGuard, RolesGuard)
   @Post(':siteId/reviews/:reviewId')
   async addReviewSite(
     @Param('siteId') siteId: string,
