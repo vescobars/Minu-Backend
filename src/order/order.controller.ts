@@ -30,8 +30,8 @@ export class OrderController {
     }
 
     @Post()
-    @HasRoles(Role.Writer)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    // @HasRoles(Role.Writer)
+    // @UseGuards(JwtAuthGuard, RolesGuard)
     async create(@Body() orderDto:OrderDto){
         const order:OrderEntity = plainToInstance(OrderEntity,orderDto);
         order.date = new Date(order.date);
@@ -39,16 +39,16 @@ export class OrderController {
     }
 
     @Put(':orderId')
-    @HasRoles(Role.Writer)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    // @HasRoles(Role.Writer)
+    // @UseGuards(JwtAuthGuard, RolesGuard)
     async update(@Param('orderId') orderId:string,@Body() orderDto:OrderDto){
         const order:OrderEntity = plainToInstance(OrderEntity,orderDto);
         return await this.orderService.update(orderId,order);
     }
 
     @Delete(':orderId')
-    @HasRoles(Role.Deleter)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    // @HasRoles(Role.Deleter)
+    // @UseGuards(JwtAuthGuard, RolesGuard)
     @HttpCode(204)
     async delete(@Param('orderId') orderId:string){
         return await this.orderService.delete(orderId);

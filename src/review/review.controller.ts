@@ -40,9 +40,9 @@ export class ReviewController {
     return await this.reviewService.findOne(reviewId);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @HasRoles(Role.Writer)
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  // @UseGuards(JwtAuthGuard)
+  // @HasRoles(Role.Writer)
+  // @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
   async create(@Body() reviewDto: ReviewDto) {
     const review: ReviewEntity = plainToInstance(ReviewEntity, reviewDto);

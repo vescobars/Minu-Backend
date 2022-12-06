@@ -15,30 +15,30 @@ export class RestaurantChainController {
     constructor(private readonly chainService:RestaurantChainService){}
 
     @Get()
-    @HasRoles(Role.Reader)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    // @HasRoles(Role.Reader)
+    // @UseGuards(JwtAuthGuard, RolesGuard)
     async findAll() {
         return await this.chainService.findAll();
     }
 
     @Get(':chainId')
-    @HasRoles(Role.Reader)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    // @HasRoles(Role.Reader)
+    // @UseGuards(JwtAuthGuard, RolesGuard)
     async findOne(@Param('chainId') chainId: string) {
         return await this.chainService.findOne(chainId);
     }
 
     @Post()
-    @HasRoles(Role.Writer)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    // @HasRoles(Role.Writer)
+    // @UseGuards(JwtAuthGuard, RolesGuard)
     async create(@Body() chainDto: RestaurantChainDto) {
         const chain: RestaurantChainEntity = plainToInstance(RestaurantChainEntity, chainDto);
         return await this.chainService.create(chain);
     }
 
     @Put(':chainId')
-    @HasRoles(Role.Writer)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    // @HasRoles(Role.Writer)
+    // @UseGuards(JwtAuthGuard, RolesGuard)
         async update(@Param('chainId') chainId: string, @Body() chainDto: RestaurantChainDto) {
         const chain: RestaurantChainEntity = plainToInstance(RestaurantChainEntity, chainDto);
         return await this.chainService.update(chainId, chain);
@@ -46,8 +46,8 @@ export class RestaurantChainController {
 
     @Delete(':chainId')
     @HttpCode(204)
-    @HasRoles(Role.Deleter)
-    @UseGuards(JwtAuthGuard, RolesGuard)
+    // @HasRoles(Role.Deleter)
+    // @UseGuards(JwtAuthGuard, RolesGuard)
     async delete(@Param('chainId') chainId: string) {
         return await this.chainService.delete(chainId);
     }
